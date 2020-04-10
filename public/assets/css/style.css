@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Cinzel|Roboto&display=swap');
+
 :root {
 
     --main-font: 'Roboto', sans-serif;
@@ -10,5 +12,11 @@
 
     --dark: #16171A;
 
+    --grey: #3E4352;
+
     --light: #E5EBF4;
+
+    --border-radius: 25px;
+
+    --box-shadow: 10px 10px 5px var(--grey);
 }
