@@ -2,9 +2,21 @@
 
 :root {
 
+    /*Font*/
+
     --main-font: 'Roboto', sans-serif;
 
     --title-font: 'Cinzel', serif;
+
+    /*Font Size*/
+
+    --main-size: 16px;
+
+    --medium-size: 20px;
+
+    --large-size: 28px;
+
+    /*Color*/
 
     --main-bg-color: #334159;
 
@@ -16,7 +28,17 @@
 
     --light: #E5EBF4;
 
+    /*Radius & Shadow*/
+
     --border-radius: 25px;
 
     --box-shadow: 10px 10px 5px var(--grey);
+
+    /*Spacing*/
+
+    --spacing-sm: calc(var(--spacing) / 2);
+
+    --spacing: 16px;
+
+    --spacing-lg: calc(var(--spacing) * 2);
 }
