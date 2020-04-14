@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Cinzel:400,900|Roboto:400,400i,900&display=swap');
 
+@import "homePage/header.css";
+
 :root {
     /*Font*/
     --main-font: 'Roboto', sans-serif;
@@ -25,4 +27,28 @@
     --spacing-sm: calc(var(--spacing) / 2);
     --spacing: 16px;
     --spacing-lg: calc(var(--spacing) * 2);
+}
+
+/**
+* general statements
+ */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--main-font);
+    font-size: var(--main-size);
+}
+
+h1, h2, h3, h4 {
+    font-family: var(--title-font);
+}
+
+*, *::before, *::after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
 }
