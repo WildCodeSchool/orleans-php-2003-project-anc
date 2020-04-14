@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Cinzel|Roboto&display=swap');
+@import "navbar.css";
 
 :root {
 
@@ -41,4 +42,8 @@
     --spacing: 16px;
 
     --spacing-lg: calc(var(--spacing) * 2);
+}
+
+.test {
+    height: 3000px;
 }

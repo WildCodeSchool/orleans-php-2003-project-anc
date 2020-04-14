@@ -1,0 +1,22 @@
+.navbar {
+    position: fixed;
+    width: 100%;
+    height: 80px;
+    background-color: var(--second-bg-color);
+}
+
+.navbar-brand {
+    font-size: var(--large-size);
+    font-family: var(--title-font);
+}
+
+.navbar-brand img {
+    margin-right: var(--spacing);
+}
+
+.nav-link {
+    font-size: var(--medium-size);
+}
+
+
+
