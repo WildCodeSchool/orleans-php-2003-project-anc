@@ -9,7 +9,6 @@
 
 namespace App\Controller;
 
-
 /**
  * Class contactController
  *
