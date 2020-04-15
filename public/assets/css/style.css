@@ -2,6 +2,8 @@
 @import "navbar.css";
 @import "homePage/header.css";
 
+@import 'footer.css';
+
 :root {
     /*Font*/
     --main-font: 'Roboto', sans-serif;
