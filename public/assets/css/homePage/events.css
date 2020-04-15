@@ -1,0 +1,6 @@
+.events .card {
+    width: calc(100% / 4);
+}
+.events .row {
+    justify-content: space-around;
+}

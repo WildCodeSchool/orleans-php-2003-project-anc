@@ -1,0 +1,18 @@
+<section class="events">
+    <h2 class="title-section">Prochains événements</h2>
+
+    <div class="row">
+        {% for event in events %}
+
+            <div class="card col-xs-12 text-center">
+                <img src="assets/images/{{ event.img }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{ event.start_at | date("m/d/Y") }}</h5>
+                    <p class="card-text">{{ event.name }}</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
+
+        {% endfor %}
+    </div>
+</section>
