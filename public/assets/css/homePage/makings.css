@@ -39,12 +39,6 @@
     align-items: center;
 }
 
-.cta-collection {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
 .medals-images {
     display: flex;
     justify-content: space-evenly;
@@ -72,3 +66,28 @@
     align-items: center;
     width: 30%;
 }
+
+.cta-collection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cta-btn-collection {
+    color: var(--light) !important;
+    text-transform: uppercase;
+    text-decoration: none !important;
+    background: var(--main-bg-color);
+    padding: 20px;
+    border-radius: 5px;
+    display: inline-block;
+    border: none;
+    transition: all 0.4s ease 0s;
+}
+
+.cta-btn-collection:hover {
+    background: var(--main-bg-color);
+    letter-spacing: 1px;
+    transition: all 0.4s ease 0s;
+}
+
