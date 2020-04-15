@@ -1,12 +1,88 @@
 .makings {
     display: flex;
+    flex-direction: column;
+    margin-top: var(--spacing);
+}
+
+.makings-title {
+    
+}
+
+.makings-content {
+    display: flex;
+}
+
+.association-emblem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: var(--spacing-lg);
+    border-width: 0px !important;
+    box-shadow: 0 0 0 2px var(--main-bg-color), 0 0 0 10px var(--second-bg-color), 0 0 0 12px var(--main-bg-color);
+    background-color: #EEEEEE;
+    padding: 0 !important;
+}
+
+.association-emblem p {
+    width: 50%;
+    font-family: var(--title-font);
+}
+
+.association-emblem img {
+    width: 350px;
+    height: 350px;
+    margin-top: var(--spacing);
 }
 
 .association-medals {
     display: flex;
     flex-direction: column;
+    align-items: center;
+}
+
+.text-description {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .medals-images {
     display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    margin-top: var(--spacing);
+    border-width: 0px !important;
+    box-shadow: 0 0 0 2px var(--main-bg-color), 0 0 0 10px var(--second-bg-color), 0 0 0 12px var(--main-bg-color);
+    background-color: #EEEEEE;
+}
+
+.medals-images img {
+    width: 240px;
+    height: 240px;
+}
+
+.medals-images p {
+    font-family: var(--title-font);
+    width: 60%;
+}
+
+.medal-40y {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30%;
+}
+
+.medal-liberation {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30%;
+}
+
+.medal-50y {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30%;
 }
