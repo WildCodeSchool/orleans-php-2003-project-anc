@@ -22,3 +22,14 @@
     list-style: none;
 }
 
+.legal{
+    display: flex;
+    background-color: var(--second-bg-color);
+    justify-content: space-evenly;
+    font-size: 0.75em;
+    padding: 4px 0;
+}
+
+.footer2 a{
+    color: var(--light);
+}
