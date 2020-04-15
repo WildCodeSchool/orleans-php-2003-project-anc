@@ -1,22 +1,21 @@
 .makings {
     display: flex;
     flex-direction: column;
-    margin-top: var(--spacing);
 }
 
 .makings-title {
-    
+    background-color: var(--second-bg-color);
 }
 
 .makings-content {
     display: flex;
+    align-items: center;
 }
 
 .association-emblem {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: var(--spacing-lg);
     border-width: 0px !important;
     box-shadow: 0 0 0 2px var(--main-bg-color), 0 0 0 10px var(--second-bg-color), 0 0 0 12px var(--main-bg-color);
     background-color: #EEEEEE;
@@ -40,7 +39,7 @@
     align-items: center;
 }
 
-.text-description {
+.cta-collection {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -50,7 +49,6 @@
     display: flex;
     justify-content: space-evenly;
     width: 100%;
-    margin-top: var(--spacing);
     border-width: 0px !important;
     box-shadow: 0 0 0 2px var(--main-bg-color), 0 0 0 10px var(--second-bg-color), 0 0 0 12px var(--main-bg-color);
     background-color: #EEEEEE;
@@ -66,20 +64,8 @@
     width: 60%;
 }
 
-.medal-40y {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 30%;
-}
-
-.medal-liberation {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 30%;
-}
-
+.medal-40y,
+.medal-liberation,
 .medal-50y {
     display: flex;
     flex-direction: column;
