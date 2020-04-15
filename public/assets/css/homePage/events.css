@@ -2,7 +2,7 @@
     font-weight: bold;
 }
 .events .card img {
-    max-height: 250px;
+    height: 250px;
     object-fit: cover;
 }
 .events .card {
