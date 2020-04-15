@@ -1,3 +1,11 @@
+.events .title-section {
+    font-weight: bold;
+}
+.events .card img {
+    width: 450px;
+    height: 250px;
+    object-fit: cover;
+}
 .events .card {
     width: calc(100% / 4);
 }
