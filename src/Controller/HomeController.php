@@ -24,7 +24,7 @@ class HomeController extends AbstractController
     public function index()
     {
         $eventManager = new EventManager();
-        $events = $eventManager->selectAll();
+        $events = $eventManager->selectThreeNextEvent();
 
         return $this->twig->render('Home/index.html.twig', ['events' => $events]);
     }

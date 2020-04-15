@@ -26,4 +26,9 @@ class EventManager extends AbstractManager
     {
         parent::__construct(self::TABLE);
     }
+
+    public function selectThreeNextEvent()
+    {
+        return $this->pdo->query('SELECT * FROM ' . $this->table . ' ORDER BY start_at ASC LIMIT 0, 3')->fetchAll();
+    }
 }
