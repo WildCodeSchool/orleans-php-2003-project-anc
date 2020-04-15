@@ -3,6 +3,8 @@
 @import "homePage/header.css";
 @import "homePage/events.css";
 
+@import 'footer.css';
+
 :root {
     /*Font*/
     --main-font: 'Roboto', sans-serif;
