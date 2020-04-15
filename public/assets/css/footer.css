@@ -1,0 +1,8 @@
+.footer1{
+    background-color: var(--main-bg-color);
+}
+
+h2{
+    font-family: var(--title-font);
+    font-size: var(--medium-size);
+}
