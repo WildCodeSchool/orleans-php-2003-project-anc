@@ -6,15 +6,15 @@
 
     <h1>Hello Wilder ! - Contact</h1>
 
-    <div class="container">
+    <main>
             <form action="/contact/index" method="post">
                 <div class="form-group">
                     <label for="fname">Nom:</label>
-                    <input type="texte" class="form-control" id="fname" placeholder="Votre prénom">
+                    <input type="text" class="form-control" id="fname" placeholder="Votre prénom">
                 </div>
                 <div class="form-group">
                     <label for="lname">Nom:</label>
-                    <input type="texte" class="form-control" id="lname" placeholder="Votre nom">
+                    <input type="text" class="form-control" id="lname" placeholder="Votre nom">
                 </div>
                 <div class="form-group">
                     <label for="email">Email:</label>
@@ -27,10 +27,9 @@
                 <div class="form-group">
                     <label for="topic">Sujet:</label>
                         <select class="form-control" id="topic" name="topic">
-                            <option value="volvo">Volvo</option>
-                            <option value="saab">Saab</option>
-                            <option value="mercedes">Mercedes</option>
-                            <option value="audi">Audi</option>
+                            <option value="volvo">Sujet 1</option>
+                            <option value="saab">Sujet 2</option>
+                            <option value="mercedes">Sujet 3</option>
                         </select>
                 </div>
                 <div class="form-group">
@@ -42,9 +41,10 @@
                     <label class="form-check-label" for="exampleCheck1">J'ai lu et accepte la Politique de confidentialité.</label>
                 </div>
                 <br>
-                <button type="submit" class="btn btn-primary">Envoyer</button>
-                <button type="reset" class="btn btn-primary">Annuler</button>
+                <div class="button">
+                <button type="reset" class="btn">Annuler</button>
+                    <button type="submit" class="btn">Envoyer</button>
+                </div>
             </form>
-    </div>
-
+    </main>
 {% endblock %}

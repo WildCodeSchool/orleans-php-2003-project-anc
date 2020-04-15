@@ -2,6 +2,13 @@ body {
     background-color: var(--main-bg-color);
     color: var(--light);
 }
-button {
-    color: var(--second-bg-color);
+
+.btn {
+    background-color: var(--second-bg-color);
+    width: 10%;
+}
+
+.button {
+    display: flex;
+    justify-content: space-around;
 }
