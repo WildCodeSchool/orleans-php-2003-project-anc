@@ -1,0 +1,12 @@
+.makings {
+    display: flex;
+}
+
+.association-medals {
+    display: flex;
+    flex-direction: column;
+}
+
+.medals-images {
+    display: flex;
+}
