@@ -1,16 +1,28 @@
 .navbar {
     width: 100%;
     height: 80px;
+    padding: 0;
     background-color: var(--second-bg-color);
 }
 
 .navbar-brand {
-    font-size: var(--large-size);
+    font-weight: bold;
+    margin-left: var(--spacing-sm);
+    font-size: var(--medium-size);
     font-family: var(--title-font);
 }
 
+.navbar-collapse {
+    background-color: var(--second-bg-color);
+}
+
+.navbar-toggler {
+    margin-right: var(--spacing-sm);
+}
+
 .nav-link {
-    font-size: var(--medium-size);
+    margin-left: var(--spacing-sm);
+    font-size: var(--main-size);
 }
 
 
