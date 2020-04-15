@@ -29,10 +29,7 @@ class ContactController extends AbstractController
      */
     public function index()
     {
-        $contactManager = new ContactManager();
-        $contacts = $contactManager->selectAll();
-
-        return $this->twig->render('Contact/index.html.twig', ['contacts' => $contacts]);
+        return $this->twig->render('Contact/index.html.twig');
     }
 
 
