@@ -1,8 +1,24 @@
-.footer1{
+.footer{
     background-color: var(--main-bg-color);
+    color: var(--light);
+    font-size: 0.80em;
+    display: flex;
+    justify-content: space-around;
+    padding: var(--spacing);
 }
 
-h2{
+.footer h2{
     font-family: var(--title-font);
     font-size: var(--medium-size);
+    border-bottom: 1px solid var(--second-bg-color);
+    margin-bottom: var(--spacing-sm);
 }
+
+.footer ul{
+    padding: 0;
+}
+
+.footer li{
+    list-style: none;
+}
+
