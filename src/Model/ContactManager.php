@@ -13,7 +13,6 @@ namespace App\Model;
  *
  */
 class ContactManager extends AbstractManager
-
 {
     /**
      *
@@ -27,5 +26,4 @@ class ContactManager extends AbstractManager
     {
         parent::__construct(self::TABLE);
     }
-
 }

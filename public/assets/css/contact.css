@@ -3,12 +3,21 @@ body {
     color: var(--light);
 }
 
-.btn {
-    background-color: var(--second-bg-color);
-    width: 10%;
+main {
+    display: flex;
+    justify-content: center;
+}
+
+form {
+    padding: var(--spacing);
 }
 
 .button {
     display: flex;
     justify-content: space-around;
+}
+
+.btn {
+    background-color: var(--second-bg-color);
+    width: 30%;
 }
