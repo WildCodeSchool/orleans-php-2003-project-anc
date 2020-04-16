@@ -1,0 +1,16 @@
+.events .title-section {
+    font-weight: bold;
+}
+.events .card img {
+    height: 250px;
+    object-fit: cover;
+}
+.events .card {
+    width: calc(100% / 4);
+}
+.events .row {
+    justify-content: space-around;
+}
+.events .btn-primary {
+    background: var(--main-bg-color);
+}
