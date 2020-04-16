@@ -2,7 +2,7 @@
 @import "navbar.css";
 @import "homePage/header.css";
 @import "homePage/events.css";
-
+@import "legal.css";
 @import 'footer.css';
 
 :root {
@@ -52,6 +52,6 @@ h1, h2, h3, h4 {
     box-sizing: border-box;
 }
 
-a {
+a, a:hover {
     text-decoration: none;
 }
