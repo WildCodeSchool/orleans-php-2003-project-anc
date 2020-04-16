@@ -13,7 +13,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    border-width: 0px !important;
+    align-self: flex-end;
     background-color: #EEEEEE;
     padding: 0 !important;
     border: 1px solid var(--second-bg-color) !important;
@@ -36,11 +36,19 @@
     align-items: center;
 }
 
+.medals-text::after {
+    content: "";
+    display: block;
+    height: 1px;
+    width: 50%;
+    margin: 0.4em auto auto;
+    background-color: var(--second-bg-color);
+}
+
 .medals-images {
     display: flex;
     justify-content: space-evenly;
     width: 100%;
-    border-width: 0px !important;
     background-color: #EEEEEE;
     border: 1px solid var(--second-bg-color) !important;
 }
@@ -68,6 +76,15 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.cta-collection p::after {
+    content: "";
+    display: block;
+    height: 1px;
+    width: 50%;
+    margin: 0.8em auto auto;
+    background-color: var(--second-bg-color);
 }
 
 .cta-btn-collection {

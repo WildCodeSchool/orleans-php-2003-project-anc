@@ -1,0 +1,23 @@
+body {
+    background-color: var(--main-bg-color);
+    color: var(--light);
+}
+
+main {
+    display: flex;
+    justify-content: center;
+}
+
+form {
+    padding: var(--spacing);
+}
+
+.button {
+    display: flex;
+    justify-content: space-around;
+}
+
+.btn {
+    background-color: var(--second-bg-color);
+    width: 30%;
+}
