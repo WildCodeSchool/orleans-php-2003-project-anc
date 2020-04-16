@@ -1,0 +1,18 @@
+.action{
+    background-color: var(--main-bg-color);
+    font-family: var(--main-font);
+    font-size: var(--main-size);
+    text-align: center;
+    padding: 15px 0;
+}
+
+.action p{
+    font-size: var(--large-size);
+    color: var(--light);
+}
+
+.action .btn-primary{
+    background-color: var(--second-bg-color);
+    color: var(--light);
+    border: none;
+}

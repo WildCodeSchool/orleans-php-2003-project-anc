@@ -30,7 +30,7 @@ class ContactManager extends AbstractManager
 
     /**
      * @param array $contact
-     * @return bool
+     * @return void
      */
     public function insert(array $contact): void
     {
