@@ -1,16 +1,20 @@
 .events .title-section {
     font-weight: bold;
 }
+.events .card {
+    min-width: 300px;
+}
 .events .card img {
     height: 250px;
     object-fit: cover;
-}
-.events .card {
-    width: calc(100% / 4);
-}
-.events .row {
-    justify-content: space-around;
+    width: 100%;
 }
 .events .btn-primary {
     background: var(--main-bg-color);
+}
+
+@media screen and (min-width: 1200px) {
+    .events .card {
+        max-width: 420px;
+    }
 }
