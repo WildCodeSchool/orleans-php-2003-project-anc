@@ -1,9 +1,8 @@
-.action{
+.action {
     background-color: var(--main-bg-color);
     font-family: var(--main-font);
     font-size: var(--main-size);
     text-align: center;
-    padding: 15px 0;
 }
 
 .action p{
@@ -15,4 +14,10 @@
     background-color: var(--second-bg-color);
     color: var(--light);
     border: none;
+}
+
+@media screen and (max-width: 900px) {
+    .action {
+        flex-direction: column;
+    }
 }
