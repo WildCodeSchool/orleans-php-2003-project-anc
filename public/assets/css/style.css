@@ -2,7 +2,9 @@
 @import "navbar.css";
 @import "homePage/header.css";
 @import "homePage/callToAction.css";
-
+@import "homePage/makings.css";
+@import "homePage/events.css";
+@import "legal.css";
 @import 'footer.css';
 
 :root {
@@ -52,6 +54,15 @@ h1, h2, h3, h4 {
     box-sizing: border-box;
 }
 
-a {
+a, a:hover {
     text-decoration: none;
+}
+
+section h2::after {
+    content: "";
+    display: block;
+    height: 1px;
+    width: 50%;
+    margin: 0.4em auto auto;
+    background-color: var(--second-bg-color);
 }
