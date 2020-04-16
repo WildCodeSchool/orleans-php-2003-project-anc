@@ -14,6 +14,7 @@ class LegalController extends AbstractController
     */
     public function privacyPolicy(): string
     {
-        return $this->twig->render('Legal/privacyPolicy.html.twig');
+        $return = $_SERVER['HTTP_REFERER'];
+        return $this->twig->render('Legal/privacyPolicy.html.twig', ['return' => $return]);
     }
 }
