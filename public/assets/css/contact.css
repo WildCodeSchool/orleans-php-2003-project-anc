@@ -3,13 +3,15 @@ body {
     color: var(--light);
 }
 
-main {
-    display: flex;
-    justify-content: center;
+.contact {
+    margin-top: 120px;
+    padding-bottom: 80px;
+    border-bottom: 1px solid var(--second-bg-color);
 }
 
-form {
+.form {
     padding: var(--spacing);
+    margin: 5%;
 }
 
 .button {
@@ -17,7 +19,15 @@ form {
     justify-content: space-around;
 }
 
+li {
+    list-style: none;
+}
+
 .btn {
     background-color: var(--second-bg-color);
     width: 30%;
+}
+
+footer {
+    margin-top: 2%;
 }
