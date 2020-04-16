@@ -4,8 +4,10 @@
 @import "homePage/callToAction.css";
 @import "homePage/makings.css";
 @import "homePage/events.css";
+@import "homePage/homePageDescription.css";
 @import "legal.css";
 @import 'footer.css';
+
 
 :root {
     /*Font*/
