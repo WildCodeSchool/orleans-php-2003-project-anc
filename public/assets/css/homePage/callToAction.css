@@ -1,5 +1,5 @@
 .action {
-    background-color: var(--main-bg-color);
+    background-color: var(--second-bg-color);
     font-family: var(--main-font);
     font-size: var(--main-size);
     text-align: center;
@@ -7,11 +7,11 @@
 
 .action p{
     font-size: var(--large-size);
-    color: var(--light);
+    color: var(--dark);
 }
 
 .action .btn-primary{
-    background-color: var(--second-bg-color);
+    background-color: var(--main-bg-color);
     color: var(--light);
     border: none;
 }
