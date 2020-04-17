@@ -2,8 +2,8 @@
     background-color: var(--second-bg-color);
     color: var(--dark);
     font-size: 0.80em;
-    display: flex;
-    justify-content: space-around;
+    /*display: flex;*/
+    /*justify-content: space-around;*/
     padding: var(--spacing);
 }
 
@@ -22,7 +22,7 @@
     list-style: none;
 }
 
-.legal{
+.legal {
     display: flex;
     background-color: var(--main-bg-color);
     justify-content: space-evenly;
