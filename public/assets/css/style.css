@@ -4,7 +4,6 @@
 @import "homePage/callToAction.css";
 @import "homePage/makings.css";
 @import "homePage/events.css";
-@import "homePage/homePageDescription.css";
 @import "legal.css";
 @import 'footer.css';
 
@@ -66,7 +65,8 @@ section {
     margin-bottom: 80px;
 }
 
-.title-section::after {
+.title-section::after,
+.collection-text-cta::after {
     content: "";
     display: block;
     height: 1px;
