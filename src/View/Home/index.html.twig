@@ -1,5 +1,16 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-    <h1>Hello Wilder !</h1>
+    {% include 'Home/_header.html.twig' %}
+
+
+    <div class="container-fluid">
+        {% include 'Home/_events.html.twig' %}
+        {% include 'Home/_makings.html.twig' %}
+    </div>
+    {% include 'Home/_callToAction.html.twig' %}
+    <div class="container-fluid">
+        {% include 'Home/_homePageDescription.html.twig' %}
+    </div>
+
 {% endblock %}

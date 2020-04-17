@@ -1,0 +1,35 @@
+.footer{
+    background-color: var(--second-bg-color);
+    color: var(--dark);
+    font-size: 0.80em;
+    display: flex;
+    justify-content: space-around;
+    padding: var(--spacing);
+}
+
+.footer h2{
+    font-family: var(--title-font);
+    font-size: var(--medium-size);
+    border-bottom: 1px solid var(--main-bg-color);
+    margin-bottom: var(--spacing-sm);
+}
+
+.footer ul{
+    padding: 0;
+}
+
+.footer li{
+    list-style: none;
+}
+
+.legal{
+    display: flex;
+    background-color: var(--main-bg-color);
+    justify-content: space-evenly;
+    font-size: 0.75em;
+    padding: 4px 0;
+}
+
+.legal a{
+    color: var(--light) !important;
+}

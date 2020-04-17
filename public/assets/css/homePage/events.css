@@ -1,0 +1,20 @@
+.events .title-section {
+    font-weight: bold;
+}
+.events .card {
+    min-width: 300px;
+}
+.events .card img {
+    height: 250px;
+    object-fit: cover;
+    width: 100%;
+}
+.events .btn-primary {
+    background: var(--main-bg-color);
+}
+
+@media screen and (min-width: 1200px) {
+    .events .card {
+        max-width: 420px;
+    }
+}
