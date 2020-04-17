@@ -1,6 +1,7 @@
 .action {
     background-color: var(--second-bg-color);
     font-size: var(--main-size);
+    box-shadow: 0 0 6px var(--main-bg-color);
 }
 
 .action p{
