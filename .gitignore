@@ -4,5 +4,3 @@
 *.cache
 db.php
 .idea
-composer.lock
-
