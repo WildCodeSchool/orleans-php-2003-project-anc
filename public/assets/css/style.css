@@ -58,6 +58,7 @@ h1, h2, h3, h4 {
 
 a, a:hover {
     text-decoration: none;
+    color: inherit;
 }
 
 section h2::after {
