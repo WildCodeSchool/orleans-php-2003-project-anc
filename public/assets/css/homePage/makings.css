@@ -1,103 +1,89 @@
-.makings {
-    display: flex;
-    flex-direction: column;
-}
+/*.makings {*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*}*/
 
-.makings-content {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-}
+/*.makings-content {*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    justify-content: space-around;*/
+/*}*/
 
-.association-emblem {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    align-self: flex-end;
-    background-color: #EEEEEE;
-    padding: 0 !important;
-    border: 1px solid var(--second-bg-color) !important;
-}
+/*.association-emblem {*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    align-items: center;*/
+/*    align-self: flex-end;*/
+/*    background-color: #EEEEEE;*/
+/*    padding: 0 !important;*/
+/*    border: 1px solid var(--second-bg-color) !important;*/
+/*}*/
 
-.association-emblem p {
-    width: 50%;
-    font-family: var(--title-font);
-}
+/*.association-emblem p {*/
+/*    width: 50%;*/
+/*    font-family: var(--title-font);*/
+/*}*/
 
-.association-emblem img {
-    width: 350px;
-    height: 350px;
-    margin-top: var(--spacing);
-}
+/*.association-emblem img {*/
+/*    width: 350px;*/
+/*    height: 350px;*/
+/*    margin-top: var(--spacing);*/
+/*}*/
 
-.association-medals {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
+/*.association-medals {*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    align-items: center;*/
+/*}*/
 
-.medals-text::after {
-    content: "";
-    display: block;
-    height: 1px;
-    width: 50%;
-    margin: 0.4em auto auto;
-    background-color: var(--second-bg-color);
-}
+/*.medals-text::after {*/
+/*    content: "";*/
+/*    display: block;*/
+/*    height: 1px;*/
+/*    width: 50%;*/
+/*    margin: 0.4em auto auto;*/
+/*    background-color: var(--second-bg-color);*/
+/*}*/
 
-.medals-images {
-    display: flex;
-    justify-content: space-evenly;
-    width: 100%;
-    background-color: #EEEEEE;
-    border: 1px solid var(--second-bg-color) !important;
-}
+/*.medals-images {*/
+/*    display: flex;*/
+/*    justify-content: space-evenly;*/
+/*    width: 100%;*/
+/*    background-color: #EEEEEE;*/
+/*    border: 1px solid var(--second-bg-color) !important;*/
+/*}*/
 
-.medals-images img {
-    width: 240px;
-    height: 240px;
-}
+/*.medals-images img {*/
+/*    width: 240px;*/
+/*    height: 240px;*/
+/*}*/
 
-.medals-images p {
-    font-family: var(--title-font);
-    width: 60%;
-}
+/*.medals-images p {*/
+/*    font-family: var(--title-font);*/
+/*    width: 60%;*/
+/*}*/
 
-.medal-40y,
-.medal-liberation,
-.medal-50y {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 30%;
-}
+/*.medal-40y,*/
+/*.medal-liberation,*/
+/*.medal-50y {*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    align-items: center;*/
+/*    width: 30%;*/
+/*}*/
 
-.cta-collection {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
+/*.cta-collection {*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    align-items: center;*/
+/*}*/
 
-.cta-collection p::after {
-    content: "";
-    display: block;
-    height: 1px;
-    width: 50%;
-    margin: 0.8em auto auto;
-    background-color: var(--second-bg-color);
-}
-
-.cta-btn-collection {
-    color: var(--light) !important;
-    text-decoration: none !important;
-    background: var(--main-bg-color);
-    padding: 20px;
-    border-radius: 5px;
-    display: inline-block;
-    border: none;
-}
-
-.cta-btn-collection:hover {
-    background: var(--main-bg-color);
-}
+/*.cta-collection p::after {*/
+/*    content: "";*/
+/*    display: block;*/
+/*    height: 1px;*/
+/*    width: 50%;*/
+/*    margin: 0.8em auto auto;*/
+/*    background-color: var(--second-bg-color);*/
+/*}*/
 

@@ -9,9 +9,6 @@
     object-fit: cover;
     width: 100%;
 }
-.events .btn-primary {
-    background: var(--main-bg-color);
-}
 
 @media screen and (min-width: 1200px) {
     .events .card {

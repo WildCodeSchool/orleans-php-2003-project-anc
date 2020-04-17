@@ -61,11 +61,26 @@ a, a:hover {
     color: inherit;
 }
 
-section h2::after {
+section {
+    margin-top: 80px;
+    margin-bottom: 80px;
+}
+
+.title-section::after {
     content: "";
     display: block;
     height: 1px;
     width: 50%;
     margin: 0.4em auto auto;
     background-color: var(--second-bg-color);
+}
+
+.btn-primary {
+    color: var(--light);
+    background-color: var(--main-bg-color);
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: var(--main-bg-color);
 }

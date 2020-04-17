@@ -24,11 +24,6 @@
     width: 60%;
 }
 
-.association .btn-primary{
-    background-color: var(--main-bg-color);
-    color: var(--light);
-    border: none;
-}
 .action-btn{
     display: flex;
     align-self: flex-end;
