@@ -81,6 +81,9 @@ section {
     border: none;
 }
 
-.btn-primary:hover {
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:focus {
     background-color: var(--main-bg-color);
+    box-shadow: none;
 }
