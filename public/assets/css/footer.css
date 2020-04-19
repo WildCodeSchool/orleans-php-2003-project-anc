@@ -2,8 +2,6 @@
     background-color: var(--second-bg-color);
     color: var(--dark);
     font-size: 0.80em;
-    /*display: flex;*/
-    /*justify-content: space-around;*/
     padding: var(--spacing);
 }
 
