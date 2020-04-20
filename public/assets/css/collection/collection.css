@@ -1,0 +1,12 @@
+.collection {
+    margin-top: 80px;
+}
+
+.collection img {
+    width: 180px;
+    height: 180px;
+}
+
+.card {
+    max-width: 540px;
+}
