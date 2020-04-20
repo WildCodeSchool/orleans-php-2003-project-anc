@@ -7,6 +7,7 @@
     height: 180px;
 }
 
-.card {
-    max-width: 540px;
+.card-title {
+    font-family: var(--title-font);
+    font-size: var(--large-size);
 }
