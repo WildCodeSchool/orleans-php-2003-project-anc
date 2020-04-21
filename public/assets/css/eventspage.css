@@ -1,7 +1,11 @@
-.row:nth-of-type(odd){
+.eventspage{
+    justify-content: center;
+}
+
+.row:nth-of-type(even){
     flex-direction: row-reverse;
 }
 
 hr {
-    background-color: darkblue;
+    background-color: var(--second-bg-color);
 }
