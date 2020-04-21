@@ -3,6 +3,8 @@
 
 namespace App\Controller;
 
+use App\Model\MessageManager;
+
 class AdminController extends AbstractController
 {
     public function index()
@@ -12,6 +14,9 @@ class AdminController extends AbstractController
 
     public function message()
     {
-        return $this->twig->render('Admin/message.html.twig');
+        $messageManager = new MessageManager();
+        $messages = $messageManager->selectAllMessages();
+
+        return $this->twig->render('Admin/message.html.twig', ['messages' => $messages]);
     }
 }
