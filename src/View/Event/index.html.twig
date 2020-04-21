@@ -1,17 +1,17 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-    <link rel="stylesheet" href="/assets/css/events.css">
-    <section class="events">
+    <link rel="stylesheet" href="/assets/css/eventspage.css">
+    <section class="eventspage">
         <h2 class="title-section my-5 text-center">Prochains événements</h2>
 
         <div class="row container-fluid mx-10">
-            <div class="card-deck mx-10" id="pouet">
-                {% for event in events %}
+            <div class="card-deck mx-10">
+
                     <div class="card mb-8" style="min-width: 90%;">
-                        <div class="row no-gutters">
+                        {% for event in events %}   <div class="row no-gutters">
                             <div class="col-md-6">
-                                <img src="/assets/images/{{ event.img }}" class="card-img-top" alt="...">
+                                <img src="/assets/images/{{ event.img }}" class="card-img-top" alt="{{ event.name }}">
                             </div>
                             <div class="col-md-5">
                                 <div class="card-body">
@@ -25,9 +25,9 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                        {% endfor %} </div>
 
-                {% endfor %}
+
             </div>
         </div>
     </section>

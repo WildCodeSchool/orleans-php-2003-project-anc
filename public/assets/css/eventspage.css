@@ -1,0 +1,15 @@
+.row {
+    display: flex;
+}
+
+.row:nth-of-type(odd){
+    flex-direction: row-reverse;
+
+}
+
+.card-deck{
+    display: flex;
+    justify-content: center;
+    padding-bottom: 30px;
+}
+
