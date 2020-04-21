@@ -6,6 +6,7 @@
 @import "homePage/events.css";
 @import "legal.css";
 @import 'footer.css';
+@import 'admin/index.css';
 
 
 :root {
