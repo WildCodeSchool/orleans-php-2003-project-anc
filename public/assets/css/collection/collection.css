@@ -11,3 +11,12 @@
     font-family: var(--title-font);
     font-size: var(--large-size);
 }
+
+.card-title p::after {
+    content: "";
+    display: block;
+    height: 1px;
+    width: 70%;
+    margin: auto auto;
+    background-color: var(--second-bg-color);
+}
