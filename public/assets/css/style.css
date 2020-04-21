@@ -60,6 +60,7 @@ a, a:hover {
     color: inherit;
 }
 
+
 section {
     margin-top: 80px;
     margin-bottom: 80px;
@@ -75,6 +76,7 @@ section {
     background-color: var(--second-bg-color);
 }
 
+
 .btn-primary {
     color: var(--light);
     background-color: var(--main-bg-color);
@@ -87,3 +89,4 @@ section {
     background-color: var(--main-bg-color);
     box-shadow: none;
 }
+
