@@ -2,8 +2,10 @@
 
 :root {
     --admin-main-color: #707f97;
+    --main-bg-color: var(--admin-main-color)!important;
     --admin-radius: 5px;
 }
+
 
 .admin-dashboard {
     margin-top: 50px;
