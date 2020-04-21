@@ -1,3 +1,10 @@
+@import 'message.css';
+
+:root {
+    --admin-main-color: #707f97;
+    --admin-radius: 5px;
+}
+
 .admin-dashboard {
     margin-top: 50px;
     margin-bottom: 50px;

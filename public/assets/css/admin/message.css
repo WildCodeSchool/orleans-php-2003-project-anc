@@ -6,8 +6,14 @@
     box-shadow: none;
 }
 .messages .btn {
-    color: var(--main-bg-color);
+    color: var(--light);
 }
 .messages .email {
     font-style: italic;
+}
+.messages .card-header {
+    background: var(--admin-main-color);
+}
+.messages .accordion .card {
+    border-radius: var(--admin-radius);
 }
