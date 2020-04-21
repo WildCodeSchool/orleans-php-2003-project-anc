@@ -1,0 +1,13 @@
+.messages .table td:first-child {
+    width: 75px;
+}
+.messages .btn:focus {
+    outline: 0;
+    box-shadow: none;
+}
+.messages .btn {
+    color: var(--main-bg-color);
+}
+.messages .email {
+    font-style: italic;
+}
