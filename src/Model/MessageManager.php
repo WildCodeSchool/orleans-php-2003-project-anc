@@ -18,7 +18,7 @@ class MessageManager extends AbstractManager
    /**
     * @return array
     */
-    public function selectAllMessages()
+    public function selectAllMessages(): array
     {
         return $this->pdo->query('SELECT * FROM ' . $this->table . ' ORDER BY send_at ASC')->fetchAll();
     }

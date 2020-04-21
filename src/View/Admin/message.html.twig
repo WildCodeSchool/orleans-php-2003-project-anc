@@ -36,6 +36,16 @@
                                     <td colspan="2">{{ messages[i].comment | nl2br }}</td>
                                 </tr>
                                 </tbody>
+                                <tfoot>
+                                <tr>
+                                    <td colspan="2">
+                                        <form action="/admin/message" method="post" class="text-right mt-2">
+                                            <input type="hidden" name="id" value="{{ messages[i].id }}">
+                                            <button class="btn btn-sm btn-danger">Supprimer</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                                </tfoot>
                             </table>
                         </div>
                     </div>
