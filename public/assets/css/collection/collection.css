@@ -58,10 +58,18 @@
     font-size: var(--medium-size);
 }
 
-@media screen and (max-width: 465px) {
+@media screen and (max-width: 576px) {
     .card-title,
     .card-footer {
         flex-direction: column;
         align-items: center;
+    }
+    .card-body img {
+        margin: 0 var(--spacing);
+    }
+}
+    @media screen and (max-width: 528px) {
+    .card-body img {
+        margin: var(--spacing) 0;
     }
 }
