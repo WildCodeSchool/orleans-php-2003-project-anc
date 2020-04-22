@@ -4,9 +4,10 @@
 @import "homePage/callToAction.css";
 @import "homePage/makings.css";
 @import "homePage/events.css";
+@import "collection/collection.css";
 @import "legal.css";
 @import 'footer.css';
-@import 'admin/index.css';
+
 
 
 :root {
