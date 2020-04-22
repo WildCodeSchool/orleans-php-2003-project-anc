@@ -9,18 +9,18 @@
 
 namespace App\Controller;
 
-use App\Model\CollectionManager;
+use App\Model\EventManager;
 
 /**
- * Class CollectionController
+ * Class contactController
  *
  */
-
-class CollectionController extends AbstractController
+class ClubLifeController extends AbstractController
 {
 
+
     /**
-     * Display coin collection
+     * Display contact listing
      *
      * @return string
      * @throws \Twig\Error\LoaderError
@@ -29,9 +29,6 @@ class CollectionController extends AbstractController
      */
     public function index()
     {
-        $collectionManager = new CollectionManager();
-        $coins = $collectionManager->selectAllCoins();
-
-        return $this->twig->render('Collection/index.html.twig', ['coins' => $coins]);
+        return $this->twig->render('ClubLife/index.html.twig');
     }
 }
