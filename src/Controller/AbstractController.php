@@ -12,6 +12,7 @@ namespace App\Controller;
 use Twig\Environment;
 use Twig\Extension\DebugExtension;
 use Twig\Loader\FilesystemLoader;
+use Twig_Extensions_Extension_Text;
 
 /**
  *
@@ -40,6 +41,7 @@ abstract class AbstractController
         );
         $this->twig->addGlobal('_get', $_GET);
         $this->twig->addGlobal('_post', $_POST);
+        $this->twig->addExtension(new Twig_Extensions_Extension_Text());
 
         $this->twig->addExtension(new DebugExtension());
     }
