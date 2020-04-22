@@ -23,7 +23,8 @@
                                     {% else %}
                                         <h5 class="card-title">Le {{ event.start_at | date("d/m/Y") }}</h5>
                                     {% endif %}
-                                    <p class="card-text">{{ event.name }}</p>
+                                    <h5 class="card-text">{{ event.name }}</h5>
+                                    <p class="card-text">{{ event.description }}</p>
                                 </div>
                             </div>
                         </div>
