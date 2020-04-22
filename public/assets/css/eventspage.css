@@ -1,0 +1,11 @@
+.eventspage{
+    justify-content: center;
+}
+
+.row:nth-of-type(even){
+    flex-direction: row-reverse;
+}
+
+hr {
+    background-color: var(--second-bg-color);
+}
