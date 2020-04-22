@@ -1,0 +1,36 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <link rel="stylesheet" href="/assets/css/eventspage.css">
+    <section class="eventspage">
+        <h2 class="title-section my-5 text-center">Prochains événements</h2>
+
+        <div class="row container-fluid mx-10">
+            <div class="card-deck mx-10">
+
+                    <div class="card mb-8 mx-5">
+                        {% for event in events %}
+                            <div class="row no-gutters">
+                            <div class="col-md-5">
+                                <img src="/assets/images/{{ event.img }}" class="card-img-top" alt="{{ event.name }}">
+                            </div>
+                            <div class="col-md-5">
+                                <div class="card-body">
+                                    {% if event.end_at is not null %}
+                                        <h5 class="card-title">Du {{ event.start_at | date("d/m/Y") }}
+                                            au {{ event.end_at | date("d/m/Y") }}</h5>
+                                    {% else %}
+                                        <h5 class="card-title">Le {{ event.start_at | date("d/m/Y") }}</h5>
+                                    {% endif %}
+                                    <p class="card-text">{{ event.name }}</p>
+                                </div>
+                            </div>
+                        </div>
+                            <hr/>
+                        {% endfor %}
+                    </div>
+
+            </div>
+        </div>
+    </section>
+{% endblock %}
