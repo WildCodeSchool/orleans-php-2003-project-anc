@@ -9,4 +9,8 @@ class AdminController extends AbstractController
     {
         return $this->twig->render('Admin/index.html.twig');
     }
+    public function event()
+    {
+        return $this->twig->render('Admin/event.html.twig');
+    }
 }
