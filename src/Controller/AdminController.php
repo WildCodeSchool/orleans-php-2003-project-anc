@@ -36,12 +36,12 @@ class AdminController extends AbstractController
     }
 
    /**
-    * @param $id
+    * @param int $id
     * @return bool
     */
-    private function remove($id): bool
+    private function remove(int $id): bool
     {
-        if (empty(trim($id)) || !is_numeric($id)) {
+        if (empty($id) || !is_numeric($id)) {
             return false;
         }
 
