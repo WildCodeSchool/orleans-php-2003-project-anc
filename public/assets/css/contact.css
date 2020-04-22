@@ -3,12 +3,14 @@ body {
     color: var(--light);
 }
 
-main {
-    display: flex;
-    justify-content: center;
+.contact {
+    margin-top: 120px;
+    margin-bottom: 80px;
+    padding-bottom: 80px;
+    border-bottom: 1px solid var(--second-bg-color);
 }
 
-form {
+.contact .form {
     padding: var(--spacing);
 }
 
@@ -17,7 +19,11 @@ form {
     justify-content: space-around;
 }
 
-.btn {
+.contact li {
+    list-style: none;
+}
+
+.contact .btn {
     background-color: var(--second-bg-color);
     width: 30%;
 }

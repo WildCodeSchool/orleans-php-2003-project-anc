@@ -30,6 +30,7 @@ abstract class AbstractController
     public function __construct()
     {
         $loader = new FilesystemLoader(APP_VIEW_PATH);
+
         $this->twig = new Environment(
             $loader,
             [
@@ -37,6 +38,8 @@ abstract class AbstractController
                 'debug' => APP_DEV,
             ]
         );
+        $this->twig->addGlobal('_get', $_GET);
+        $this->twig->addGlobal('_post', $_POST);
 
         $this->twig->addGlobal('_post', $_POST);
         $this->twig->addGlobal('_get', $_GET);
