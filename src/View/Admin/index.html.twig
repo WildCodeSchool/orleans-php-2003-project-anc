@@ -1,0 +1,71 @@
+{% extends "layout.html.twig" %}
+
+
+{% block content %}
+
+    <section class="section admin-dashboard container">
+        <div class="row">
+            <div class="mx-auto col-sm-8 col-lg-4 mb-3 mb-sm-5">
+                <div class="card shadow-sm">
+                    <div class="card-body position-relative">
+                        <h2 class="card-title mb-4">Messages</h2>
+                        <p class="card-text">
+                            <span class="circle bg-danger"></span>
+                            3 message(s) non lu(s)
+                        </p>
+                        <p class="card-text">
+                            <span class="circle bg-success"></span>
+                            32 messages total
+                        </p>
+                        <div class="text-right position-absolute fixed-bottom m-3">
+                            <a href="#" class="btn btn-primary">Lire</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mx-auto col-sm-8 col-lg-4 mb-3 mb-sm-5">
+                <div class="card shadow-sm">
+                    <div class="card-body h-100 position-relative">
+                        <h2 class="card-title mb-4">Collections</h2>
+                        <p class="card-text">
+                            <span class="circle bg-success"></span>
+                            53 pièces répertoriées
+                        </p>
+                        <div class="text-right position-absolute fixed-bottom m-3">
+                            <a href="#" class="btn btn-primary">Administrer</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mx-auto col-sm-8 col-lg-4 mb-3 mb-sm-5">
+                <div class="card shadow-sm">
+                    <div class="card-body position-relative">
+                        <h2 class="card-title mb-4">Evénements</h2>
+                        <p class="card-text">
+                            <span class="circle bg-danger"></span>
+                            3 événements à venir
+                        </p>
+                        <p class="card-text">
+                            <span class="circle bg-success"></span>
+                            26 événements total
+                        </p>
+                        <div class="text-right position-absolute fixed-bottom m-3">
+                            <a href="#" class="btn btn-primary">Administrer</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mx-auto col-sm-8 col-lg-4 mb-3 mb-sm-5">
+                <div class="card shadow-sm">
+                    <div class="card-body position-relative">
+                        <h2 class="card-title mb-4">La vie du club</h2>
+                        <div class="text-right position-absolute fixed-bottom m-3">
+                            <a href="#" class="btn btn-primary">Administrer</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
