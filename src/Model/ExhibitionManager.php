@@ -23,4 +23,9 @@ class ExhibitionManager extends AbstractManager
     {
         parent::__construct(self::TABLE);
     }
+
+    public function selectExhibition()
+    {
+        return $this->pdo->query('SELECT image FROM ' . $this->table . ' ORDER BY image')->fetchAll();
+    }
 }
