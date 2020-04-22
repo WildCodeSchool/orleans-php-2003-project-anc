@@ -1,20 +1,32 @@
 <?php
 /**
  * Created by PhpStorm.
+<<<<<<< HEAD
  * User: aurelwcs
  * Date: 08/04/19
  * Time: 18:40
+=======
+ * User: root
+ * Date: 11/10/17
+ * Time: 16:07
+ * PHP version 7
+>>>>>>> dev
  */
 
 namespace App\Controller;
 
 use App\Model\CollectionManager;
 
+/**
+ * Class CollectionController
+ *
+ */
+
 class CollectionController extends AbstractController
 {
 
     /**
-     * Display home page
+     * Display coin collection
      *
      * @return string
      * @throws \Twig\Error\LoaderError
@@ -26,6 +38,6 @@ class CollectionController extends AbstractController
         $collectionManager = new CollectionManager();
         $coins = $collectionManager->selectAllCoins();
 
-        return $this->twig->render('Home/index.html.twig', ['coins' => $coins]);
+        return $this->twig->render('Collection/index.html.twig', ['coins' => $coins]);
     }
 }
