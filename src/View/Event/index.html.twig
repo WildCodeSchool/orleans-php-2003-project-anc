@@ -12,7 +12,8 @@
                         {% for event in events %}
                             <div class="row no-gutters">
                             <div class="col-md-5">
-                                <img src="/assets/images/{{ event.img }}" class="card-img-top" alt="{{ event.name }}">
+                                <a href="/assets/images/{{ event.img }}" target="_blank">
+                                    <img src="/assets/images/{{ event.img }}" class="card-img-top" alt="{{ event.name }}"></a>
                             </div>
                             <div class="col-md-5">
                                 <div class="card-body">
