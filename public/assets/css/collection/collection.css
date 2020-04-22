@@ -16,35 +16,28 @@
     font-size: var(--medium-size);
     background-color: var(--main-bg-color);
 
-}.card-footer {
+}.card-footer,
+ .modal-footer {
     font-family: var(--title-font);
     font-size: var(--medium-size);
     border-top: 1px solid var(--second-bg-color);
-    /*background-color: inherit;*/
+    background-color: rgba(0,0,0,.03);
 }
+
+ .modal {
+     display: none;
+ }
+
+ .modal-header {
+     background-color: var(--main-bg-color);
+     color: var(--light);
+     font-size: var(--large-size);
+ }
 
 .card-title p,
 .card-footer p {
     margin-bottom: 0;
 }
-
-/*.card-title p::after {*/
-/*    content: "";*/
-/*    display: block;*/
-/*    height: 1px;*/
-/*    width: 70%;*/
-/*    margin: auto auto;*/
-/*    background-color: var(--second-bg-color);*/
-/*}*/
-
-/*.card-footer p::after {*/
-/*    content: "";*/
-/*    display: block;*/
-/*    height: 1px;*/
-/*    width: 70%;*/
-/*    margin: auto auto;*/
-/*    background-color: var(--main-bg-color);*/
-/*}*/
 
 .coin-stock .btn {
     background-color: var(--main-bg-color);
@@ -62,7 +55,7 @@
 .modal-coin-title,
 .modal-coin-year {
     font-family: var(--title-font);
-    font-size: var(--large-size);
+    font-size: var(--medium-size);
 }
 
 @media screen and (max-width: 465px) {
