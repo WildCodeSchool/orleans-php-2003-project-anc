@@ -9,6 +9,7 @@
 @import 'footer.css';
 @import 'admin/index.css';
 
+
 :root {
     /*Font*/
     --main-font: 'Roboto', sans-serif;
@@ -25,9 +26,11 @@
     --dark: #16171A;
     --grey: #3E4352;
     --light: #E5EBF4;
+    --light-grey: #707f97;
 
     /*Radius & Shadow*/
     --border-radius: 25px;
+    --light-radius: 5px;
     --box-shadow: 10px 10px 5px var(--grey);
 
     /*Spacing*/

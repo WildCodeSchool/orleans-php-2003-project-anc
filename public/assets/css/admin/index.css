@@ -1,4 +1,6 @@
 @import "event.css";
+@import 'message.css';
+
 .admin-dashboard {
     margin-top: 50px;
     margin-bottom: 50px;

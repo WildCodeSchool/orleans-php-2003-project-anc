@@ -42,7 +42,7 @@ INSERT INTO `event` (`id`, `name`, `start_at`, `end_at`, `img`) VALUES
 (1, 'Conférence ou présentation de monnaies + Tombola', '2020-05-03', NULL, '01.png'),
 (2, 'Journées Numismatiques de la Société Française de Numismatiques à Monaco ', '2020-05-29', '2020-05-31', '02.jpg'),
 (3, 'Journée avec pique-nique', '2020-06-06', NULL, '03.jpg'),
-(4, 'Dispersion + Communication de Laurent Schmitt + Préparation de  « Rentrée en Fête » ', '2020-06-07', NULL, '04.jpg');
+(4, 'Dispersion + Communication de Laurent Schmitt + Préparation de  « Rentrée en Fête » ', '2020-06-07', NULL, '03.jpg');
 
 --
 -- Index pour les tables exportées
