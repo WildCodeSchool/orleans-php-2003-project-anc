@@ -20,19 +20,33 @@ class AdminController extends AbstractController
     */
     public function message(): string
     {
-//        $alert = [];
-//        if ($_SERVER['REQUEST_METHOD'] === 'post' && isset($_POST['id'])) {
-//            if ($this->remove($_POST['id'])) {
-//                $alert['success'] = "Le message à bien été supprimé";
-//            } else {
-//                $alert['danger'] = "Suite à une erreur, le message n\a pas été supprimé";
-//            }
-//        }
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id'])) {
+            $req = $this->remove($_POST['id']);
+            if ($req === true) {
+                header('Location: /admin/message/?success=Le message à bien été supprimé');
+            } else {
+                header('Location: /admin/message/?danger=Erreur inattendue, le message n\'a pas été supprimé');
+            }
+        }
+
         $messageManager = new MessageManager();
         $messages = $messageManager->selectAllMessages();
 
-        return $this->twig->render('Admin/message.html.twig', [
-           'messages' => $messages
-           ]);
+        return $this->twig->render('Admin/message.html.twig', ['messages' => $messages]);
+    }
+
+   /**
+    * @param $id
+    * @return bool
+    */
+    private function remove($id): bool
+    {
+        if (empty(trim($id)) || !is_numeric($id)) {
+            return false;
+        }
+
+        $messageManager = new MessageManager();
+        $messageManager->removeOneMessage($id);
+        return true;
     }
 }

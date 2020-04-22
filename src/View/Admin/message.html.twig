@@ -1,28 +1,41 @@
 {% extends "layout.html.twig" %}
 
 {% block content %}
-    <section class="section messages my-5 container" style="margin-top: 120px!important;">
+    <section class="section messages my-5 container"">
+        {% if _get is defined %}
+            {% for key , value in _get %}
+                <div class="alert alert-{{ key }}">
+                    {{ value }}
+                </div>
+            {% endfor %}
+        {% endif %}
+        <div class="number-messages text-right mr-3 font-italic">
+            <small>Nombre de messages: <b>{{ messages | length - 1 }}</b></small>
+        </div>
         <div class="accordion" id="accordionMessage">
             {% for i in 0..messages|length - 1 %}
                 <div class="card my-2">
 
                     <div class="card-header" id="heading{{ messages[i].id }}">
                         <p class="mb-0">
-                            <button class="btn" type="button" data-toggle="collapse" data-target="#collapse{{ messages[i].id }}"
+                            <button class="btn" type="button" data-toggle="collapse"
+                                    data-target="#collapse{{ messages[i].id }}"
                                     aria-expanded="true" aria-controls="collapse{{ messages[i].id }}">
                                 Le {{ messages[i].send_at | date('d-m-Y') }} - {{ messages[i].topic }}
                             </button>
                         </p>
                     </div>
 
-                    <div id="collapse{{ messages[i].id }}" class="collapse" aria-labelledby="heading{{ messages[i].id }}"
+                    <div id="collapse{{ messages[i].id }}" class="collapse"
+                         aria-labelledby="heading{{ messages[i].id }}"
                          data-parent="#accordionMessage">
                         <div class="card-body">
                             <table class="table table-sm">
                                 <tbody>
                                 <tr>
                                     <td><small>Expéditeur: </small></td>
-                                    <td>{{ messages[i].lastname }} {{ messages[i].firstname }} <span class="email">{{ '<' ~ messages[i].email ~ '>' }}</span></td>
+                                    <td>{{ messages[i].lastname }} {{ messages[i].firstname }} <span
+                                                class="email">{{ '<' ~ messages[i].email ~ '>' }}</span></td>
                                 </tr>
                                 <tr>
                                     <td><small>Contact: </small></td>
@@ -39,7 +52,7 @@
                                 <tfoot>
                                 <tr>
                                     <td colspan="2">
-                                        <form action="/admin/message" method="post" class="text-right mt-2">
+                                        <form action="/admin/message" method="POST" class="text-right mt-2">
                                             <input type="hidden" name="id" value="{{ messages[i].id }}">
                                             <button class="btn btn-sm btn-danger">Supprimer</button>
                                         </form>

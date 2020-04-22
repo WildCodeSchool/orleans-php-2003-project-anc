@@ -38,6 +38,8 @@ abstract class AbstractController
             ]
         );
 
+        $this->twig->addGlobal('_post', $_POST);
+        $this->twig->addGlobal('_get', $_GET);
         $this->twig->addExtension(new DebugExtension());
     }
 }

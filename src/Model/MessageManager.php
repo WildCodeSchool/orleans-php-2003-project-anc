@@ -20,6 +20,14 @@ class MessageManager extends AbstractManager
     */
     public function selectAllMessages(): array
     {
-        return $this->pdo->query('SELECT * FROM ' . $this->table . ' ORDER BY send_at ASC')->fetchAll();
+        return $this->pdo->query('SELECT * FROM ' . $this->table . ' ORDER BY send_at DESC')->fetchAll();
+    }
+
+   /**
+    * @param $id
+    */
+    public function removeOneMessage($id):void
+    {
+        $this->pdo->exec('DELETE FROM ' . $this->table . ' WHERE id=' . $id . ' LIMIT 1');
     }
 }

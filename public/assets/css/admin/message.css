@@ -12,8 +12,8 @@
     font-style: italic;
 }
 .messages .card-header {
-    background: var(--admin-main-color);
+    background: var(--light-grey);
 }
 .messages .accordion .card {
-    border-radius: var(--admin-radius);
+    border-radius: var(--light-radius);
 }
