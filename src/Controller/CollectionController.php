@@ -9,10 +9,13 @@
 
 namespace App\Controller;
 
+use App\Model\CollectionManager;
+
 /**
  * Class CollectionController
  *
  */
+
 class CollectionController extends AbstractController
 {
 
@@ -26,6 +29,9 @@ class CollectionController extends AbstractController
      */
     public function index()
     {
-        return $this->twig->render('Collection/index.html.twig');
+        $collectionManager = new CollectionManager();
+        $coins = $collectionManager->selectAllCoins();
+
+        return $this->twig->render('Collection/index.html.twig', ['coins' => $coins]);
     }
 }

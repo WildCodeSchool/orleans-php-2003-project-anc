@@ -1,5 +1,6 @@
 .collection {
     margin-top: 80px;
+    background-color: var(--light);
 }
 
 .collection img {
@@ -9,7 +10,7 @@
 
 .card-title {
     font-family: var(--title-font);
-    font-size: var(--large-size);
+    font-size: var(--medium-size);
 }
 
 .card-title p::after {
@@ -19,4 +20,19 @@
     width: 70%;
     margin: auto auto;
     background-color: var(--second-bg-color);
+}
+
+.coin-stock .btn {
+    background-color: var(--main-bg-color);
+}
+
+.card {
+    border-radius: 8px;
+}
+
+@media screen and (max-width: 465px) {
+    .card-title {
+        flex-direction: column;
+        align-items: center;
+    }
 }
