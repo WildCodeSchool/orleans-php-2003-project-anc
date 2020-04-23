@@ -34,10 +34,10 @@ class CollectionManager extends AbstractManager
     {
         $selectMetal = 'm.material, m.id';
         $selectOrigin = 'o.country, o.id';
-        $selectCoin = 'c.name, c.year, c.image_recto, c.image_verso, c.stock, c.metal_id, c.origin_id';
+        $selectCoin = 'c.id as coin_id, c.name, c.year, c.image_recto, c.image_verso, c.stock, c.metal_id, c.origin_id';
         $selectAll = $selectCoin . ', ' . $selectMetal . ', ' . $selectOrigin;
 
-        $joinMetal = 'JOIN ' . self::M_TABLE . ' m ON m.id=c.metal_id';
+        $joinMetal = 'JOIN ' . self::M_TABLE . ' m ON c.metal_id=m.id';
         $joinOrigin = 'JOIN ' . self::O_TABLE . ' o ON c.origin_id=o.id';
         $joinAll = $joinMetal . ' ' . $joinOrigin;
 
