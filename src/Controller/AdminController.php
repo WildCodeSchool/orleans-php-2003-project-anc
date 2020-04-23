@@ -20,6 +20,12 @@ class AdminController extends AbstractController
 
         return $this->twig->render('Admin/event.html.twig', ['events' => $events]);
     }
+
+    public function exhibition(): string
+    {
+        return $this->twig->render('Admin/exhibition.html.twig');
+    }
+
    /**
     * @return string
     * @throws \Twig\Error\LoaderError
