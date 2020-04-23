@@ -3,6 +3,7 @@
 
 namespace App\Controller;
 
+use App\Model\EventManager;
 use App\Model\MessageManager;
 
 class AdminController extends AbstractController
@@ -14,7 +15,10 @@ class AdminController extends AbstractController
 
     public function event(): string
     {
-        return $this->twig->render('Admin/event.html.twig');
+        $eventManager = new EventManager();
+        $events = $eventManager->selectEvent();
+
+        return $this->twig->render('Admin/event.html.twig', ['events' => $events]);
     }
    /**
     * @return string
