@@ -3,6 +3,7 @@
 
 namespace App\Controller;
 
+use App\Model\CollectionManager;
 use App\Model\EventManager;
 use App\Model\ExhibitionManager;
 use App\Model\MessageManager;
@@ -68,7 +69,10 @@ class AdminController extends AbstractController
     */
     public function collection(): string
     {
-        return $this->twig->render('Admin/collection.html.twig');
+        $collectionManager = new CollectionManager();
+        $collections = $collectionManager->selectAllCoins();
+
+        return $this->twig->render('Admin/collection.html.twig', ['collections' => $collections]);
     }
 
    /**
