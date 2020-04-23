@@ -4,6 +4,7 @@
 namespace App\Controller;
 
 use App\Model\EventManager;
+use App\Model\ExhibitionManager;
 use App\Model\MessageManager;
 
 class AdminController extends AbstractController
@@ -13,6 +14,7 @@ class AdminController extends AbstractController
         return $this->twig->render('Admin/index.html.twig');
     }
 
+
     public function event(): string
     {
         $eventManager = new EventManager();
@@ -21,9 +23,18 @@ class AdminController extends AbstractController
         return $this->twig->render('Admin/event.html.twig', ['events' => $events]);
     }
 
+   /**
+    * @return string
+    * @throws \Twig\Error\LoaderError
+    * @throws \Twig\Error\RuntimeError
+    * @throws \Twig\Error\SyntaxError
+    */
     public function exhibition(): string
     {
-        return $this->twig->render('Admin/exhibition.html.twig');
+        $exhibitionManager = new ExhibitionManager();
+        $exhibition = $exhibitionManager->selectExhibition();
+
+        return $this->twig->render('Admin/exhibition.html.twig', ['exhibitions' => $exhibition]);
     }
 
    /**
