@@ -1,4 +1,6 @@
+@import "event.css";
 @import 'message.css';
+@import "collection.css";
 
 .admin-dashboard {
     margin-top: 50px;
