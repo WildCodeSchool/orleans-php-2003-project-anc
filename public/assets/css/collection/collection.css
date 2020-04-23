@@ -1,37 +1,36 @@
 .collection {
-    margin-top: 80px;
     margin-bottom: 0;
     padding-bottom: 80px;
     background-color: rgba(0,0,0,.03);
 }
 
-.card-body img {
+.collection .card-body img {
     width: 180px;
     height: 180px;
 }
 
-.card-title {
+.collection .card-title {
     color: var(--light);
     font-family: var(--title-font);
     font-size: var(--medium-size);
     background-color: var(--main-bg-color);
 
 }.card-footer,
- .modal-footer {
+ .collection .modal-footer {
     font-family: var(--title-font);
     font-size: var(--medium-size);
     border-top: 1px solid var(--second-bg-color);
     background-color: rgba(0,0,0,.03);
 }
 
- .modal-header {
+.collection .modal-header {
      background-color: var(--main-bg-color);
      color: var(--light);
      font-size: var(--large-size);
  }
 
-.card-title p,
-.card-footer p {
+.collection .card-title p,
+.collection .card-footer p {
     margin-bottom: 0;
 }
 
@@ -39,7 +38,7 @@
     background-color: var(--main-bg-color);
 }
 
-.card {
+.collection .card {
     border-radius: 8px;
 }
 
@@ -55,17 +54,17 @@
 }
 
 @media screen and (max-width: 576px) {
-    .card-title,
-    .card-footer {
+    .collection .card-title,
+    .collection .card-footer {
         flex-direction: column;
         align-items: center;
     }
-    .card-body img {
+    .collection .card-body img {
         margin: 0 var(--spacing);
     }
 }
     @media screen and (max-width: 528px) {
-    .card-body img {
+        .collection .card-body img {
         margin: var(--spacing) 0;
     }
 }

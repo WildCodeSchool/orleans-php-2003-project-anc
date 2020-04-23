@@ -15,7 +15,7 @@ use App\Model\EventManager;
  * Class contactController
  *
  */
-class ClubLifeController extends AbstractController
+class ClublifeController extends AbstractController
 {
 
 
@@ -29,6 +29,6 @@ class ClubLifeController extends AbstractController
      */
     public function index()
     {
-        return $this->twig->render('ClubLife/index.html.twig');
+        return $this->twig->render('Clublife/index.html.twig');
     }
 }
