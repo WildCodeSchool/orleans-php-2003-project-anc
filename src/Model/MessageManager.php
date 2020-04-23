@@ -28,7 +28,7 @@ class MessageManager extends AbstractManager
     */
     public function removeOneMessage(int $id): void
     {
-        $req = $this->pdo->prepare('DELETE FROM ' . $this->table . ' WHERE id=:id LIMIT 1 OFFSET 0');
+        $req = $this->pdo->prepare('DELETE FROM ' . $this->table . ' WHERE id=:id LIMIT 1');
         $req->bindValue(':id', $id, \PDO::PARAM_INT);
         $req->execute();
     }
