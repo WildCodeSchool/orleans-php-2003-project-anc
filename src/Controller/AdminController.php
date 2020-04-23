@@ -44,6 +44,17 @@ class AdminController extends AbstractController
     }
 
    /**
+    * @return string
+    * @throws \Twig\Error\LoaderError
+    * @throws \Twig\Error\RuntimeError
+    * @throws \Twig\Error\SyntaxError
+    */
+    public function collection(): string
+    {
+        return $this->twig->render('Admin/collection.html.twig');
+    }
+
+   /**
     * @param int $id
     * @return bool
     */
