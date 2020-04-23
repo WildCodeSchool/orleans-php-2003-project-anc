@@ -26,6 +26,6 @@ class ExhibitionManager extends AbstractManager
 
     public function selectExhibition()
     {
-        return $this->pdo->query('SELECT image FROM ' . $this->table . ' ORDER BY image')->fetchAll();
+        return $this->pdo->query('SELECT * FROM ' . $this->table . ' ORDER BY image')->fetchAll();
     }
 }
