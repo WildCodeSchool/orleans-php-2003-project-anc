@@ -20,6 +20,12 @@ class AdminController extends AbstractController
 
         return $this->twig->render('Admin/event.html.twig', ['events' => $events]);
     }
+
+    public function exhibition(): string
+    {
+        return $this->twig->render('Admin/exhibition.html.twig');
+    }
+
    /**
     * @return string
     * @throws \Twig\Error\LoaderError
@@ -41,6 +47,17 @@ class AdminController extends AbstractController
         $messages = $messageManager->selectAllMessages();
 
         return $this->twig->render('Admin/message.html.twig', ['messages' => $messages]);
+    }
+
+   /**
+    * @return string
+    * @throws \Twig\Error\LoaderError
+    * @throws \Twig\Error\RuntimeError
+    * @throws \Twig\Error\SyntaxError
+    */
+    public function collection(): string
+    {
+        return $this->twig->render('Admin/collection.html.twig');
     }
 
    /**
