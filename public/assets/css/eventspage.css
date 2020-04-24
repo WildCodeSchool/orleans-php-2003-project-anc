@@ -9,3 +9,13 @@
 hr {
     background-color: var(--second-bg-color);
 }
+
+.row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.eventspage img {
+    height: 300px;
+    width: 400px;
+}

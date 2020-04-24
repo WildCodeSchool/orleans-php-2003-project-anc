@@ -92,3 +92,8 @@ section {
     background-color: var(--main-bg-color);
     box-shadow: none;
 }
+
+.clublife img {
+    height: 300px;
+    width: 400px;
+}
