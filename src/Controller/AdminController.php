@@ -89,4 +89,12 @@ class AdminController extends AbstractController
         $messageManager->removeOneMessage($id);
         return true;
     }
+
+    public function edit(int $id): string
+    {
+        $collectionManager = new CollectionManager();
+        $collections = $collectionManager->selectOneCoin($id);
+
+        return $this->twig->render('Admin/edit.html.twig', ['collections' => $collections]);
+    }
 }
