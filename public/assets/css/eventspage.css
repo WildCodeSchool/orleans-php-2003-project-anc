@@ -2,6 +2,12 @@
     justify-content: center;
 }
 
+.eventspage .card {
+    border: none;
+}
+
+
+
 .row:nth-of-type(even){
     flex-direction: row-reverse;
 }

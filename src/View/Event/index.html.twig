@@ -13,11 +13,11 @@
                     <div class="card mb-8 mx-5">
                         {% for event in events %}
                             <div class="row no-gutters">
-                            <div class="col-md-5">
+                            <div class="">
                                 <a href="/assets/images/events/{{ event.img }}" target="_blank">
                                     <img src="/assets/images/events/{{ event.img }}" class="card-img-top" alt="{{ event.name }}"></a>
                             </div>
-                            <div class="col-md-5">
+                            <div class="">
                                 <div class="card-body">
                                     {% if event.end_at is not null %}
                                         <h5 class="card-title">Du {{ event.start_at | date("d/m/Y") }}
