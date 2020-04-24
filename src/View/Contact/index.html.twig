@@ -1,11 +1,12 @@
 {% extends 'layout.html.twig' %}
-{% block stylesheet %}
-    <link rel="stylesheet" href="/assets/css/contact.css">
+{% block title %}
+    Nous Contacter
 {% endblock %}
 
 {% block content %}
+    <link rel="stylesheet" href="/assets/css/contact.css">
     <section class="contact container">
-        <h2 class="text-center">Contact</h2>
+        <h2 class="text-center">Nous Contacter</h2>
         {% if error is defined and error is not empty %}
             <ul>
                 {% for i in 0..error|length -1 %}
