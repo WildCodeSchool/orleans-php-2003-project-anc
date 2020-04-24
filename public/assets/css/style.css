@@ -4,9 +4,11 @@
 @import "homePage/callToAction.css";
 @import "homePage/makings.css";
 @import "homePage/events.css";
-@import "homePage/homePageDescription.css";
+@import "collection/collection.css";
 @import "legal.css";
 @import 'footer.css';
+@import 'admin/index.css';
+@import "exihibition.css";
 
 
 :root {
@@ -25,9 +27,11 @@
     --dark: #16171A;
     --grey: #3E4352;
     --light: #E5EBF4;
+    --light-grey: #707f97;
 
     /*Radius & Shadow*/
     --border-radius: 25px;
+    --light-radius: 5px;
     --box-shadow: 10px 10px 5px var(--grey);
 
     /*Spacing*/
@@ -44,6 +48,7 @@ body {
     padding: 0;
     font-family: var(--main-font);
     font-size: var(--main-size);
+    background-color: rgba(0,0,0,.03);
 }
 
 h1, h2, h3, h4 {
@@ -61,11 +66,30 @@ a, a:hover {
     color: inherit;
 }
 
-section h2::after {
+section {
+    margin-top: 120px;
+    margin-bottom: 80px;
+}
+
+.title-section::after,
+.collection-text-cta::after {
     content: "";
     display: block;
     height: 1px;
     width: 50%;
     margin: 0.4em auto auto;
     background-color: var(--second-bg-color);
+}
+
+.btn-primary {
+    color: var(--light);
+    background-color: var(--main-bg-color);
+    border: none;
+}
+
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:focus {
+    background-color: var(--main-bg-color);
+    box-shadow: none;
 }

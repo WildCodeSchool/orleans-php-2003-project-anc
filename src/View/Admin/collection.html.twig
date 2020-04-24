@@ -1,0 +1,59 @@
+{% extends "layout.html.twig" %}
+
+{% block content %}
+
+    <section class="section admin-collection container-fluid">
+        <a href="/admin/index" class="btn btn-primary mb-5">Retour</a>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
+            {% for collection in collections %}
+
+                <div class="col mb-4">
+                    <div class="card shadow-sm">
+                        <div class="images d-flex align-items-center justify-content-center flex-column flex-md-row p-2">
+                            <img src="/assets/images/{{ collection.image_recto }}" class="card-img-top m-3"
+                                 alt="{{ collection.image_recto }}">
+                            <img src="/assets/images/{{ collection.image_verso }}" class="card-img-top m-3"
+                                 alt="{{ collection.image_verso }}">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title title-section text-center mb-4">{{ collection.name }}</h5>
+                            <div class="d-flex justify-content-between">
+                                <p class="card-text ml-5">
+                                    <i class="far fa-calendar-alt mr-2"></i>{{ collection.year }}
+                                </p>
+                                <p class="card-text mr-5">
+                                    {{ collection.country }}<i class="fas fa-flag ml-2"></i>
+                                </p>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <p class="card-text ml-5">
+                                    <i class="fas fa-gavel mr-2"></i>{{ collection.material }}
+                                </p>
+                                <p class="card-text mr-5">
+                                    {% if collection.stock <= 0 %}
+                                        <span class="text-danger font-weight-bold">En rupture</span><i
+                                            class="fas fa-archive ml-2 text-danger"></i>
+                                    {% else %}
+                                        <span class="text-success font-weight-bold">{{ collection.stock }}</span><i
+                                            class="fas fa-archive ml-2  text-success"></i>
+                                    {% endif %}
+                                </p>
+                            </div>
+                            <p class="card-text mt-4">
+                                <i class="fas fa-quote-right d-block mb-2"></i>
+                                This is a longer card with supporting text below as a natural lead-in to
+                                additional content. This content is a little bit longer.
+                            </p>
+                        </div>
+                        <div class="card-footer text-right">
+                            <button class="btn btn-danger btn-sm">Supprimer</button>
+                            <a href="#" class="btn btn-primary btn-sm">Modifier</a>
+                        </div>
+                    </div>
+                </div>
+
+            {% endfor %}
+        </div>
+    </section>
+
+{% endblock %}

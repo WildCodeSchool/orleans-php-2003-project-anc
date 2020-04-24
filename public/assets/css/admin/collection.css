@@ -1,0 +1,9 @@
+.admin-collection {
+    margin-top: 120px;
+}
+.admin-collection .btn-danger {
+    border: none;
+}
+.admin-collection .card img {
+    width: 40%;
+}

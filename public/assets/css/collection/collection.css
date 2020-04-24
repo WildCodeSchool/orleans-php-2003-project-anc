@@ -1,0 +1,69 @@
+.collection {
+    margin-bottom: 0;
+    padding-bottom: 80px;
+}
+
+.collection .card-body img {
+    width: 180px;
+    height: 180px;
+}
+
+.collection .card-title {
+    color: var(--light);
+    font-family: var(--title-font);
+    font-size: var(--medium-size);
+    background-color: var(--main-bg-color);
+
+}.card-footer,
+ .collection .modal-footer {
+    font-family: var(--title-font);
+    font-size: var(--medium-size);
+    border-top: 1px solid var(--second-bg-color);
+    background-color: rgba(0,0,0,.03);
+}
+
+.collection .modal-header {
+     background-color: var(--main-bg-color);
+     color: var(--light);
+     font-size: var(--large-size);
+ }
+
+.collection .card-title p,
+.collection .card-footer p {
+    margin-bottom: 0;
+}
+
+.coin-stock .btn {
+    background-color: var(--main-bg-color);
+}
+
+.collection .card {
+    border-radius: 8px;
+}
+
+.modal-img {
+    width: auto;
+    height: auto;
+}
+
+.modal-coin-title,
+.modal-coin-year {
+    font-family: var(--title-font);
+    font-size: var(--medium-size);
+}
+
+@media screen and (max-width: 576px) {
+    .collection .card-title,
+    .collection .card-footer {
+        flex-direction: column;
+        align-items: center;
+    }
+    .collection .card-body img {
+        margin: 0 var(--spacing);
+    }
+}
+    @media screen and (max-width: 528px) {
+        .collection .card-body img {
+        margin: var(--spacing) 0;
+    }
+}

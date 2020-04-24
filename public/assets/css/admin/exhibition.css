@@ -1,0 +1,11 @@
+.exhibition-admin {
+    margin-top: 120px;
+}
+.exhibition-admin img {
+    max-width: 100%;
+    max-height: 200px;
+    object-fit: cover;
+}
+.exhibition-admin .card {
+    min-height: 450px;
+}

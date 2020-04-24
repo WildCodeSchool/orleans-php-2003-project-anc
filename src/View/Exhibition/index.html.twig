@@ -1,0 +1,26 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <section class='section container-fluid exhibition'>
+        <link rel="stylesheet" href="../assets/css/exhibition.css">
+
+        <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3">
+            {% for exhibition in exhibitions %}
+                <div class="col mb-4">
+                    <div class="card p-1 shadow-sm">
+                        <img src="/assets/images/exhibition/{{ exhibition.image }}" class="card-img-top"
+                             alt="{{ exhibition.subject }}">
+                        <div class="card-body position-relative">
+                            <h5 class="card-title title-section text-center">{{ exhibition.subject }}</h5>
+                            <p class="card-text">{{ exhibition.detail | slice(0, 80)}}...</p>
+                            <div class="position-absolute btn-custom m-3">
+                            <a href="#" class="btn btn-primary">Lire l'article</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+
+{% endblock %}
