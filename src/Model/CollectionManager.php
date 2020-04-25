@@ -66,4 +66,13 @@ class CollectionManager extends AbstractManager
 
         return 'SELECT ' . $selectAll . ' FROM ' . $this->table . ' c ' . $joinAll;
     }
+
+    public function selectOrigin()
+    {
+        return $this->pdo->query('SELECT * FROM ' . self::O_TABLE)->fetchAll();
+    }
+    public function selectMetal()
+    {
+        return $this->pdo->query('SELECT * FROM ' . self::M_TABLE)->fetchAll();
+    }
 }

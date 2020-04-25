@@ -93,8 +93,18 @@ class AdminController extends AbstractController
     public function edit(int $id): string
     {
         $collectionManager = new CollectionManager();
-        $collections = $collectionManager->selectOneCoin($id);
+        $coin = $collectionManager->selectOneCoin($id);
 
-        return $this->twig->render('Admin/edit.html.twig', ['collections' => $collections]);
+        $collectionManager = new CollectionManager();
+        $origins = $collectionManager->selectOrigin();
+
+        $collectionManager = new CollectionManager();
+        $metals = $collectionManager->selectMetal();
+
+        return $this->twig->render('Admin/edit.html.twig', [
+           'coin' => $coin,
+           'origins' => $origins,
+           'metals' => $metals
+        ]);
     }
 }
