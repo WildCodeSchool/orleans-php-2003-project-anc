@@ -1,0 +1,10 @@
+
+.form-group .tox .tox-menubar {
+    background-color: var(--main-bg-color);
+}
+.form-group .tox .tox-menubar button {
+    color: var(--light);
+}
+.mce-content-body {
+    font-family: Roboto, serif;
+}
