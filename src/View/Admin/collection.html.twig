@@ -4,6 +4,11 @@
 
     <section class="section admin-collection container-fluid">
         <a href="/admin/index" class="btn btn-primary mb-5">Retour</a>
+        {% if _get is defined  %}
+            {% for key, value in _get %}
+                <div class="alert alert-{{ key }}">{{ value }}</div>
+            {% endfor %}
+        {% endif %}
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
             {% for collection in collections %}
 

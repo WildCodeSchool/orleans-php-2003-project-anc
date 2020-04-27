@@ -78,7 +78,7 @@ class CollectionController extends AbstractController
 
             header('Location: /admin/collection/?success=Données mises à jour avec succès !');
         } else {
-            header('Location: /admin/collection');
+            header('Location: /admin/collection?danger=Erreur inconnue - merci de rééssayer !');
         }
     }
 
