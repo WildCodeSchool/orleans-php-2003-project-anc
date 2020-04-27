@@ -9,6 +9,7 @@
 
 namespace App\Controller;
 
+use App\Model\ClublifeManager;
 use App\Model\EventManager;
 
 /**
@@ -29,6 +30,8 @@ class ClublifeController extends AbstractController
      */
     public function index()
     {
-        return $this->twig->render('Clublife/index.html.twig');
+        $clublifeManager = new ClublifeManager();
+        $clublifes = $clublifeManager->selectClublife();
+        return $this->twig->render('Clublife/index.html.twig', ['clublifes' => $clublifes]);
     }
 }
