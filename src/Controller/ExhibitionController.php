@@ -19,4 +19,19 @@ class ExhibitionController extends AbstractController
         //view
         return $this->twig->render('Exhibition/index.html.twig', ['exhibitions' => $exhibitions]);
     }
+
+    public function edit(int $id): string
+    {
+        $exhibitionManager = new ExhibitionManager();
+        $exhibition = $exhibitionManager->selectOneById($id);
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $exhibition['subject'] = $_POST['subject'];
+            $exhibition['detail'] = $_POST['detail'];
+            $exhibition['image'] = $_POST['image'];
+            $exhibitionManager->update($exhibition);
+        }
+
+        return $this->twig->render('Exhibition/edit.html.twig', ['exhibition' => $exhibition]);
+    }
 }
