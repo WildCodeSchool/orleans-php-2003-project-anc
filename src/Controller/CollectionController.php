@@ -83,30 +83,6 @@ class CollectionController extends AbstractController
     }
 
     /**
-     * @param array $files
-     * @return bool
-     */
-    private function controlFiles(array $files): bool
-    {
-        $upload = true;
-        $extensions = ['image/png', 'image/jpeg', 'image/jpg'];
-        $sizeMax = 1000000;
-
-        if ($files['error'] >= 1) {
-            $upload = false;
-        }
-
-        if (!in_array($files['type'], $extensions, true)) {
-            $upload = false;
-        }
-
-        if ($files['size'] > $sizeMax) {
-            $upload = false;
-        }
-        return $upload;
-    }
-
-    /**
      * @param string $image
      * @param string $type
      * @param string $face

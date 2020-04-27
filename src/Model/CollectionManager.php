@@ -99,5 +99,6 @@ class CollectionManager extends AbstractManager
         if (in_array('image_verso', $data, true)) {
             $req->bindValue('image_verso', $data['image_verso'], \PDO::PARAM_STR);
         }
+        $req->execute();
     }
 }

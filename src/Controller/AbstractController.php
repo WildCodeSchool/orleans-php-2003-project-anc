@@ -43,4 +43,28 @@ abstract class AbstractController
 
         $this->twig->addExtension(new DebugExtension());
     }
+
+    /**
+     * @param array $files
+     * @return bool
+     */
+    public function controlFiles(array $files): bool
+    {
+        $upload = true;
+        $extensions = ['image/png', 'image/jpeg', 'image/jpg'];
+        $sizeMax = 1000000;
+
+        if ($files['error'] >= 1) {
+            $upload = false;
+        }
+
+        if (!in_array($files['type'], $extensions, true)) {
+            $upload = false;
+        }
+
+        if ($files['size'] > $sizeMax) {
+            $upload = false;
+        }
+        return $upload;
+    }
 }
