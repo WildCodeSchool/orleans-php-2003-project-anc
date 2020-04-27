@@ -67,12 +67,37 @@ class CollectionManager extends AbstractManager
         return 'SELECT ' . $selectAll . ' FROM ' . $this->table . ' c ' . $joinAll;
     }
 
-    public function selectOrigin()
+    public function selectOrigin(): array
     {
         return $this->pdo->query('SELECT * FROM ' . self::O_TABLE)->fetchAll();
     }
-    public function selectMetal()
+    public function selectMetal(): array
     {
         return $this->pdo->query('SELECT * FROM ' . self::M_TABLE)->fetchAll();
+    }
+
+    public function update(int $id, array $data): void
+    {
+        $keys = array_keys($data);
+        $str = '';
+        foreach ($keys as $key) {
+            $str .= $key . '=:' . $key . ',';
+        }
+        $str = rtrim($str, ',');
+
+        $req = $this->pdo->prepare('UPDATE ' . self::C_TABLE . ' SET ' . $str . ' WHERE id=:id');
+        $req->bindValue('id', $id, \PDO::PARAM_INT);
+        $req->bindValue('name', $data['name'], \PDO::PARAM_STR);
+        $req->bindValue('description', $data['description'], \PDO::PARAM_STR);
+        $req->bindValue('year', $data['year'], \PDO::PARAM_STR);
+        $req->bindValue('id', $data['metal'], \PDO::PARAM_INT);
+        $req->bindValue('id', $data['origin'], \PDO::PARAM_INT);
+        $req->bindValue('id', $data['stock'], \PDO::PARAM_INT);
+        if (in_array('image_recto', $data, true)) {
+            $req->bindValue('image_recto', $data['image_recto'], \PDO::PARAM_STR);
+        }
+        if (in_array('image_verso', $data, true)) {
+            $req->bindValue('image_verso', $data['image_verso'], \PDO::PARAM_STR);
+        }
     }
 }

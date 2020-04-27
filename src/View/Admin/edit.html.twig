@@ -7,20 +7,20 @@
         <h1 class="title-section text-center mb-5">Editer</h1>
         <a href="/admin/collection" class="btn btn-primary mb-5">Retour</a>
 
-        <form action="" method="post" enctype="multipart/form-data" class="p-4">
+        <form action="/collection/update/{{ coin.id }}" method="post" enctype="multipart/form-data" class="p-4">
             <div class="row">
                 <div class="col text-center">
                     <img src="/assets/images/{{ coin.image_recto }}" alt="{{ coin.image_recto }}">
                     <div class="custom-file my-4">
-                        <input type="file" class="custom-file-input" id="image-recto" name="image-recto">
-                        <label class="custom-file-label" for="image-recto">Choisir une image</label>
+                        <input type="file" class="form-control-file" id="image-recto" name="image-recto">
+                        <label for="image-recto" class="mt-2">Choisir une image</label>
                     </div>
                 </div>
                 <div class="col text-center">
                     <img src="/assets/images/{{ coin.image_verso }}" alt="{{ coin.image_verso }}">
                     <div class="custom-file my-4">
-                        <input type="file" class="custom-file-input" id="image-verso" name="image-verso">
-                        <label class="custom-file-label" for="image-verso">Choisir une image</label>
+                        <input type="file" class="form-control-file" id="image-verso" name="image-verso">
+                        <label for="image-verso" class="mt-2">Choisir une image</label>
                     </div>
                 </div>
             </div>
@@ -58,8 +58,8 @@
             </div>
             <div class="form-row my-4">
                 <div class="form-group">
-                    <label for="descriptif">Descriptif</label>
-                    <textarea class="form-control" name="descriptif" id="descriptif" cols="150" rows="10">{{ coin.descriptif }}</textarea>
+                    <label for="description">Description</label>
+                    <textarea class="form-control" name="description" id="description" cols="150" rows="10">{{ coin.description }}</textarea>
                 </div>
             </div>
             <div class="form-row my-4">

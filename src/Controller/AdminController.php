@@ -105,18 +105,15 @@ class AdminController extends AbstractController
         }
 
         $collectionManager = new CollectionManager();
-        $coin = $collectionManager->selectOneCoin((int) $id);
 
-        $collectionManager = new CollectionManager();
+        $coin = $collectionManager->selectOneCoin((int)$id);
         $origins = $collectionManager->selectOrigin();
-
-        $collectionManager = new CollectionManager();
         $metals = $collectionManager->selectMetal();
 
         return $this->twig->render('Admin/edit.html.twig', [
-        'coin' => $coin,
-        'origins' => $origins,
-        'metals' => $metals
+         'coin' => $coin,
+         'origins' => $origins,
+         'metals' => $metals
         ]);
     }
 }
