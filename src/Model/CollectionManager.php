@@ -37,10 +37,10 @@ class CollectionManager extends AbstractManager
         return $coinQuery->fetchAll();
     }
 
-   /**
-    * @param int $id
-    * @return mixed
-    */
+    /**
+     * @param int $id
+     * @return mixed
+     */
     public function selectOneCoin(int $id)
     {
         $select = $this->selectJoin();
@@ -50,14 +50,15 @@ class CollectionManager extends AbstractManager
         return $coinQuery->fetch();
     }
 
-   /**
-    * @return string
-    */
+    /**
+     * @return string
+     */
     private function selectJoin(): string
     {
         $selectMetal = 'm.material, m.id';
         $selectOrigin = 'o.country, o.id';
-        $selectCoin = 'c.id as coin_id, c.name, c.year, c.image_recto, c.image_verso, c.stock, c.metal_id, c.origin_id';
+        $selectCoin = 'c.id as coin_id, c.name, c.year, c.image_recto,';
+        $selectCoin .= ' c.image_verso, c.stock, c.metal_id, c.origin_id, c.description';
         $selectAll = $selectCoin . ', ' . $selectMetal . ', ' . $selectOrigin;
 
         $joinMetal = 'JOIN ' . self::M_TABLE . ' m ON c.metal_id=m.id';
@@ -71,6 +72,7 @@ class CollectionManager extends AbstractManager
     {
         return $this->pdo->query('SELECT * FROM ' . self::O_TABLE)->fetchAll();
     }
+
     public function selectMetal(): array
     {
         return $this->pdo->query('SELECT * FROM ' . self::M_TABLE)->fetchAll();
@@ -84,20 +86,19 @@ class CollectionManager extends AbstractManager
             $str .= $key . '=:' . $key . ',';
         }
         $str = rtrim($str, ',');
-
         $req = $this->pdo->prepare('UPDATE ' . self::C_TABLE . ' SET ' . $str . ' WHERE id=:id');
-        $req->bindValue('id', $id, \PDO::PARAM_INT);
-        $req->bindValue('name', $data['name'], \PDO::PARAM_STR);
-        $req->bindValue('description', $data['description'], \PDO::PARAM_STR);
-        $req->bindValue('year', $data['year'], \PDO::PARAM_STR);
-        $req->bindValue('id', $data['metal'], \PDO::PARAM_INT);
-        $req->bindValue('id', $data['origin'], \PDO::PARAM_INT);
-        $req->bindValue('id', $data['stock'], \PDO::PARAM_INT);
+        $req->bindValue(':id', $id, \PDO::PARAM_INT);
+        $req->bindValue(':name', $data['name'], \PDO::PARAM_STR);
+        $req->bindValue(':description', $data['description'], \PDO::PARAM_STR);
+        $req->bindValue(':year', $data['year'], \PDO::PARAM_STR);
+        $req->bindValue(':metal_id', $data['metal_id'], \PDO::PARAM_INT);
+        $req->bindValue(':origin_id', $data['origin_id'], \PDO::PARAM_INT);
+        $req->bindValue(':stock', $data['stock'], \PDO::PARAM_INT);
         if (in_array('image_recto', $data, true)) {
-            $req->bindValue('image_recto', $data['image_recto'], \PDO::PARAM_STR);
+            $req->bindValue(':image_recto', $data['image_recto'], \PDO::PARAM_STR);
         }
         if (in_array('image_verso', $data, true)) {
-            $req->bindValue('image_verso', $data['image_verso'], \PDO::PARAM_STR);
+            $req->bindValue(':image_verso', $data['image_verso'], \PDO::PARAM_STR);
         }
         $req->execute();
     }
