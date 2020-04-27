@@ -2,3 +2,9 @@
     height: 300px;
     width: 400px;
 }
+
+.activity_images {
+    margin: 3rem;
+    display: flex;
+    justify-content: space-between;
+}
