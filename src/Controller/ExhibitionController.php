@@ -27,5 +27,4 @@ class ExhibitionController extends AbstractController
 
         return $this->twig->render('Update/exhibition.html.twig', ['exhibition' => $exhibition]);
     }
-
 }
