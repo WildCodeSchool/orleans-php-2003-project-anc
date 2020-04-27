@@ -3,6 +3,7 @@
 
 namespace App\Controller;
 
+use App\Model\ClublifeManager;
 use App\Model\CollectionManager;
 use App\Model\EventManager;
 use App\Model\ExhibitionManager;
@@ -15,9 +16,11 @@ class AdminController extends AbstractController
         return $this->twig->render('Admin/index.html.twig');
     }
 
-    public function clublife(): string
+    public function clublife()
     {
-        return $this->twig->render('Admin/clublife.html.twig');
+        $clublifeManager = new ClublifeManager();
+        $clublifes = $clublifeManager->selectClublife();
+        return $this->twig->render('Admin/clublife.html.twig', ['clublifes' => $clublifes]);
     }
 
     public function event(): string
@@ -28,12 +31,12 @@ class AdminController extends AbstractController
         return $this->twig->render('Admin/event.html.twig', ['events' => $events]);
     }
 
-   /**
-    * @return string
-    * @throws \Twig\Error\LoaderError
-    * @throws \Twig\Error\RuntimeError
-    * @throws \Twig\Error\SyntaxError
-    */
+    /**
+     * @return string
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
+     */
     public function exhibition(): string
     {
         $exhibitionManager = new ExhibitionManager();
@@ -42,12 +45,12 @@ class AdminController extends AbstractController
         return $this->twig->render('Admin/exhibition.html.twig', ['exhibitions' => $exhibition]);
     }
 
-   /**
-    * @return string
-    * @throws \Twig\Error\LoaderError
-    * @throws \Twig\Error\RuntimeError
-    * @throws \Twig\Error\SyntaxError
-    */
+    /**
+     * @return string
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
+     */
     public function message(): string
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id'])) {
@@ -65,12 +68,12 @@ class AdminController extends AbstractController
         return $this->twig->render('Admin/message.html.twig', ['messages' => $messages]);
     }
 
-   /**
-    * @return string
-    * @throws \Twig\Error\LoaderError
-    * @throws \Twig\Error\RuntimeError
-    * @throws \Twig\Error\SyntaxError
-    */
+    /**
+     * @return string
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
+     */
     public function collection(): string
     {
         $collectionManager = new CollectionManager();
@@ -79,10 +82,10 @@ class AdminController extends AbstractController
         return $this->twig->render('Admin/collection.html.twig', ['collections' => $collections]);
     }
 
-   /**
-    * @param int $id
-    * @return bool
-    */
+    /**
+     * @param int $id
+     * @return bool
+     */
     private function remove(int $id): bool
     {
         if (empty($id) || !is_numeric($id)) {
