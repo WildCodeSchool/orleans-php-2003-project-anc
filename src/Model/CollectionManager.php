@@ -86,19 +86,20 @@ class CollectionManager extends AbstractManager
             $str .= $key . '=:' . $key . ',';
         }
         $str = rtrim($str, ',');
+
         $req = $this->pdo->prepare('UPDATE ' . self::C_TABLE . ' SET ' . $str . ' WHERE id=:id');
         $req->bindValue(':id', $id, \PDO::PARAM_INT);
         $req->bindValue(':name', $data['name'], \PDO::PARAM_STR);
         $req->bindValue(':description', $data['description'], \PDO::PARAM_STR);
-        $req->bindValue(':year', $data['year'], \PDO::PARAM_STR);
+        $req->bindValue(':year', $data['year'], \PDO::PARAM_INT);
         $req->bindValue(':metal_id', $data['metal_id'], \PDO::PARAM_INT);
         $req->bindValue(':origin_id', $data['origin_id'], \PDO::PARAM_INT);
         $req->bindValue(':stock', $data['stock'], \PDO::PARAM_INT);
-        if (in_array('image_recto', $data, true)) {
-            $req->bindValue(':image_recto', $data['image_recto'], \PDO::PARAM_STR);
+        if (in_array('image_recto', $keys, true)) {
+            $req->bindValue(':image_recto', $data['image_recto'], \PDO::PARAM_STR_CHAR);
         }
-        if (in_array('image_verso', $data, true)) {
-            $req->bindValue(':image_verso', $data['image_verso'], \PDO::PARAM_STR);
+        if (in_array('image_verso', $keys, true)) {
+            $req->bindValue(':image_verso', $data['image_verso'], \PDO::PARAM_STR_CHAR);
         }
         $req->execute();
     }

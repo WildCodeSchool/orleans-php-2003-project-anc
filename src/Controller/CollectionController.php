@@ -56,19 +56,19 @@ class CollectionController extends AbstractController
                 if ($imageRecto === true) {
                     $name = $post['name'];
                     $type = $_FILES['image-recto']['type'];
-                    $imageName = $this->createNameImage($name, $type, 'recto');
-                    $post['image_recto'] = $imageName;
-                    move_uploaded_file($_FILES['image-recto']['tmp_name'], $rootPath . $imageName);
+                    $imageNameRecto = $this->createNameImage($name, $type, 'recto');
+                    $post['image_recto'] = $imageNameRecto;
+                    move_uploaded_file($_FILES['image-recto']['tmp_name'], $rootPath . $imageNameRecto);
                 }
             }
             if ($_FILES['image-verso']['error'] !== 4) {
                 $imageVerso = $this->controlFiles($_FILES['image-verso']);
                 if ($imageVerso === true) {
-                    $name = $_FILES['image-verso']['name'];
+                    $name = $post['name'];
                     $type = $_FILES['image-verso']['type'];
-                    $imageName = $this->createNameImage($name, $type, 'verso');
-                    $post['image_verso'] = $imageName;
-                    move_uploaded_file($_FILES['image-verso']['tmp_name'], $rootPath . $imageName);
+                    $imageNameVerso = $this->createNameImage($name, $type, 'verso');
+                    $post['image_verso'] = $imageNameVerso;
+                    move_uploaded_file($_FILES['image-verso']['tmp_name'], $rootPath . $imageNameVerso);
                 }
             }
 
