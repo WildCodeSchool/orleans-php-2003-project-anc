@@ -89,34 +89,4 @@ class AdminController extends AbstractController
         $messageManager->removeOneMessage($id);
         return true;
     }
-
-   /**
-    * @param string $id
-    * @return string|null
-    * @throws \Twig\Error\LoaderError
-    * @throws \Twig\Error\RuntimeError
-    * @throws \Twig\Error\SyntaxError
-    */
-    public function edit(string $id): ?string
-    {
-        if (!is_numeric($id)) {
-            header('Location: /admin/collection');
-            return null;
-        }
-
-        $collectionManager = new CollectionManager();
-        $coin = $collectionManager->selectOneCoin((int) $id);
-
-        $collectionManager = new CollectionManager();
-        $origins = $collectionManager->selectOrigin();
-
-        $collectionManager = new CollectionManager();
-        $metals = $collectionManager->selectMetal();
-
-        return $this->twig->render('Admin/edit.html.twig', [
-        'coin' => $coin,
-        'origins' => $origins,
-        'metals' => $metals
-        ]);
-    }
 }
