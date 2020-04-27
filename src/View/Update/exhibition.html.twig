@@ -1,0 +1,45 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}
+    Edition exposition
+{% endblock %}
+
+{% block content %}
+
+    <section class="section edit-exhibition-admin container">
+
+        <h1 class="title-section text-center mb-5">Editer</h1>
+        <a href="/admin/exhibition" class="btn btn-primary mb-5">Retour</a>
+
+        <form action="" method="post" enctype="multipart/form-data" class="p-4">
+            <div class="row">
+                <div class="col text-center">
+                    <img src="/assets/images/exhibition/{{ exhibition.image }}" alt="{{ exhibition.image }}">
+                    <div class="custom-file my-4">
+                        <input type="file" class="custom-file-input" id="image-exhibtion" name="image-exhibition">
+                        <label class="custom-file-label" for="image-exhibition">Choisir une image</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row my-4">
+                <div class="form-group col-md-6">
+                    <label for="subject">Thème de l'exposition</label>
+                    <input class="form-control" type="text" name="subject" id="subject" value="{{ exhibition.subject }}">
+                </div>
+            </div>
+            <div class="form-row my-4">
+                <div class="form-group">
+                    <label for="detail">Description</label>
+                    <textarea class="form-control" name="detail" id="detail" cols="150" rows="10">{{ exhibition.detail }}</textarea>
+                </div>
+            </div>
+            <div class="form-row my-4">
+                <button class="btn btn-primary ml-auto">Enregistrer</button>
+            </div>
+        </form>
+
+        {{ dump(exhibition) }}
+
+    </section>
+
+{% endblock %}
