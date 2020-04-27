@@ -34,4 +34,9 @@ class CollectionController extends AbstractController
 
         return $this->twig->render('Collection/index.html.twig', ['coins' => $coins]);
     }
+
+    public function add()
+    {
+        return $this->twig->render('Admin/Add/addCollection.html.twig');
+    }
 }
