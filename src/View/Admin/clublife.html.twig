@@ -7,13 +7,13 @@
     <section class="section events-admin container-fluid">
     <a href="/admin/index" class="btn btn-primary my-5">Retour</a>
     {% for clublife in clublifes %}
-        <h4 class="font-weight-bold mb-5">{{ clublife.description_title }}</h4>
-
         <div class="form-row">
-            <div class="form-group col-12">
+
+            <div class="form-group col-12 mb-5">
+                <h4 class="font-weight-bold mb-5">{{ clublife.description_title }}</h4>
                 <form action="#" method="post" class="mx-md-5 mt-5 mb-3">
 
-                    <label for="description_title">Titre des activités:</label>
+                    <label for="description_title">Titre de la description:</label>
                     <input type="text" class="form-control" name="activity_title" id="activity_title"
                            placeholder="{{ clublife.description_title }}">
                     <label for="comment">Commentaire:</label>
@@ -25,6 +25,7 @@
             </div>
 
             <div class="form-group col-12">
+                <h4 class="font-weight-bold mb-5">{{ clublife.description_title }}</h4>
                 <form action="#" method="post" class="mx-md-5 mt-5 mb-3">
                     <label for="description_title">Titre des activités:</label>
                     <input type="text" class="form-control" name="activity_title" id="activity_title"
