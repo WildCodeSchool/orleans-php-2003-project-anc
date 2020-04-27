@@ -25,13 +25,7 @@ class ExhibitionController extends AbstractController
         $exhibitionManager = new ExhibitionManager();
         $exhibition = $exhibitionManager->selectOneById($id);
 
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $exhibition['subject'] = $_POST['subject'];
-            $exhibition['detail'] = $_POST['detail'];
-            $exhibition['image'] = $_POST['image'];
-            $exhibitionManager->update($exhibition);
-        }
-
-        return $this->twig->render('Exhibition/edit.html.twig', ['exhibition' => $exhibition]);
+        return $this->twig->render('Update/exhibition.html.twig', ['exhibition' => $exhibition]);
     }
+
 }
