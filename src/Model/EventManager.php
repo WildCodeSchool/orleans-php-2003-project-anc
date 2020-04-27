@@ -34,6 +34,7 @@ class EventManager extends AbstractManager
 
     public function selectEvent(): array
     {
-        return $this->pdo->query('SELECT * FROM ' . $this->table . ' ORDER BY start_at ASC')->fetchAll();
+        $cond = 'WHERE start_at >= now() ORDER BY start_at ASC';
+        return $this->pdo->query('SELECT * FROM ' . $this->table . ' ' . $cond)->fetchAll();
     }
 }

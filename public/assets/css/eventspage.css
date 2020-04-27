@@ -1,11 +1,13 @@
-.eventspage{
-    justify-content: center;
+.events-page .card {
+    border-radius: var(--light-radius);
 }
 
-.row:nth-of-type(even){
-    flex-direction: row-reverse;
+.events-page .card img {
+    border-radius: var(--light-radius) 0 0 var(--light-radius);
 }
 
-hr {
-    background-color: var(--second-bg-color);
+.events-page img {
+    object-fit: cover;
+    width: 310px;
+    height: 310px;
 }

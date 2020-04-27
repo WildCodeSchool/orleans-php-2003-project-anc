@@ -1,11 +1,12 @@
 {% extends 'layout.html.twig' %}
-{% block stylesheet %}
-    <link rel="stylesheet" href="/assets/css/contact.css">
+{% block title %}
+    Nous Contacter
 {% endblock %}
 
 {% block content %}
+    <link rel="stylesheet" href="/assets/css/contact.css">
     <section class="contact container">
-        <h2 class="text-center">Contact</h2>
+        <h2 class="text-center">Nous Contacter</h2>
         {% if error is defined and error is not empty %}
             <ul>
                 {% for i in 0..error|length -1 %}
@@ -18,7 +19,7 @@
                 {{ _get.success }}
             </div>
         {% endif %}
-        <form action="" method="post" class="mx-5 mt-5 mb-3">
+        <form action="#" method="post" class="mx-md-5 mt-5 mb-3">
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="firstname">Prénom:</label>
@@ -59,9 +60,9 @@
                 <label class="form-check-label" for="check">J'ai lu et accepte la Politique de confidentialité.</label>
             </div>
             <br>
-            <div class="button mt-4">
-                <button type="reset" class="btn">Annuler</button>
+            <div class="button mt-4 d-flex flex-column flex-sm-row">
                 <button type="submit" class="btn">Envoyer</button>
+                <button type="reset" class="btn">Annuler</button>
             </div>
         </form>
     </section>
