@@ -9,6 +9,9 @@
                 <div class="alert alert-{{ key }}">{{ value }}</div>
             {% endfor %}
         {% endif %}
+        
+        <a href="/collection/Add" class="btn btn-primary mb-5">Ajouter</a>
+
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
             {% for collection in collections %}
 
@@ -62,3 +65,4 @@
     </section>
 
 {% endblock %}
+
