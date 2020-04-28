@@ -35,6 +35,11 @@ class CollectionController extends AbstractController
         return $this->twig->render('Collection/index.html.twig', ['coins' => $coins]);
     }
 
+    public function add()
+    {
+        return $this->twig->render('Admin/Add/addCollection.html.twig');
+    }
+  
     /**
      * @param string $id
      * @return string|null
@@ -50,12 +55,9 @@ class CollectionController extends AbstractController
         }
 
         $collectionManager = new CollectionManager();
+  
         $coin = $collectionManager->selectOneCoin((int) $id);
-
-        $collectionManager = new CollectionManager();
         $origins = $collectionManager->selectOrigin();
-
-        $collectionManager = new CollectionManager();
         $metals = $collectionManager->selectMetal();
 
         return $this->twig->render('Admin/edit.html.twig', [
