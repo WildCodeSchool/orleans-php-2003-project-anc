@@ -49,8 +49,20 @@ class CollectionController extends AbstractController
         }
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $rootPath = 'assets/images/collection/';
             $files = new VerifyFileUpload($_FILES);
-            $errors = $files->fileControl(true);
+            $result = $files->fileControl(true);
+
+            if (array_key_exists('image-recto', $result) ||
+                array_key_exists('image-verso', $result)) {
+                if (isset($result['image-recto'])) {
+                    $files->uploadFile($result['image-recto']['tmp_name'], $rootPath, $result['image-recto']['name']);
+                }
+                if (isset($result['image-verso'])) {
+                    $files->uploadFile($result['image-verso']['tmp_name'], $rootPath, $result['image-verso']['name']);
+                }
+                header('Location: /admin/collection/?success=bravo !!');
+            }
         }
 
         $collectionManager = new CollectionManager();
@@ -63,7 +75,7 @@ class CollectionController extends AbstractController
             'coin' => $coin,
             'origins' => $origins,
             'metals' => $metals,
-            'error' => $errors ?? []
+            'errors' => $result ?? []
         ]);
     }
 }
