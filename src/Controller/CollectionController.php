@@ -10,6 +10,7 @@
 namespace App\Controller;
 
 use App\Model\CollectionManager;
+use App\Verify\VerifyFileUpload;
 
 /**
  * Class CollectionController
@@ -26,7 +27,7 @@ class CollectionController extends AbstractController
      * @throws \Twig\Error\RuntimeError
      * @throws \Twig\Error\SyntaxError
      */
-    public function index()
+    public function index(): string
     {
         $collectionManager = new CollectionManager();
         $coins = $collectionManager->selectAllCoins();
@@ -34,67 +35,37 @@ class CollectionController extends AbstractController
         return $this->twig->render('Collection/index.html.twig', ['coins' => $coins]);
     }
 
-    public function update(string $id): void
-    {
-        $errors = false;
-        $rootPath = 'assets/images/collection/';
-
-        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-            header('Location: /admin/collection');
-        }
-
-        $post = array_map('trim', $_POST);
-        foreach ($post as $i) {
-            if ($i === '') {
-                $errors = true;
-            }
-        }
-
-        if (!$errors) {
-            if ($_FILES['image-recto']['error'] !== 4) {
-                $imageRecto = $this->controlFiles($_FILES['image-recto']);
-                if ($imageRecto === true) {
-                    $name = $post['name'];
-                    $type = $_FILES['image-recto']['type'];
-                    $imageNameRecto = $this->createNameImage($name, $type, 'recto');
-                    $post['image_recto'] = $imageNameRecto;
-                    move_uploaded_file($_FILES['image-recto']['tmp_name'], $rootPath . $imageNameRecto);
-                }
-            }
-            if ($_FILES['image-verso']['error'] !== 4) {
-                $imageVerso = $this->controlFiles($_FILES['image-verso']);
-                if ($imageVerso === true) {
-                    $name = $post['name'];
-                    $type = $_FILES['image-verso']['type'];
-                    $imageNameVerso = $this->createNameImage($name, $type, 'verso');
-                    $post['image_verso'] = $imageNameVerso;
-                    move_uploaded_file($_FILES['image-verso']['tmp_name'], $rootPath . $imageNameVerso);
-                }
-            }
-
-            $collectionManager = new CollectionManager();
-            $collectionManager->update((int)$id, $post);
-
-
-            header('Location: /admin/collection/?success=Données mises à jour avec succès !');
-        } else {
-            header('Location: /admin/collection/?danger=Erreur inconnue - merci de rééssayer !');
-        }
-    }
 
     /**
-     * @param string $image
-     * @param string $type
-     * @param string $face
-     * @return string
+     * @param string $id
+     * @return string|null
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
      */
-    private function createNameImage(string $image, string $type, string $face): ?string
+    public function edit(string $id): ?string
     {
-        $extension = trim(strrchr($type, '/'), '/');
-        $imageName = str_replace(' ', '', $image) . '-' . $face;
-        if (strlen($imageName . '.' . $extension) > 255) {
+        if (!is_numeric($id)) {
+            header('Location: /admin/collection');
             return null;
         }
-        return $imageName . '.' . $extension;
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $files = new VerifyFileUpload($_FILES);
+            $errors = $files->getIsArrayEmpty(true);
+        }
+
+        $collectionManager = new CollectionManager();
+
+        $coin = $collectionManager->selectOneCoin((int)$id);
+        $origins = $collectionManager->selectOrigin();
+        $metals = $collectionManager->selectMetal();
+
+        return $this->twig->render('Admin/editCollection.html.twig', [
+            'coin' => $coin,
+            'origins' => $origins,
+            'metals' => $metals,
+            'error' => $errors ?? []
+        ]);
     }
 }
