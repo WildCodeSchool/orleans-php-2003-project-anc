@@ -4,79 +4,81 @@
 {% endblock %}
 
 {% block content %}
-    <style>section img{width: 50%;}</style>
+    <style>section img {
+            width: 50%;
+        }</style>
 
-<section class="section events-admin container-fluid">
+    <section class="section events-admin container-fluid">
+        {% for clublife in clublifes %}
+            <h4>Section Description</h4>
+            <form action="" method="post" enctype="multipart/form-data" class="p-4">
+                <div class="form-row my-4">
+                    <div class="form-group col-md-6">
+                        <label for="subject">Titre de la description :</label>
+                        <input class="form-control" type="text" name="subject" id="subject"
+                               value="{{ clublife.description_title }}">
+                    </div>
+                </div>
+                <div class="form-row my-4">
+                    <div class="form-group">
+                        <label for="detail">Description :</label>
+                        <textarea class="form-control" name="detail" id="detail" cols="150"
+                                  rows="10">{{ clublife.description }}</textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6 text-center">
+                        <img src="/assets/images/clublife/{{ clublife.description_image }}" alt="">
+                        <div class="custom-file my-4">
+                            <input type="file" class="custom-file-input" id="image-exhibition" name="image-exhibition">
+                            <label class="custom-file-label" for="image-exhibition">Choisir une image</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row my-4">
+                    <button class="btn btn-primary m-auto">Modifier</button>
+                    <button class="btn btn-primary m-auto">Annuler</button>
+                </div>
+            </form>
+
+            <h4>Section Activité</h4>
+            <form action="" method="post" enctype="multipart/form-data" class="p-4">
+                <div class="form-row my-4">
+                    <div class="form-group col-md-6">
+                        <label for="subject">Titre des activités :</label>
+                        <input class="form-control" type="text" name="subject" id="subject"
+                               value="{{ clublife.activity_title }}">
+                    </div>
+                </div>
+                <div class="form-row my-4">
+                    <div class="form-group">
+                        <label for="detail">Description :</label>
+                        <textarea class="form-control" name="detail" id="detail" cols="150"
+                                  rows="10">{{ clublife.activity }}</textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6 text-center">
+                        <img src="/assets/images/clublife/{{ clublife.activity_image1 }}" alt="">
+                        <div class="custom-file my-4">
+                            <input type="file" class="custom-file-input" id="image-exhibition" name="image-exhibition">
+                            <label class="custom-file-label" for="image-exhibition">Choisir une image</label>
+                        </div>
+                    </div>
+                    <div class="col-6 text-center">
+                        <img src="/assets/images/clublife/{{ clublife.activity_image2 }}" alt="">
+                        <div class="custom-file my-4">
+                            <input type="file" class="custom-file-input" id="image-exhibition" name="image-exhibition">
+                            <label class="custom-file-label" for="image-exhibition">Choisir une image</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row my-4">
+                    <button class="btn btn-primary m-auto">Modifier</button>
+                    <button class="btn btn-primary m-auto">Annuler</button>
+                </div>
+            </form>
+        {% endfor %}
+    </section>
     <a href="/admin/index" class="btn btn-primary my-5">Retour</a>
-    {% for clublife in clublifes %}
-        <h4>Section Description</h4>
-        <form action="" method="post" enctype="multipart/form-data" class="p-4">
-            <div class="form-row my-4">
-                <div class="form-group col-md-6">
-                    <label for="subject">Thème de l'exposition</label>
-                    <input class="form-control" type="text" name="subject" id="subject"
-                           value="{{ clublife.description_title }}">
-                </div>
-            </div>
-            <div class="form-row my-4">
-                <div class="form-group">
-                    <label for="detail">Description</label>
-                    <textarea class="form-control" name="detail" id="detail" cols="150"
-                              rows="10">{{ clublife.description }}</textarea>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-6 text-center">
-                    <img src="/assets/images/clublife/{{ clublife.description_image }}" alt="">
-                    <div class="custom-file my-4">
-                        <input type="file" class="custom-file-input" id="image-exhibition" name="image-exhibition">
-                        <label class="custom-file-label" for="image-exhibition">Choisir une image</label>
-                    </div>
-                </div>
-            </div>
-            <div class="form-row my-4">
-                <button class="btn btn-primary m-auto">Modifier</button>
-                <button class="btn btn-primary m-auto">Annuler</button>
-            </div>
-        </form>
-
-        <h4>Section Activité</h4>
-        <form action="" method="post" enctype="multipart/form-data" class="p-4">
-            <div class="form-row my-4">
-                <div class="form-group col-md-6">
-                    <label for="subject">Thème de l'exposition</label>
-                    <input class="form-control" type="text" name="subject" id="subject"
-                           value="{{ clublife.activity_title }}">
-                </div>
-            </div>
-            <div class="form-row my-4">
-                <div class="form-group">
-                    <label for="detail">Description</label>
-                    <textarea class="form-control" name="detail" id="detail" cols="150"
-                              rows="10">{{ clublife.activity }}</textarea>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-6 text-center">
-                    <img src="/assets/images/clublife/{{ clublife.activity_image1 }}" alt="">
-                    <div class="custom-file my-4">
-                        <input type="file" class="custom-file-input" id="image-exhibition" name="image-exhibition">
-                        <label class="custom-file-label" for="image-exhibition">Choisir une image</label>
-                    </div>
-                </div>
-                <div class="col-6 text-center">
-                    <img src="/assets/images/clublife/{{ clublife.activity_image2 }}" alt="">
-                    <div class="custom-file my-4">
-                        <input type="file" class="custom-file-input" id="image-exhibition" name="image-exhibition">
-                        <label class="custom-file-label" for="image-exhibition">Choisir une image</label>
-                    </div>
-                </div>
-            </div>
-            <div class="form-row my-4">
-                <button class="btn btn-primary m-auto">Modifier</button>
-                <button class="btn btn-primary m-auto">Annuler</button>
-            </div>
-        </form>
-    {% endfor %}
-</section>
 {% endblock %}
