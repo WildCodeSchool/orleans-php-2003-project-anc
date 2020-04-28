@@ -18,7 +18,6 @@ use App\Verify\VerifyFileUpload;
  */
 class CollectionController extends AbstractController
 {
-
     /**
      * Display coin collection
      *
@@ -34,7 +33,6 @@ class CollectionController extends AbstractController
 
         return $this->twig->render('Collection/index.html.twig', ['coins' => $coins]);
     }
-
 
     /**
      * @param string $id

@@ -1,7 +1,8 @@
 {% extends "layout.html.twig" %}
 
 {% block content %}
-    <section class="section messages my-5 container"">
+    <section class="section messages container">
+        <h1 class="title-section text-center my-5">Boîte de réception</h1>
         {% if _get is defined %}
             {% for key , value in _get %}
                 <div class="alert alert-{{ key }}">

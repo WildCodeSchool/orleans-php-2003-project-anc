@@ -15,6 +15,10 @@ class AdminController extends AbstractController
         return $this->twig->render('Admin/index.html.twig');
     }
 
+    public function clublife(): string
+    {
+        return $this->twig->render('Admin/clublife.html.twig');
+    }
 
     public function event(): string
     {

@@ -12,7 +12,12 @@
     min-height: 450px;
 }
 
-.exhibition .btn-custom{
+.exhibition .btn-customv{
     bottom: 0;
     right: 0;
+}
+
+.exhibition-modal-title {
+    font-family: var(--title-font);
+    font-size: var(--medium-size);
 }
