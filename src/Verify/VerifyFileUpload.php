@@ -44,15 +44,15 @@ class VerifyFileUpload
      * @param bool $empty
      * @return array
      */
-    public function getIsArrayEmpty(bool $empty): array
+    public function fileControl(bool $empty): array
     {
         if ($empty) {
-            $this->filesUpload = $this->setRemoveEmpty();
+            $this->filesUpload = $this->removeEmptyArray();
         }
 
         if (!empty($this->filesUpload)) {
-            $this->getControlErrorCode();
-            $this->getErrorUploadFileUser();
+            $this->getControlErrorMessage();
+            $this->testFile();
         }
 
         if (empty($this->codeError)) {
@@ -65,7 +65,7 @@ class VerifyFileUpload
     /**
      * @return array
      */
-    private function setRemoveEmpty(): array
+    private function removeEmptyArray(): array
     {
         foreach ($this->filesUpload as $key => $code) {
             if ($code['error'] === 4) {
@@ -90,7 +90,7 @@ class VerifyFileUpload
     /**
      * @return void
      */
-    private function getControlErrorCode(): void
+    private function getControlErrorMessage(): void
     {
         foreach ($this->filesUpload as $value) {
             if ($value['error'] !== 0) {
@@ -102,7 +102,7 @@ class VerifyFileUpload
     /**
      *
      */
-    private function getErrorUploadFileUser(): void
+    private function testFile(): void
     {
         $size = self::SIZE_MAX / 1000000;
         foreach ($this->filesUpload as $file) {

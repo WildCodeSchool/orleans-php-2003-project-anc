@@ -50,7 +50,7 @@ class CollectionController extends AbstractController
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $files = new VerifyFileUpload($_FILES);
-            $errors = $files->getIsArrayEmpty(true);
+            $errors = $files->fileControl(true);
         }
 
         $collectionManager = new CollectionManager();
