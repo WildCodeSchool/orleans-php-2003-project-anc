@@ -4,42 +4,79 @@
 {% endblock %}
 
 {% block content %}
-    <section class="section events-admin container-fluid">
+    <style>section img{width: 50%;}</style>
+
+<section class="section events-admin container-fluid">
     <a href="/admin/index" class="btn btn-primary my-5">Retour</a>
     {% for clublife in clublifes %}
-        <div class="form-row">
-
-            <div class="form-group col-12 mb-5">
-                <h4 class="font-weight-bold mb-5">{{ clublife.description_title }}</h4>
-                <form action="#" method="post" class="mx-md-5 mt-5 mb-3">
-                    <label for="description_title">Titre de la description:</label>
-                    <input type="text" class="form-control" name="activity_title" id="activity_title"
-                           placeholder="{{ clublife.description_title }}">
-                    <label for="comment">Commentaire:</label>
-                    <textarea class="form-control" rows="10" name="comment"
-                              id="comment">{{ clublife.description }}</textarea>
-                    <button type="submit" class="btn btn-primary m-3">Modifier</button>
-                    <button type="reset" class="btn btn-primary m-3">Annuler</button>
-                    <br>
-                </form>
-                <div>
+        <h4>Section Description</h4>
+        <form action="" method="post" enctype="multipart/form-data" class="p-4">
+            <div class="form-row my-4">
+                <div class="form-group col-md-6">
+                    <label for="subject">Thème de l'exposition</label>
+                    <input class="form-control" type="text" name="subject" id="subject"
+                           value="{{ clublife.description_title }}">
+                </div>
             </div>
-
-            <div class="form-group col-12">
-                <h4 class="font-weight-bold mb-5">{{ clublife.description_title }}</h4>
-                <form action="#" method="post" class="mx-md-5 mt-5 mb-3">
-                    <label for="description_title">Titre des activités:</label>
-                    <input type="text" class="form-control" name="activity_title" id="activity_title"
-                           placeholder="{{ clublife.activity_title }}">
-                    <label for="comment">Commentaire:</label>
-                    <textarea class="form-control" rows="15" name="comment"
-                              id="comment">{{ clublife.activity }}</textarea>
-                    <button type="submit" class="btn">Modifier</button>
-                    <button type="reset" class="btn">Annuler</button>
-                </form>
+            <div class="form-row my-4">
+                <div class="form-group">
+                    <label for="detail">Description</label>
+                    <textarea class="form-control" name="detail" id="detail" cols="150"
+                              rows="10">{{ clublife.description }}</textarea>
+                </div>
             </div>
-        </div>
-        </div>
-        </section>
+            <div class="row">
+                <div class="col text-center">
+                    <img src="/assets/images/clublife/{{ clublife.description_image }}" alt="">
+                    <div class="custom-file my-4">
+                        <input type="file" class="custom-file-input" id="image-exhibition" name="image-exhibition">
+                        <label class="custom-file-label" for="image-exhibition">Choisir une image</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row my-4">
+                <button class="btn btn-primary m-auto">Modifier</button>
+                <button class="btn btn-primary m-auto">Annuler</button>
+            </div>
+        </form>
+
+        <h4>Section Activité</h4>
+        <form action="" method="post" enctype="multipart/form-data" class="p-4">
+            <div class="form-row my-4">
+                <div class="form-group col-md-6">
+                    <label for="subject">Thème de l'exposition</label>
+                    <input class="form-control" type="text" name="subject" id="subject"
+                           value="{{ clublife.activity_title }}">
+                </div>
+            </div>
+            <div class="form-row my-4">
+                <div class="form-group">
+                    <label for="detail">Description</label>
+                    <textarea class="form-control" name="detail" id="detail" cols="150"
+                              rows="10">{{ clublife.activity }}</textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col text-center">
+                    <img src="/assets/images/clublife/{{ clublife.activity_image1 }}" alt="">
+                    <div class="custom-file my-4">
+                        <input type="file" class="custom-file-input" id="image-exhibition" name="image-exhibition">
+                        <label class="custom-file-label" for="image-exhibition">Choisir une image</label>
+                    </div>
+                </div>
+                <div class="col text-center">
+                    <img src="/assets/images/clublife/{{ clublife.activity_image2 }}" alt="">
+                    <div class="custom-file my-4">
+                        <input type="file" class="custom-file-input" id="image-exhibition" name="image-exhibition">
+                        <label class="custom-file-label" for="image-exhibition">Choisir une image</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row my-4">
+                <button class="btn btn-primary m-auto">Modifier</button>
+                <button class="btn btn-primary m-auto">Annuler</button>
+            </div>
+        </form>
     {% endfor %}
+</section>
 {% endblock %}
