@@ -2,6 +2,7 @@
 @import 'message.css';
 @import "collection.css";
 @import "exhibition.css";
+@import "editCoin.css";
 
 .admin-dashboard {
     margin-top: 120px;

@@ -6,7 +6,7 @@ body {
 .contact {
     margin-top: 120px;
     margin-bottom: 80px;
-    padding-bottom: 80px;
+    padding-bottom: 20px;
     border-bottom: 1px solid var(--second-bg-color);
 }
 
@@ -26,4 +26,16 @@ body {
 .contact .btn {
     background-color: var(--second-bg-color);
     width: 30%;
+    margin: 25px 0;
+}
+
+@media screen and (max-width: 575px) {
+    .contact .btn {
+        width: 100%;
+    }
+    .contact .button .btn:last-child {
+        width: 50%;
+        max-width: 150px;
+        margin: 30px auto auto;
+    }
 }
