@@ -10,15 +10,14 @@
 namespace App\Controller;
 
 use App\Model\CollectionManager;
+use App\Verify\VerifyFileUpload;
 
 /**
  * Class CollectionController
  *
  */
-
 class CollectionController extends AbstractController
 {
-
     /**
      * Display coin collection
      *
@@ -27,7 +26,7 @@ class CollectionController extends AbstractController
      * @throws \Twig\Error\RuntimeError
      * @throws \Twig\Error\SyntaxError
      */
-    public function index()
+    public function index(): string
     {
         $collectionManager = new CollectionManager();
         $coins = $collectionManager->selectAllCoins();
@@ -54,16 +53,23 @@ class CollectionController extends AbstractController
             return null;
         }
 
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $files = new VerifyFileUpload($_FILES);
+            $errors = $files->fileControl(true);
+        }
+
         $collectionManager = new CollectionManager();
-  
-        $coin = $collectionManager->selectOneCoin((int) $id);
+
+        $coin = $collectionManager->selectOneCoin((int)$id);
+
         $origins = $collectionManager->selectOrigin();
         $metals = $collectionManager->selectMetal();
 
-        return $this->twig->render('Admin/edit.html.twig', [
+        return $this->twig->render('Admin/editCollection.html.twig', [
             'coin' => $coin,
             'origins' => $origins,
-            'metals' => $metals
+            'metals' => $metals,
+            'error' => $errors ?? []
         ]);
     }
 }
