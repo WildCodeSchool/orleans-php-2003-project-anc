@@ -18,6 +18,19 @@ class AdminController extends AbstractController
 
     public function clublife(): string
     {
+        $errors = [];
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $data = array_map('trim', $_POST);
+            $errors = $this->controlData($data);
+
+            if (empty($errors)) {
+                $clublifeManager = new clublifeManager();
+                $clublifeManager->update($data);
+
+                header('Location: /Admin/clublife/?success=Vos modifications ont été pris en compte!');
+            }
+        }
+
         $clublifeManager = new ClublifeManager();
         $clublifes = $clublifeManager->selectClublife();
         return $this->twig->render('Admin/clublife.html.twig', ['clublifes' => $clublifes]);
@@ -95,5 +108,30 @@ class AdminController extends AbstractController
         $messageManager = new MessageManager();
         $messageManager->removeOneMessage($id);
         return true;
+    }
+
+    private function controlData($data): array
+    {
+        $errors = [];
+
+        foreach ($data as $name => $value) {
+            $convert = [
+                'description_title' => 'titre de la description',
+                'description' => 'description',
+                'activity_title' => 'titre des activités',
+                'activity' => 'activités'
+            ];
+
+            if (empty($value)) {
+                $errors[] = 'Le champ ' . $convert[$name] . ' est requis';
+            }
+            if ($name == 'description_title' && strlen($value) > 100) {
+                $errors[] = 'Le champ ' . $convert[$name] . ' doit être inférieur à 100 caractères';
+            }
+            if ($name == 'activity_title' && strlen($value) > 100) {
+                $errors[] = 'Le champ ' . $convert[$name] . ' doit être inférieur à 100 caractères';
+            }
+        }
+        return $errors;
     }
 }
