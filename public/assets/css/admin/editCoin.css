@@ -1,0 +1,27 @@
+.edit-coin-admin img {
+    max-width: 250px;
+}
+.edit-coin-admin .custom-file-label::after {
+    content: 'Ouvrir';
+    border-radius: 0;
+}
+.edit-coin-admin .btn {
+    border: none;
+}
+.edit-coin-admin form {
+    background: white;
+    border-radius: var(--light-radius);
+}
+.edit-coin-admin input,
+.edit-coin-admin textarea,
+.edit-coin-admin select,
+.edit-coin-admin input:focus,
+.edit-coin-admin textarea:focus,
+.edit-coin-admin select:focus,
+.edit-coin-admin input[type=text]:focus,
+.edit-coin-admin textarea:focus,
+.edit-coin-admin .custom-file-label{
+    background: var(--main-bg-color);
+    color: var(--light);
+    box-shadow: none;
+}
