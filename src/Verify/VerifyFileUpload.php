@@ -21,7 +21,7 @@ class VerifyFileUpload
         'image/jpg'
     ];
 
-    private const SIZE_MAX = 100000;
+    private const SIZE_MAX = 1000000;
 
 
     private $filesUpload;
