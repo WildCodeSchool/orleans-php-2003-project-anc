@@ -6,4 +6,3 @@ tinymce.init({
         'forecolor backcolor | help',
     content_css: '/assets/css/admin/tinyMCE.css',
 });
-
