@@ -49,20 +49,22 @@ class ClublifeController extends AbstractController
             foreach ($_FILES as $name => $image) {
                 if ($image['error'] != 4) {
                     $image['position'] = $name;
-                    $destination = 'assets/images/exhibition/';
                     $files = new VerifyFileUpload($_FILES);
                     $data = array_map('trim', $image);
                     $upload = $files->fileControl(true);
-                    if (empty($errors)) {
-                        if (!empty($upload['image'])) {
-                            $data['image'] = $upload['image']['name'];
-                            $files->uploadFile($upload['image']['tmp_name'], $destination, $upload['image']['name']);
+                    if (isset($upload["$name"])) {
+                        if (isset($upload["$name"]['message code'])) {
+                            echo 'oui!';
+                            $clublifeManager->updateimg($data);
+                            header('Location: /admin/clublife/?success=Images modifiées');
+                        } else {
+                            echo 'presque!';
                         }
-                        $clublifeManager->updateimg($data);
+                    } else {
+                        echo 'non!';
                     }
                 }
             }
-            header('Location: /Admin/clublife/?success=Vos modifications ont été pris en compte!');
         }
 
         return $errors;
@@ -90,6 +92,7 @@ class ClublifeController extends AbstractController
                 $errors[] = 'Le champ ' . $convert[$name] . ' doit être inférieur à 100 caractères';
             }
         }
+        var_dump($errors);
         return $errors;
     }
 }
