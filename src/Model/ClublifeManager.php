@@ -45,4 +45,26 @@ class ClublifeManager extends AbstractManager
         $statement->bindValue('activity', $clublife['activity'], \PDO::PARAM_STR);
         $statement->execute();
     }
+
+    public function updateimg(array $clublife): void
+    {
+        // prepared request
+
+        if ($clublife['position'] == 'description_image') {
+            $statement = $this->pdo->prepare("UPDATE " . self::TABLE . " 
+        SET description_image =:description_image WHERE id = 1");
+            $statement->bindValue('description_image', $clublife['name'], \PDO::PARAM_STR);
+            $statement->execute();
+        } elseif ($clublife['position'] == 'activity_image1') {
+            $statement = $this->pdo->prepare("UPDATE " . self::TABLE . " 
+        SET activity_image1 =:activity_image1 WHERE id = 1");
+            $statement->bindValue('activity_image1', $clublife['name'], \PDO::PARAM_STR);
+            $statement->execute();
+        } else {
+            $statement = $this->pdo->prepare("UPDATE " . self::TABLE . " 
+        SET activity_image2 =:activity_image2 WHERE id = 1");
+            $statement->bindValue('activity_image2', $clublife['name'], \PDO::PARAM_STR);
+            $statement->execute();
+        }
+    }
 }
