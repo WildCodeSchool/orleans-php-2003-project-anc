@@ -67,4 +67,11 @@ class ExhibitionController extends AbstractController
         }
         return $errors;
     }
+
+    public function delete(int $id)
+    {
+        $exhibitionManager = new ExhibitionManager();
+        $exhibitionManager->delete($id);
+        header('Location:admin/exhibition');
+    }
 }
