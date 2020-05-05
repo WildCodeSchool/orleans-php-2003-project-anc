@@ -36,7 +36,15 @@ class CollectionController extends AbstractController
 
     public function add()
     {
-        return $this->twig->render('Admin/Add/addCollection.html.twig');
+        $collectionManager = new CollectionManager();
+
+        $origins = $collectionManager->selectOrigin();
+        $metals = $collectionManager->selectMetal();
+
+        return $this->twig->render('Admin/Add/addCollection.html.twig', [
+            'origins' => $origins,
+            'metals' => $metals,
+        ]);
     }
   
     /**
