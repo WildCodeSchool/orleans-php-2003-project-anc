@@ -62,7 +62,6 @@ class ExhibitionController extends AbstractController
             $errors['empty_title']  = 'Le titre de l\'article est requis';
         }
 
-
         if (empty($data['detail'])) {
             $errors['empty_detail'] = 'Le texte de l\'article est requis';
         }
