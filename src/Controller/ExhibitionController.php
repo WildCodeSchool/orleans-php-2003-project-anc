@@ -71,7 +71,7 @@ class ExhibitionController extends AbstractController
             }
         }
 
-        return $this->twig->render('Add/exhibition.html.twig', ['errors' => $errors ?? []
+        return $this->twig->render('Admin/Add/exhibition.html.twig', ['errors' => $errors ?? []
         ]);
     }
 
