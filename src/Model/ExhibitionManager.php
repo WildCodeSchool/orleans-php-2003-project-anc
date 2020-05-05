@@ -47,4 +47,22 @@ class ExhibitionManager extends AbstractManager
 
         $statement->execute();
     }
+
+    public function add(array $data):void
+    {
+        if (in_array('image', $data, true)) {
+            $statement = $this->pdo->prepare("INSERT INTO" . self::TABLE
+                . " (title, detail, image) . VALUES (:title, :detail, :image");
+        } else {
+            $statement = $this->pdo->prepare("INSERT INTO" . self::TABLE
+                . " (title, detail) . VALUES (:title, :detail");
+        }
+        $statement->bindValue(':title', $data['title'], \PDO::PARAM_STR);
+        $statement->bindValue(':detail', $data['detail'], \PDO::PARAM_STR);
+        if (in_array('image', $data, true)) {
+            $statement->bindValue(':image', $data['image'], \PDO::PARAM_STR);
+        }
+
+        $statement->execute();
+    }
 }
