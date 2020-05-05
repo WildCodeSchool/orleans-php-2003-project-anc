@@ -31,7 +31,7 @@ class ExhibitionManager extends AbstractManager
 
     public function update(int $id, array $data):void
     {
-        if (in_array('image', $data, true)) {
+        if (array_key_exists('image', $data)) {
             $statement = $this->pdo->prepare("UPDATE " . self::TABLE
                 . " SET `title` = :title, `detail` = :detail, `image` = :image WHERE id=:id");
         } else {
@@ -41,7 +41,25 @@ class ExhibitionManager extends AbstractManager
         $statement->bindValue(':id', $id, \PDO::PARAM_INT);
         $statement->bindValue(':title', $data['title'], \PDO::PARAM_STR);
         $statement->bindValue(':detail', $data['detail'], \PDO::PARAM_STR);
-        if (in_array('image', $data, true)) {
+        if (array_key_exists('image', $data)) {
+            $statement->bindValue(':image', $data['image'], \PDO::PARAM_STR);
+        }
+
+        $statement->execute();
+    }
+
+    public function add(array $data):void
+    {
+        if (array_key_exists('image', $data)) {
+            $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE
+                . " (title, detail, image) VALUES (:title, :detail, :image)");
+        } else {
+            $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE
+                . " (title, detail) VALUES (:title, :detail)");
+        }
+        $statement->bindValue(':title', $data['title'], \PDO::PARAM_STR);
+        $statement->bindValue(':detail', $data['detail'], \PDO::PARAM_STR);
+        if (array_key_exists('image', $data)) {
             $statement->bindValue(':image', $data['image'], \PDO::PARAM_STR);
         }
 
