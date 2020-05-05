@@ -1,0 +1,47 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}
+    Ajout exposition
+{% endblock %}
+
+{% block content %}
+
+    <section class="section edit-exhibition-admin container">
+
+        <h1 class="title-section text-center mb-5">Ajouter</h1>
+        <a href="/admin/exhibition" class="btn btn-primary mb-5">Retour</a>
+        {% if errors is defined  %}
+            {% for error in errors %}
+                <div class="alert alert-danger">{{ error }}</div>
+            {% endfor %}
+        {% endif %}
+
+        <form action="" method="post" enctype="multipart/form-data" class="p-4">
+            <div class="row">
+                <div class="col text-center">
+                    <div class="custom-file my-4">
+                        <input type="file" class="custom-file-input" id="image" name="image">
+                        <label class="custom-file-label" for="image">Choisir une image</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row my-4">
+                <div class="form-group col-md-6">
+                    <label for="title">Thème de l'exposition</label>
+                    <input class="form-control" type="text" name="title" id="title">
+                </div>
+            </div>
+            <div class="form-row my-4">
+                <div class="form-group form-summernote">
+                    <label for="summernote">Description</label>
+                    <textarea class="form-control" name="detail" id="summernote" cols="150" rows="10"></textarea>
+                </div>
+            </div>
+            <div class="form-row my-4">
+                <button class="btn btn-primary ml-auto">Ajouter</button>
+            </div>
+        </form>
+
+    </section>
+
+{% endblock %}

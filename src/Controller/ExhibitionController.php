@@ -38,7 +38,7 @@ class ExhibitionController extends AbstractController
                     $files->uploadFile($upload['image']['tmp_name'], $destination, $upload['image']['name']);
                 }
                 $exhibitionManager->update($id, $data);
-                header('Location: /admin/exhibition/?success=Données mises à jour avec succès !!');
+                header('Location: /admin/exhibition/?success=Exposition modifiée');
             }
         }
 
@@ -47,6 +47,31 @@ class ExhibitionController extends AbstractController
         return $this->twig->render('Update/exhibition.html.twig', [
             'exhibition' => $exhibition,
             'errors' => $errors ?? []
+        ]);
+    }
+
+    public function add()
+    {
+        $exhibitionManager = new ExhibitionManager();
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $destination = 'assets/images/exhibition/';
+            $files = new VerifyFileUpload($_FILES);
+            $data = array_map('trim', $_POST);
+            $errors = $this->formControl($data);
+            $upload = $files->fileControl(true);
+
+            if (empty($errors)) {
+                if (!empty($upload['image'])) {
+                    $data['image'] = $upload['image']['name'];
+                    $files->uploadFile($upload['image']['tmp_name'], $destination, $upload['image']['name']);
+                }
+                $exhibitionManager->add($data);
+                header('Location: /admin/exhibition/?success=Exposition ajoutée');
+            }
+        }
+
+        return $this->twig->render('Admin/Add/exhibition.html.twig', ['errors' => $errors ?? []
         ]);
     }
 
