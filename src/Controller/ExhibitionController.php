@@ -71,7 +71,9 @@ class ExhibitionController extends AbstractController
     public function delete(int $id)
     {
         $exhibitionManager = new ExhibitionManager();
+        $exhibitionManager->selectOneById($id);
         $exhibitionManager->delete($id);
-        header('Location:admin/exhibition');
+
+        header('Location:/admin/exhibition/?success=Exposition supprimée');
     }
 }
