@@ -54,8 +54,12 @@ class ExhibitionController extends AbstractController
     {
         $errors = [];
 
-        if (empty($data['subject'])) {
-            $errors['empty_subject']  = 'Le titre de l\'article est requis';
+        if (strlen($data['title']) > 150) {
+            $errors['length_title'] = 'Le titre doit contenir 150 caractères au maximum';
+        }
+
+        if (empty($data['title'])) {
+            $errors['empty_title']  = 'Le titre de l\'article est requis';
         }
 
         if (empty($data['detail'])) {
