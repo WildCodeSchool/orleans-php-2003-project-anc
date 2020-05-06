@@ -3,74 +3,45 @@
     Vie du club
 {% endblock %}
 {% block content %}
+
     <link rel="stylesheet" href="/assets/css/clublife.css">
     <section class="clublife">
-        <h2 class="title-section my-5 text-center">Présentation du Club</h2>
-        <div class="row container-fluid mx-auto mb-5">
-            <div class="ml-5">
-                <h4 class="font-weight-bold mb-5">Une association dynamique</h4>
-            </div>
-            <div class="px-5 d-md-flex">
-                <div class="mx-5 my-3">
-                    <p>Créée en 1969, l’association compte aujourd’hui plus de 80 membres, (ce nombre n’ayant cessé de
-                        croître
-                        au cours de ces dernières années),
-                        et avec un agenda régional de plus de 200 noms, parmi les associations numismatiques, l’ANC est
-                        l’une
-                        des associations les plus importantes
-                        de France et l’une des toutes premières en région.</p>
-                    <p> Chaque mois, rencontrez et echangez avec des passionnés sur des thèmes historiques ou
-                        anecdotiques
-                        dans
-                        une ambiance conviviale.</p>
+        {% for clublife in clublifes %}
+            <h2 class="title-section my-5 text-center">Présentation du Club</h2>
+            <div class="row container-fluid mx-auto mb-5">
+                <div class="ml-5">
+                    <h4 class="font-weight-bold mb-5">{{ clublife.description_title }}</h4>
                 </div>
-
-                <a href="/assets/images/clublife/bureau_ANC.jpg" target="_blank">
-                    <img class="" src="/assets/images/clublife/bureau_ANC.jpg" alt="photo du bureau">
-                </a>
-            </div>
-        </div>
-        <div class="row container-fluid mx-auto mb-5">
-
-            <div class="ml-5">
-                <h4 class="font-weight-bold mb-5">Nos activités</h4>
-            </div>
-            <div class="px-5 d-md-flex">
-                <div class="mx-5 my-3">
-                    <p>- rencontres avec les membres dans des locaux gracieusement mis à notre disposition par la
-                        Municipalité d’Orléans. Cette réunion mensuelle est organisée afin de faciliter contacts et
-                        échanges, cela dans une ambiance conviviale. Pendant ces réunions, des conférences sur les
-                        monnaies
-                        sont proposées : les thèmes historiques ou anecdotiques sont souvent accompagnés du support de
-                        la
-                        collection d’un adhérent.</p>
-                    <p>- nos membres interviennent parfois dans les écoles à la demande des enseignants pour présenter
-                        des
-                        objets qui illustrent notre patrimoine historique et numismatique.</p>
-                    <p>- des expositions sont également organisées, comme celle de l’hôtel GROSLOT dans le cadre de la
-                        semaine européenne : « l’Europe et ses monnaies ; 2500 ans d’histoire » ou encore celle
-                        intitulée «
-                        quelques aspects de l’histoire d’Orléans » à travers la collection Arnoult. </p>
+                <div class="px-5 d-md-flex">
+                    <div class="mx-5 my-3">
+                        {{ clublife.description }}
+                    </div>
+                    <div class="mx-5 my-3">
+                        <a href="/assets/images/clublife/bureau_ANC.jpg" target="_blank">
+                            <img class="" src="/assets/images/clublife/{{ clublife.description_image}}" alt="photo du bureau">
+                        </a>
+                    </div>
                 </div>
-                <a href="/assets/images/clublife/visites.jpg" target="_blank">
-                    <img class="" src="/assets/images/clublife/visites.jpg" alt="photo visite collection">
-                </a>
             </div>
-            <div class="px-5 d-md-flex mt-5">
-                <a href="/assets/images/clublife/presentation.jpg" target="_blank">
-                    <img class="" src="/assets/images/clublife/presentation.jpg" alt="photo du président d'association">
-                </a>
-                <div class="mx-5 my-3">
-                    <p> - nous sommes bien sûr présents à la journée des associations Orléanaises « RENTREE EN FETE» en
-                        septembre .
-                        Tous les ans au mois de mars, nous intervenons au Salon des Antiquités d'Orléans. </p>
-                    <p>- nous organisons également des visites commentées .</p>
-                    <p>- depuis 40 ans l’ANC organise son salon numismatique dont le succès ne se dément pas avec une
-                        fréquentation très satisfaisante d'après nos exposants.</p>
+            <div class="row container-fluid mx-auto mb-5">
+
+                <div class="ml-5">
+                    <h4 class="font-weight-bold mb-5">{{ clublife.activity_title}}</h4>
                 </div>
-
-
+                <div class="px-5">
+                    <div class="px-5 d-md-flex">
+                        {{ clublife.activity}}
+                    </div>
+                    <div class="activity_images">
+                        <a href="/assets/images/clublife/visites.jpg" target="_blank">
+                            <img class="" src="/assets/images/clublife/{{ clublife.activity_image1}}" alt="photo visite collection">
+                        </a>
+                        <a href="/assets/images/clublife/presentation.jpg" target="_blank">
+                            <img class="" src="/assets/images/clublife/{{ clublife.activity_image2}}" alt="photo du président d'association">
+                        </a>
+                    </div>
+                </div>
             </div>
-        </div>
+        {% endfor %}
     </section>
 {% endblock %}
