@@ -36,36 +36,16 @@ class CollectionController extends AbstractController
     }
 
     /**
+     * @return string
      * @throws \Twig\Error\LoaderError
      * @throws \Twig\Error\RuntimeError
      * @throws \Twig\Error\SyntaxError
      */
-    public function add()
+    public function add(): string
     {
+
         $collectionManager = new CollectionManager();
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $destination = 'assets/images/collection/';
-            $images = new VerifyFileUpload($_FILES);
-            $data = array_map('trim', $_POST);
-            $errors = $this->controlDataForm($data);
-            $upload = $images->fileControl(true);
-            if (empty($errors)) {
-                if (!empty($upload)) {
-                    if (array_key_exists('image-recto', $upload)) {
-                        $data['image_recto'] = $upload['image-recto']['name'];
-                        $uploadPath = $upload['image-recto']['tmp_name'];
-                        $images->uploadFile($uploadPath, $destination, $upload['image-recto']['name']);
-                    }
-                    if (array_key_exists('image-verso', $upload)) {
-                        $data['image_verso'] = $upload['image-verso']['name'];
-                        $uploadPath = $upload['image-verso']['tmp_name'];
-                        $images->uploadFile($uploadPath, $destination, $upload['image-verso']['name']);
-                    }
-                }
-                $collectionManager->add($data);
-                header('Location: /admin/collection/?success=Données mises à jour avec succès !!');
-            }
-        }
+
         $origins = $collectionManager->selectOrigin();
         $metals = $collectionManager->selectMetal();
 

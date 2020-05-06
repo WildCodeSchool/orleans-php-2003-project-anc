@@ -15,10 +15,10 @@
                             <p class="mx-2">{{ coin.year }}</p>
                         </div>
                         <div class="card-body d-sm-flex align-items-center text-center">
-                            <img src="/assets/images/collection/{{ coin.image_recto }}" class="card-img mx-sm-auto"
+                            <img src="/assets/images/{{ coin.image_recto }}" class="card-img mx-sm-auto"
                                  alt="{{ coin.name }}">
                             {% if coin.image_verso != NULL %}
-                                <img src="/assets/images/collection/{{ coin.image_verso }}" class="card-img mx-sm-auto mt-sm-0"
+                                <img src="/assets/images/{{ coin.image_verso }}" class="card-img mx-sm-auto mt-sm-0"
                                      alt="{{ coin.name }}">
                             {% endif %}
                         </div>
@@ -45,10 +45,10 @@
                                 <p class="modal-coin-year mb-0" id="coinModalTitle">{{ coin.year }}</p>
                             </div>
                             <div class="modal-body d-flex justify-content-between p-sm-5">
-                                <img class="modal-img mx-auto" src="/assets/images/collection/{{ coin.image_recto }}"
+                                <img class="modal-img mx-auto" src="/assets/images/{{ coin.image_recto }}"
                                      alt="{{ coin.name }}">
                                 {% if coin.image_verso != NULL %}
-                                    <img class="modal-img ml-5" src="/assets/images/collection/{{ coin.image_verso }}"
+                                    <img class="modal-img ml-5" src="/assets/images/{{ coin.image_verso }}"
                                          alt="{{ coin.name }}">
                                 {% endif %}
                             </div>

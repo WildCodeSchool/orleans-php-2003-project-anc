@@ -103,35 +103,4 @@ class CollectionManager extends AbstractManager
         }
         $req->execute();
     }
-    public function add(array $data)
-    {
-        if (array_key_exists('image_recto', $data) && (!array_key_exists('image_verso', $data))) {
-            $query = 'INSERT INTO ' . self::C_TABLE .
-                ' (name, year, image_recto, stock, metal_id, origin_id, description) 
-                VALUES (:name, :year, :image_recto, :stock, :metal_id, :origin_id, :description)';
-        }
-        if (array_key_exists('image_recto', $data) && (array_key_exists('image_verso', $data))) {
-            $query = 'INSERT INTO ' . self::C_TABLE .
-                ' (name, year, image_recto, image_verso, stock, metal_id, origin_id, description) 
-                VALUES (:name, :year, :image_recto, :image_verso, :stock, :metal_id, :origin_id, :description)';
-        } else {
-            $query = 'INSERT INTO ' . self::C_TABLE .
-                ' (name, year, stock, metal_id, origin_id, description) 
-                VALUES (:name, :year, :stock, :metal_id, :origin_id, :description)';
-        }
-        $statement = $this->pdo->prepare($query);
-        $statement->bindValue(':name', $data['name'], \PDO::PARAM_STR);
-        $statement->bindValue(':year', $data['year'], \PDO::PARAM_INT);
-        $statement->bindValue(':stock', $data['stock'], \PDO::PARAM_INT);
-        $statement->bindValue(':metal_id', $data['metal_id'], \PDO::PARAM_INT);
-        $statement->bindValue(':origin_id', $data['origin_id'], \PDO::PARAM_INT);
-        $statement->bindValue(':description', $data['description'], \PDO::PARAM_STR);
-        if (array_key_exists('image_recto', $data)) {
-            $statement->bindValue(':image_recto', $data['image_recto'], \PDO::PARAM_STR);
-        }
-        if (array_key_exists('image_verso', $data)) {
-            $statement->bindValue(':image_verso', $data['image_verso'], \PDO::PARAM_STR);
-        }
-        $statement->execute();
-    }
 }
