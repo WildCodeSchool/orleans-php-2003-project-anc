@@ -164,5 +164,6 @@ class CollectionController extends AbstractController
             $collectionManager = new CollectionManager();
             $collectionManager->deleteOneCoin((int) $id);
         }
+        header('Location: /admin/collection/?danger=Elément supprimé avec succès !!');
     }
 }
