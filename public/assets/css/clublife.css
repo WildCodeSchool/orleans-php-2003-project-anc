@@ -2,3 +2,35 @@
     height: 300px;
     width: 400px;
 }
+
+.activity_images {
+    margin: 3rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.clublife-admin img {
+    width: 70%;
+    height: 70%;
+    object-fit: contain;
+}
+
+@media (max-width: 800px){
+
+    .clublife img {
+        height: 100%;
+        width: 100%;
+        object-fit: contain;
+    }
+
+    .activity_images {
+        display: flex;
+        flex-direction: column;
+        margin: auto;
+    }
+
+    .activity_images img {
+        margin-top: 20px;
+    }
+
+}
