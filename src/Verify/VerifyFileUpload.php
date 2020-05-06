@@ -94,7 +94,9 @@ class VerifyFileUpload
     {
         foreach ($this->filesUpload as $value) {
             if ($value['error'] !== 0) {
-                $this->codeError[$value['name']]['error code'] = self::ERROR_FILE_UPLOAD[$value['error']];
+                $this->codeError[] = [
+                    $value['name'] => self::ERROR_FILE_UPLOAD[$value['error']]
+                ];
             }
         }
     }
@@ -108,10 +110,14 @@ class VerifyFileUpload
         foreach ($this->filesUpload as $file) {
             if (!in_array($file['type'], self::EXTENSIONS, true)) {
                 $extensionFailed = ltrim(strrchr($file['type'], '/'), '/');
-                $this->codeError[$file['name']]['extension'] = 'Extension "' . $extensionFailed . '" non valide';
+                $this->codeError[] = [
+                    $file['name'] =>'Extension "' . $extensionFailed . '" non valide'
+                ];
             }
             if ($file['size'] > self::SIZE_MAX) {
-                $this->codeError[$file['name']]['size'] = 'Le fichier doit faire moins de ' . $size . ' Mo';
+                $this->codeError[] = [
+                    $file['name'] => 'Le fichier doit faire moins de ' . $size . ' Mo'
+                ];
             }
         }
     }
