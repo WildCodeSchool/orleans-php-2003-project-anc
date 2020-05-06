@@ -7,38 +7,41 @@
     <link rel="stylesheet" href="/assets/css/clublife.css">
     <section class="clublife">
         {% for clublife in clublifes %}
-        <h2 class="title-section my-5 text-center">Présentation du Club</h2>
-        <div class="row container-fluid mx-auto mb-5">
-            <div class="ml-5">
-                <h4 class="font-weight-bold mb-5">{{ clublife.description_title }}</h4>
-            </div>
-            <div class="px-5 d-md-flex">
-                <div class="mx-5 my-3">
-                    {{ clublife.description }}
+            <h2 class="title-section my-5 text-center">Présentation du Club</h2>
+            <div class="row container-fluid mx-auto mb-5">
+                <div class="ml-5">
+                    <h4 class="font-weight-bold mb-5">{{ clublife.description_title }}</h4>
                 </div>
-                <a href="/assets/images/clublife/bureau_ANC.jpg" target="_blank">
-                    <img class="" src="/assets/images/clublife/{{ clublife.description_image}}" alt="photo du bureau">
-                </a>
+                <div class="px-5 d-md-flex">
+                    <div class="mx-5 my-3">
+                        {{ clublife.description }}
+                    </div>
+                    <div class="mx-5 my-3">
+                        <a href="/assets/images/clublife/bureau_ANC.jpg" target="_blank">
+                            <img class="" src="/assets/images/clublife/{{ clublife.description_image}}" alt="photo du bureau">
+                        </a>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="row container-fluid mx-auto mb-5">
+            <div class="row container-fluid mx-auto mb-5">
 
-            <div class="ml-5">
-                <h4 class="font-weight-bold mb-5">{{ clublife.activity_title}}</h4>
-            </div>
-            <div class="px-5">
-                <div class="mx-5 my-3">
-                    {{ clublife.activity}}
+                <div class="ml-5">
+                    <h4 class="font-weight-bold mb-5">{{ clublife.activity_title}}</h4>
                 </div>
-                <div class="activity_images">
-                <a href="/assets/images/clublife/visites.jpg" target="_blank">
-                    <img class="" src="/assets/images/clublife/{{ clublife.activity_image1}}" alt="photo visite collection">
-                </a>
-                <a href="/assets/images/clublife/presentation.jpg" target="_blank">
-                    <img class="" src="/assets/images/clublife/{{ clublife.activity_image2}}" alt="photo du président d'association">
-                </a>
+                <div class="px-5">
+                    <div class="px-5 d-md-flex">
+                        {{ clublife.activity}}
+                    </div>
+                    <div class="activity_images">
+                        <a href="/assets/images/clublife/visites.jpg" target="_blank">
+                            <img class="" src="/assets/images/clublife/{{ clublife.activity_image1}}" alt="photo visite collection">
+                        </a>
+                        <a href="/assets/images/clublife/presentation.jpg" target="_blank">
+                            <img class="" src="/assets/images/clublife/{{ clublife.activity_image2}}" alt="photo du président d'association">
+                        </a>
+                    </div>
                 </div>
             </div>
-            {% endfor %}
+        {% endfor %}
     </section>
 {% endblock %}
