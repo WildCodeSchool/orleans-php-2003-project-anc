@@ -1,6 +1,7 @@
 .clublife img {
-    height: 300px;
-    width: 400px;
+    width: 80%%;
+    height: 80%;
+    object-fit: contain;
 }
 
 .activity_images {

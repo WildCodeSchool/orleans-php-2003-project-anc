@@ -39,7 +39,6 @@ class ClublifeController extends AbstractController
 
     public function update(): array
     {
-        $errors = [];
         $data = array_map('trim', $_POST);
         $errors = $this->controlData($data);
 
@@ -54,19 +53,17 @@ class ClublifeController extends AbstractController
                     $upload = $files->fileControl(true);
                     if (isset($upload["$name"])) {
                         if (isset($upload["$name"]['message code'])) {
-                            echo 'oui!';
                             $clublifeManager->updateimg($data);
-                            header('Location: /admin/clublife/?success=Images modifiées');
+                            header('Location: /admin/clublife/?success=Modifications appliquées');
                         } else {
-                            echo 'presque!';
+                            header('Location: /admin/clublife/?error=Une erreur est survenue');
                         }
                     } else {
-                        echo 'non!';
+                        header('Location: /admin/clublife/?error=Une erreur est survenue');
                     }
                 }
             }
         }
-
         return $errors;
     }
 

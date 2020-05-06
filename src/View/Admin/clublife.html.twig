@@ -19,6 +19,11 @@
                     {{ _get.success }}
                 </div>
             {% endif %}
+            {% if _get.error is defined %}
+                <div class="alert alert-danger mx-5">
+                    {{ _get.error }}
+                </div>
+            {% endif %}
             <h4>Section Description</h4>
             <form action="" method="post" enctype="multipart/form-data" class="p-4">
                 <div class="form-row my-4">
