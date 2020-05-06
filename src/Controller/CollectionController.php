@@ -109,7 +109,7 @@ class CollectionController extends AbstractController
                         $data['image_verso'] = $result['image-verso']['name'];
                         $files->uploadFile($result['image-verso']['tmp_name'], $root, $result['image-verso']['name']);
                     }
-                    $collectionManager->update((int) $id, $data);
+                    $collectionManager->update((int)$id, $data);
                     header('Location: /admin/collection/?success=Données mises à jour avec succès !!');
                 }
             }
@@ -154,5 +154,16 @@ class CollectionController extends AbstractController
             }
         }
         return $errors;
+    }
+
+    public function delete(): void
+    {
+        if ($_SERVER['REQUEST_METHOD'] && isset($_POST['id']) &&
+            !empty(trim($_POST['id'])) && is_numeric($_POST['id'])) {
+            $id = trim($_POST['id']);
+            $collectionManager = new CollectionManager();
+            $collectionManager->deleteOneCoin((int) $id);
+        }
+        header('Location: /admin/collection/?danger=Elément supprimé avec succès !!');
     }
 }

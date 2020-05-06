@@ -103,7 +103,21 @@ class CollectionManager extends AbstractManager
         }
         $req->execute();
     }
-    public function add(array $data)
+
+    /**
+     * @param int $id
+     */
+    public function deleteOneCoin(int $id): void
+    {
+        $req = $this->pdo->prepare('DELETE FROM ' . self::C_TABLE . ' WHERE id=:id');
+        $req->bindValue(':id', $id, \PDO::PARAM_INT);
+        $req->execute();
+    }
+
+    /**
+     * @param array $data
+     */
+    public function add(array $data): void
     {
         if (array_key_exists('image_recto', $data) && (!array_key_exists('image_verso', $data))) {
             $query = 'INSERT INTO ' . self::C_TABLE .
