@@ -103,4 +103,14 @@ class CollectionManager extends AbstractManager
         }
         $req->execute();
     }
+
+    /**
+     * @param int $id
+     */
+    public function deleteOneCoin(int $id): void
+    {
+        $req = $this->pdo->prepare('DELETE FROM ' . self::C_TABLE . ' WHERE id=:id');
+        $req->bindValue(':id', $id, \PDO::PARAM_INT);
+        $req->execute();
+    }
 }
