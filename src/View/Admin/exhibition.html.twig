@@ -22,7 +22,7 @@
                             <p class="card-text">{{ exhibition.detail | slice(0, 80) }}...</p>
                         </div>
                         <div class="card-footer text-right">
-                            <button class="btn btn-danger btn-sm">Supprimer</button>
+                            <a href="/Exhibition/delete/{{ exhibition.id }}" class="btn btn-danger btn-sm">Supprimer</a>
                             <a href="/Exhibition/edit/{{ exhibition.id }}" class="btn btn-primary btn-sm">Modifier</a>
                         </div>
                     </div>
