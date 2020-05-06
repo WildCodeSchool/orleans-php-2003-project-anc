@@ -1,12 +1,13 @@
 {% extends "layout.html.twig" %}
 
 {% block title %}
-    Administration collection
+    Admin - Collection
 {% endblock %}
 
 {% block content %}
 
     <section class="section admin-collection container-fluid">
+        <h1 class="title-section text-center my-5">Administration collection</h1>
         <a href="/admin/index" class="btn btn-primary mb-5">Retour</a>
         {% if _get is defined  %}
             {% for key, value in _get %}

@@ -1,13 +1,14 @@
 {% extends "layout.html.twig" %}
 
 {% block title %}
-    Administration évènements
+    Admin - Évènements
 {% endblock %}
 
 {% block content %}
 
     <section class="section events-admin container-fluid">
-        <a href="/admin/index" class="btn btn-primary my-5">Retour</a>
+        <h1 class="title-section text-center my-5">Administration évènements</h1>
+        <a href="/admin/index" class="btn btn-primary mb-5">Retour</a>
         <div class="row d-flex justify-content-center">
             {% for event in events %}
 

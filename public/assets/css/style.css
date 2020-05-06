@@ -8,7 +8,7 @@
 @import "legal.css";
 @import 'footer.css';
 @import 'admin/index.css';
-@import "exihibition.css";
+@import "exhibition.css";
 
 
 :root {
@@ -99,6 +99,6 @@ form .note-toolbar, form .note-btn {
     color: var(--light);
 }
 
-.edit-coin-admin .form-row .form-summernote {
+.form-summernote  {
     width: 100%;
 }
