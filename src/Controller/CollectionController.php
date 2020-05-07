@@ -29,9 +29,19 @@ class CollectionController extends AbstractController
      */
     public function index(): string
     {
-        var_dump($_POST);
         $collectionManager = new CollectionManager();
-        $coins = $collectionManager->selectAllCoins();
+        $data = [];
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $data['metal'] = $this->postFilter('/^metal_/', $_POST);
+            $data['origin'] = $this->postFilter('/^origin_/', $_POST);
+            $data['era'] = $this->postFilter('/^era_/', $_POST);
+
+            $coins = $collectionManager->selectSort($data);
+        } else {
+            $coins = $collectionManager->selectAllCoins();
+        }
+
         $origins = $collectionManager->selectOrigin();
         $metals = $collectionManager->selectMetal();
 
@@ -40,6 +50,13 @@ class CollectionController extends AbstractController
             'origins' => $origins,
             'metals' => $metals,
         ]);
+    }
+
+    public function postFilter($pattern, $input, $flags = 0)
+    {
+        return array_filter($input, function ($key) use ($pattern, $flags) {
+            return preg_match($pattern, $key, $flags);
+        }, ARRAY_FILTER_USE_KEY);
     }
 
     /**
