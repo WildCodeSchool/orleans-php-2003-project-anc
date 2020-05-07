@@ -32,10 +32,10 @@ class CollectionController extends AbstractController
         $collectionManager = new CollectionManager();
         $data = [];
 
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $data['metal'] = $this->postFilter('/^metal_/', $_POST);
-            $data['origin'] = $this->postFilter('/^origin_/', $_POST);
-            $data['era'] = $this->postFilter('/^era_/', $_POST);
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST)) {
+            $data['metal'] = $this->postFilter('/^metal/', $_POST);
+            $data['origin'] = $this->postFilter('/^origin/', $_POST);
+            $data['era'] = $this->postFilter('/^era/', $_POST);
 
             $coins = $collectionManager->selectSort($data);
         } else {

@@ -15,7 +15,7 @@
                         <h3>Métal</h3>
                         {% for metal in metals %}
                             <label for="metal_{{ metal.id }}" class="container container-inner">{{ metal.material }}
-                                <input type="checkbox" id="metal_{{ metal.id }}" name="metal_{{ metal.id }}" value="{{ metal.material }}">
+                                <input type="checkbox" id="metal_{{ metal.id }}" name="metal{{ metal.id }}" value="{{ metal.material }}">
                                 <span class="checkmark"></span>
                             </label>
                         {% endfor %}
@@ -24,7 +24,7 @@
                         <h3>Origine</h3>
                         {% for origin in origins %}
                             <label for="origin_{{ origin.id }}" class="container container-inner">{{ origin.country }}
-                                <input type="checkbox" id="origin_{{ origin.id }}" name="origin_{{ origin.id }}" value="{{ origin.country }}">
+                                <input type="checkbox" id="origin_{{ origin.id }}" name="origin{{ origin.id }}" value="{{ origin.country }}">
                                 <span class="checkmark"></span>
                             </label>
                         {% endfor %}
@@ -32,19 +32,19 @@
                     <div class="col-md-4">
                         <h3>Époque</h3>
                         <label for="antiquity" class="container container-inner">Antiquité
-                            <input type="checkbox" id="antiquity" name="era_1" value="antiquity">
+                            <input type="checkbox" id="antiquity" name="era1" value="antiquity">
                             <span class="checkmark"></span>
                         </label>
                         <label for="middle-age" class="container container-inner">Moyen-âge
-                            <input type="checkbox" id="middle-age" name="era_2" value="middle-age">
+                            <input type="checkbox" id="middle-age" name="era2" value="middle-age">
                             <span class="checkmark"></span>
                         </label>
                         <label for="modern-times" class="container container-inner">Temps moderne
-                            <input type="checkbox" id="modern-times" name="era_3" value="modern-times">
+                            <input type="checkbox" id="modern-times" name="era3" value="modern-times">
                             <span class="checkmark"></span>
                         </label>
                         <label for="contemporary-era" class="container container-inner">Époque contemporaine
-                            <input type="checkbox" id="contemporary-era" name="era_4" value="contemporary-era">
+                            <input type="checkbox" id="contemporary-era" name="era4" value="contemporary-era">
                             <span class="checkmark"></span>
                         </label>
                     </div>
@@ -58,7 +58,7 @@
                     <div class="card shadow-sm">
                         <div class="card-title d-flex justify-content-between p-3 mb-0">
                             <p class="mx-2 text-center">{{ coin.name }}</p>
-                            <p class="mx-2">{{ coin.year }}</p>lider
+                            <p class="mx-2">{{ coin.year }}</p>
                         </div>
                         <div class="card-body d-sm-flex align-items-center text-center">
                             <img src="/assets/images/collection/{{ coin.image_recto }}"
