@@ -34,4 +34,16 @@ class EventController extends AbstractController
 
         return $this->twig->render('Event/index.html.twig', ['events' => $events]);
     }
+
+    public function edit(string $id): ?string
+    {
+        if (!is_numeric($id)) {
+            header('Location: /admin/event');
+            return null;
+        }
+        $eventManager = new EventManager();
+        $events = $eventManager->selectEvent();
+
+        return $this->twig->render('/Admin/editEvent.html.twig', ['events' => $events]);
+    }
 }
