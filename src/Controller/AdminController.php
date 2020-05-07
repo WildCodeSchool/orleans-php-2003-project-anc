@@ -93,4 +93,9 @@ class AdminController extends AbstractController
         $messageManager->removeOneMessage($id);
         return true;
     }
+
+    public function option()
+    {
+        return $this->twig->render('Admin/option.html.twig');
+    }
 }
