@@ -10,8 +10,8 @@
             <input id="collapsible" class="toggle" type="checkbox">
             <label for="collapsible" class="lbl-toggle">Trier</label>
             <div class="collapsible-content">
-                <div class="row container-fluid content-inner">
-                    <div class="col-4">
+                <form action="" method="post" class="row container-fluid content-inner">
+                    <div class="col-md-4">
                         <h3>Métal</h3>
                         {% for metal in metals %}
                             <label class="container container-inner">{{ metal.material }}
@@ -20,35 +20,36 @@
                             </label>
                         {% endfor %}
                     </div>
-                    <div class="col-4">
+                    <div class="col-md-4">
                         <h3>Origine</h3>
                         {% for origin in origins %}
-                            <label class="container">{{ origin.country }}
+                            <label class="container container-inner">{{ origin.country }}
                                 <input type="checkbox" checked="checked">
                                 <span class="checkmark"></span>
                             </label>
                         {% endfor %}
                     </div>
-                    <div class="col-4">
+                    <div class="col-md-4">
                         <h3>Époque</h3>
-                        <label class="container">Antiquité
+                        <label class="container container-inner">Antiquité
                             <input type="checkbox" checked="checked">
                             <span class="checkmark"></span>
                         </label>
-                        <label class="container">Moyen-âge
+                        <label class="container container-inner">Moyen-âge
                             <input type="checkbox">
                             <span class="checkmark"></span>
                         </label>
-                        <label class="container">Temps moderne
+                        <label class="container container-inner">Temps moderne
                             <input type="checkbox">
                             <span class="checkmark"></span>
                         </label>
-                        <label class="container">
+                        <label class="container container-inner">
                             <input type="checkbox">Époque contemporaine
                             <span class="checkmark"></span>
                         </label>
                     </div>
-                </div>
+                    <button class="btn btn-primary btn mb-4" type="submit">Valider</button>
+                </form>
             </div>
         </div>
         <div class="row container-fluid mx-auto">
@@ -57,7 +58,7 @@
                     <div class="card shadow-sm">
                         <div class="card-title d-flex justify-content-between p-3 mb-0">
                             <p class="mx-2 text-center">{{ coin.name }}</p>
-                            <p class="mx-2">{{ coin.year }}</p>
+                            <p class="mx-2">{{ coin.year }}</p>lider
                         </div>
                         <div class="card-body d-sm-flex align-items-center text-center">
                             <img src="/assets/images/collection/{{ coin.image_recto }}"
