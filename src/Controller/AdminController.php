@@ -28,12 +28,12 @@ class AdminController extends AbstractController
         return $this->twig->render('Admin/event.html.twig', ['events' => $events]);
     }
 
-   /**
-    * @return string
-    * @throws \Twig\Error\LoaderError
-    * @throws \Twig\Error\RuntimeError
-    * @throws \Twig\Error\SyntaxError
-    */
+    /**
+     * @return string
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
+     */
     public function exhibition(): string
     {
         $exhibitionManager = new ExhibitionManager();
@@ -42,12 +42,12 @@ class AdminController extends AbstractController
         return $this->twig->render('Admin/exhibition.html.twig', ['exhibitions' => $exhibition]);
     }
 
-   /**
-    * @return string
-    * @throws \Twig\Error\LoaderError
-    * @throws \Twig\Error\RuntimeError
-    * @throws \Twig\Error\SyntaxError
-    */
+    /**
+     * @return string
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
+     */
     public function message(): string
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id'])) {
@@ -65,12 +65,12 @@ class AdminController extends AbstractController
         return $this->twig->render('Admin/message.html.twig', ['messages' => $messages]);
     }
 
-   /**
-    * @return string
-    * @throws \Twig\Error\LoaderError
-    * @throws \Twig\Error\RuntimeError
-    * @throws \Twig\Error\SyntaxError
-    */
+    /**
+     * @return string
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
+     */
     public function collection(): string
     {
         $collectionManager = new CollectionManager();
@@ -79,10 +79,10 @@ class AdminController extends AbstractController
         return $this->twig->render('Admin/collection.html.twig', ['collections' => $collections]);
     }
 
-   /**
-    * @param int $id
-    * @return bool
-    */
+    /**
+     * @param int $id
+     * @return bool
+     */
     private function remove(int $id): bool
     {
         if (empty($id) || !is_numeric($id)) {
@@ -94,8 +94,12 @@ class AdminController extends AbstractController
         return true;
     }
 
-    public function option()
+    public function option(): string
     {
-        return $this->twig->render('Admin/option.html.twig');
+        $collectionManager = new CollectionManager();
+        $origin = $collectionManager->selectOrigin();
+        return $this->twig->render('Admin/option.html.twig', [
+            'origins' => $origin
+        ]);
     }
 }

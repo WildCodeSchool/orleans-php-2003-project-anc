@@ -1,0 +1,30 @@
+.option fieldset {
+    border: 1px solid var(--main-bg-color);
+}
+
+.option legend {
+    width: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.option .origin {
+    width: 300px;
+}
+
+.option .form-adding {
+    background: rgba(119, 219, 102, 0.29);
+    border-radius: var(--light-radius);
+    position: relative;
+    min-height: 250px;
+}
+
+.option .btn-add {
+    position: absolute;
+    bottom: 1.5rem;
+    right: 1.5rem;
+}
+.origin-wrapper {
+    max-height: 275px;
+    overflow: auto;
+}
