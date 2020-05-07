@@ -14,8 +14,8 @@
                     <div class="col-md-4">
                         <h3>Métal</h3>
                         {% for metal in metals %}
-                            <label class="container container-inner">{{ metal.material }}
-                                <input type="checkbox" checked="checked">
+                            <label for="{{ metal.material }}" class="container container-inner">{{ metal.material }}
+                                <input type="checkbox" id="{{ metal.material }}" name="{{ metal.material }}" value="{{ metal.material }}">
                                 <span class="checkmark"></span>
                             </label>
                         {% endfor %}
@@ -23,28 +23,28 @@
                     <div class="col-md-4">
                         <h3>Origine</h3>
                         {% for origin in origins %}
-                            <label class="container container-inner">{{ origin.country }}
-                                <input type="checkbox" checked="checked">
+                            <label for="{{ origin.country }}" class="container container-inner">{{ origin.country }}
+                                <input type="checkbox" id="{{ origin.country }}" name="{{ origin.country }}" value="{{ origin.country }}">
                                 <span class="checkmark"></span>
                             </label>
                         {% endfor %}
                     </div>
                     <div class="col-md-4">
                         <h3>Époque</h3>
-                        <label class="container container-inner">Antiquité
-                            <input type="checkbox" checked="checked">
+                        <label for="antiquity" class="container container-inner">Antiquité
+                            <input type="checkbox" id="antiquity" name="antiquity" value="antiquity">
                             <span class="checkmark"></span>
                         </label>
-                        <label class="container container-inner">Moyen-âge
-                            <input type="checkbox">
+                        <label for="middle-age" class="container container-inner">Moyen-âge
+                            <input type="checkbox" id="middle-age" name="middle-age" value="middle-age">
                             <span class="checkmark"></span>
                         </label>
-                        <label class="container container-inner">Temps moderne
-                            <input type="checkbox">
+                        <label for="modern-times" class="container container-inner">Temps moderne
+                            <input type="checkbox" id="modern-times" name="modern-times" value="modern-times">
                             <span class="checkmark"></span>
                         </label>
-                        <label class="container container-inner">
-                            <input type="checkbox">Époque contemporaine
+                        <label for="contemporary-period" class="container container-inner">Époque contemporaine
+                            <input type="checkbox" id="contemporary-period" name="contemporary-period" value="contemporary-period">
                             <span class="checkmark"></span>
                         </label>
                     </div>
