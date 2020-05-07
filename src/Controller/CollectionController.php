@@ -31,8 +31,14 @@ class CollectionController extends AbstractController
     {
         $collectionManager = new CollectionManager();
         $coins = $collectionManager->selectAllCoins();
+        $origins = $collectionManager->selectOrigin();
+        $metals = $collectionManager->selectMetal();
 
-        return $this->twig->render('Collection/index.html.twig', ['coins' => $coins]);
+        return $this->twig->render('Collection/index.html.twig', [
+            'coins' => $coins,
+            'origins' => $origins,
+            'metals' => $metals,
+        ]);
     }
 
     /**

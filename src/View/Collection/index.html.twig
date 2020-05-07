@@ -6,6 +6,51 @@
 {% block content %}
     <section class="collection">
         <h2 class="title-section my-5 text-center">Collection</h2>
+        <div class="wrap-collabsible container mx-auto">
+            <input id="collapsible" class="toggle" type="checkbox">
+            <label for="collapsible" class="lbl-toggle">Trier</label>
+            <div class="collapsible-content">
+                <div class="row container-fluid content-inner">
+                    <div class="col-4">
+                        <h3>Métal</h3>
+                        {% for metal in metals %}
+                            <label class="container">{{ metal.material }}
+                                <input type="checkbox" checked="checked">
+                                <span class="checkmark"></span>
+                            </label>
+                        {% endfor %}
+                    </div>
+                    <div class="col-4">
+                        <h3>Origine</h3>
+                        {% for origin in origins %}
+                            <label class="container">{{ origin.country }}
+                                <input type="checkbox" checked="checked">
+                                <span class="checkmark"></span>
+                            </label>
+                        {% endfor %}
+                    </div>
+                    <div class="col-4">
+                        <h3>Époque</h3>
+                        <label class="container">Antiquité
+                            <input type="checkbox" checked="checked">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="container">Moyen-âge
+                            <input type="checkbox">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="container">Temps moderne
+                            <input type="checkbox">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="container">
+                            <input type="checkbox">Époque contemporaine
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="row container-fluid mx-auto">
             {% for coin in coins %}
                 <div class="col-lg-6 col-xl-4 my-5">
@@ -15,10 +60,12 @@
                             <p class="mx-2">{{ coin.year }}</p>
                         </div>
                         <div class="card-body d-sm-flex align-items-center text-center">
-                            <img src="/assets/images/collection/{{ coin.image_recto }}" class="card-img mx-sm-auto"
+                            <img src="/assets/images/collection/{{ coin.image_recto }}"
+                                 class="card-img mx-sm-auto"
                                  alt="{{ coin.name }}">
                             {% if coin.image_verso != NULL %}
-                                <img src="/assets/images/collection/{{ coin.image_verso }}" class="card-img mx-sm-auto mt-sm-0"
+                                <img src="/assets/images/collection/{{ coin.image_verso }}"
+                                     class="card-img mx-sm-auto mt-sm-0"
                                      alt="{{ coin.name }}">
                             {% endif %}
                         </div>
@@ -45,10 +92,12 @@
                                 <p class="modal-coin-year mb-0" id="coinModalTitle">{{ coin.year }}</p>
                             </div>
                             <div class="modal-body d-flex justify-content-between p-sm-5">
-                                <img class="modal-img mx-auto" src="/assets/images/collection/{{ coin.image_recto }}"
+                                <img class="modal-img mx-auto"
+                                     src="/assets/images/collection/{{ coin.image_recto }}"
                                      alt="{{ coin.name }}">
                                 {% if coin.image_verso != NULL %}
-                                    <img class="modal-img ml-5" src="/assets/images/collection/{{ coin.image_verso }}"
+                                    <img class="modal-img ml-5"
+                                         src="/assets/images/collection/{{ coin.image_verso }}"
                                          alt="{{ coin.name }}">
                                 {% endif %}
                             </div>
