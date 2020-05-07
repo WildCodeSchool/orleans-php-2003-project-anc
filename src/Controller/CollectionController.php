@@ -29,6 +29,7 @@ class CollectionController extends AbstractController
      */
     public function index(): string
     {
+        var_dump($_POST);
         $collectionManager = new CollectionManager();
         $coins = $collectionManager->selectAllCoins();
         $origins = $collectionManager->selectOrigin();

@@ -148,4 +148,9 @@ class CollectionManager extends AbstractManager
         }
         $statement->execute();
     }
+
+    public function sort(array $data): void
+    {
+
+    }
 }
