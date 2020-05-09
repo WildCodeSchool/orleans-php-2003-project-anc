@@ -10,6 +10,7 @@
 namespace App\Controller;
 
 use App\Model\EventManager;
+use App\Verify\VerifyDate;
 use App\Verify\VerifyFileUpload;
 
 /**
@@ -46,9 +47,12 @@ class EventController extends AbstractController
                 $destination = 'assets/images/events/';
                 $upload = $files->fileControl(true);
                 $data = array_map('trim', $_POST);
+                $dates['start'] = $data['start_date'];
+                $dates['end'] = $data['end_date'];
                 $data = array_filter($data);
                 $errors = $this->formControl($data);
-                $errorsDate = $this->dateControl($data);
+                $date = new VerifyDate($dates);
+                $errorsDate = $date->dateControl();
 
                 if (empty($errors) && empty($errorsDate)) {
                     $data['image'] = $upload['image']['name'];
@@ -64,6 +68,7 @@ class EventController extends AbstractController
         return $this->twig->render('Admin/Add/event.html.twig', [
             'errors' => $errors ?? [],
             'errorsDate' => $errorsDate ?? [],
+            'errors_files' => $upload ?? [],
         ]);
     }
 
@@ -71,39 +76,17 @@ class EventController extends AbstractController
     {
         $errors = [];
 
-        if (strlen($data['name']) > 255) {
+        if (isset($data['name']) && strlen($data['name']) > 255) {
             $errors['length_name'] = "Le nom de l'évènement doit contenir 255 caractères au maximum";
         }
 
-        if (empty($data['name'])) {
+        if (!isset($data['name'])) {
             $errors['empty_name'] = "Le nom de l'évènement est requis";
         }
 
-        if (empty($data['start_date'])) {
+        if (!isset($data['start_date'])) {
             $errors['empty_start_date'] = "La date de début de l'évènement est requis";
         }
         return $errors;
-    }
-
-    private function dateControl($data): array
-    {
-        $errorsDate = [];
-
-        if ($data['start_date'] < date("Y-m-d")) {
-            $errorsDate['early_start_date'] =
-                "La date de début de l'évènement doit être égale au minimum à la date du jour";
-        }
-
-        if (isset($data['end_date']) && $data['end_date'] < date("Y-m-d")) {
-            $errorsDate['early_end_date'] =
-                "La date de fin de l'évènement doit être égale au minimum à la date du jour";
-        }
-
-        if (isset($data['end_date']) && $data['end_date'] <= $data['start_date']) {
-            $errorsDate['end_date_before_start'] =
-                "La date de fin de l'évènement doit se situer au minimum 1 jour après la date de début.
-                 Si l'évènement se déroule sur une seule journée, saisir uniquement la date de début";
-        }
-        return $errorsDate;
     }
 }

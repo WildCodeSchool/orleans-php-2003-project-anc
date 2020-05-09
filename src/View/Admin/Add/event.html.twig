@@ -10,6 +10,13 @@
 
         <h1 class="title-section text-center mb-5">Ajouter</h1>
         <a href="/admin/event" class="btn btn-primary mb-5">Retour</a>
+        {% for i in 0..errors_files | length - 1 %}
+            {% for key, value in errors_files[i] %}
+                <div class="alert alert-danger">
+                    <span class="mr-5">{{ key ~ ': ' }}</span> {{ value | upper }}
+                </div>
+            {% endfor %}
+        {% endfor %}
         {% if _get is defined  %}
             {% for key, value in _get %}
                 <div class="alert alert-{{ key }}">{{ value }}</div>
@@ -44,13 +51,13 @@
             <div class="form-row my-4">
                 <div class="form-group col-md-3">
                     <label for="start_date">Date de début de l'évènement</label>
-                    <input class="form-control" type="date" name="start_date" id="start_date" required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}">
+                    <input class="form-control" type="date" name="start_date" id="start_date" required>
                 </div>
             </div>
             <div class="form-row my-4">
                 <div class="form-group col-md-3">
                     <label for="end_date">Date de fin de l'évènement</label>
-                    <input class="form-control" type="date" name="end_date" id="end_date" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}">
+                    <input class="form-control" type="date" name="end_date" id="end_date">
                 </div>
             </div>
             <div class="form-row my-4">
