@@ -41,20 +41,23 @@ class EventController extends AbstractController
         $eventManager = new EventManager();
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $destination = 'assets/images/events/';
-            $files = new VerifyFileUpload($_FILES);
-            $data = array_map('trim', $_POST);
-            $errors = $this->formControl($data);
-            $errorsDate = $this->dateControl($data);
-            $upload = $files->fileControl(true);
+            if ($_FILES['image']['error'] !== 4) {
+                $files = new VerifyFileUpload($_FILES);
+                $destination = 'assets/images/events/';
+                $upload = $files->fileControl(true);
+                $data = array_map('trim', $_POST);
+                $data = array_filter($data);
+                $errors = $this->formControl($data);
+                $errorsDate = $this->dateControl($data);
 
-            if (empty($errors) && empty($errorsDate)) {
-                if (!empty($upload['image'])) {
+                if (empty($errors) && empty($errorsDate)) {
                     $data['image'] = $upload['image']['name'];
                     $files->uploadFile($upload['image']['tmp_name'], $destination, $upload['image']['name']);
+                    $eventManager->add($data);
+                    header('Location: /admin/event/?success=Évènement ajouté');
                 }
-                $eventManager->add($data);
-                header('Location: /admin/event/?success=Évènement ajouté');
+            } else {
+                header('Location: /Event/add/?danger=Une image est requise');
             }
         }
 
@@ -69,19 +72,15 @@ class EventController extends AbstractController
         $errors = [];
 
         if (strlen($data['name']) > 255) {
-            $errors['length_name'] = 'Le nom de l\'évènement doit contenir 255 caractères au maximum';
+            $errors['length_name'] = "Le nom de l'évènement doit contenir 255 caractères au maximum";
         }
 
         if (empty($data['name'])) {
-            $errors['empty_name']  = 'Le nom de l\'évènement est requis';
+            $errors['empty_name'] = "Le nom de l'évènement est requis";
         }
 
         if (empty($data['start_date'])) {
-            $errors['empty_start_date'] = 'La date de début de l\'évènement est requis';
-        }
-
-        if (empty($data['image'])) {
-            $errors['empty_image'] = 'Une image est requise';
+            $errors['empty_start_date'] = "La date de début de l'évènement est requis";
         }
         return $errors;
     }
@@ -92,17 +91,17 @@ class EventController extends AbstractController
 
         if ($data['start_date'] < date("Y-m-d")) {
             $errorsDate['early_start_date'] =
-                "La date de début de l\'évènement doit être égale au minimum à la date du jour";
+                "La date de début de l'évènement doit être égale au minimum à la date du jour";
         }
 
-        if ($data['end_date'] < date("Y-m-d")) {
+        if (isset($data['end_date']) && $data['end_date'] < date("Y-m-d")) {
             $errorsDate['early_end_date'] =
-                "La date de fin de l\'évènement doit être égale au minimum à la date du jour";
+                "La date de fin de l'évènement doit être égale au minimum à la date du jour";
         }
 
-        if ($data['end_date'] <= $data['start_date']) {
+        if (isset($data['end_date']) && $data['end_date'] <= $data['start_date']) {
             $errorsDate['end_date_before_start'] =
-                "La date de fin de l\évènement doit se situer au minimum 1 jour après la date de début.
+                "La date de fin de l'évènement doit se situer au minimum 1 jour après la date de début.
                  Si l'évènement se déroule sur une seule journée, saisir uniquement la date de début";
         }
         return $errorsDate;
