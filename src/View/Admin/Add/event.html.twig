@@ -10,28 +10,6 @@
 
         <h1 class="title-section text-center mb-5">Ajouter</h1>
         <a href="/admin/event" class="btn btn-primary mb-5">Retour</a>
-        {% for i in 0..errors_files | length - 1 %}
-            {% for key, value in errors_files[i] %}
-                <div class="alert alert-danger">
-                    <span class="mr-5">{{ key ~ ': ' }}</span> {{ value | upper }}
-                </div>
-            {% endfor %}
-        {% endfor %}
-        {% if _get is defined  %}
-            {% for key, value in _get %}
-                <div class="alert alert-{{ key }}">{{ value }}</div>
-            {% endfor %}
-        {% endif %}
-        {% if errors is defined  %}
-            {% for error in errors %}
-                <div class="alert alert-danger">{{ error }}</div>
-            {% endfor %}
-        {% endif %}
-        {% if errorsDate is defined  %}
-            {% for error in errorsDate %}
-                <div class="alert alert-danger">{{ error }}</div>
-            {% endfor %}
-        {% endif %}
 
         <form action="" method="post" enctype="multipart/form-data" class="p-4">
             <div class="row">
