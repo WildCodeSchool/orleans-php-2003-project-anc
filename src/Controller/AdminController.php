@@ -3,11 +3,13 @@
 
 namespace App\Controller;
 
+use App\Model\ClublifeManager;
 use App\Model\CollectionManager;
 use App\Model\EventManager;
 use App\Model\ExhibitionManager;
 use App\Model\MessageManager;
 use App\Model\OptionManager;
+use App\Verify\VerifyFileUpload;
 
 class AdminController extends AbstractController
 {
@@ -18,7 +20,14 @@ class AdminController extends AbstractController
 
     public function clublife(): string
     {
-        return $this->twig->render('Admin/clublife.html.twig');
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $clublifeController = new ClublifeController();
+            $clublifeController->update();
+        }
+
+        $clublifeManager = new ClublifeManager();
+        $clublifes = $clublifeManager->selectClublife();
+        return $this->twig->render('Admin/clublife.html.twig', ['clublifes' => $clublifes]);
     }
 
     public function event(): string
