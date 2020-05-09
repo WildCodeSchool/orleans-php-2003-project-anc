@@ -132,12 +132,11 @@ input[type='checkbox'] {
 .collapsible-content {
     max-height: 0;
     overflow: hidden;
-
     transition: max-height .25s ease-in-out;
 }
 
 .toggle:checked + .lbl-toggle + .collapsible-content {
-    max-height: 120vh;
+    max-height: 150vh;
 }
 
 /*Fin formulaire de tri pièces*/
