@@ -158,7 +158,14 @@ input[type='checkbox'] {
     .collection .card-body img {
         margin: var(--spacing) 0;
     }
+}
+
+@media screen and (max-width: 768px) {
     .wrap-collabsible {
-        padding-right: 15px;
+        padding-right: 35px;
+    }
+
+    .content-inner {
+        margin-left: -5px;
     }
 }
