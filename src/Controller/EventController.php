@@ -43,6 +43,7 @@ class EventController extends AbstractController
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if ($_FILES['image']['error'] !== 4) {
+                $dates = [];
                 $files = new VerifyFileUpload($_FILES);
                 $destination = 'assets/images/events/';
                 $upload = $files->fileControl(true);
