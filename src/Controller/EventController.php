@@ -39,7 +39,7 @@ class EventController extends AbstractController
 
     public function add()
     {
-        $eventManager = new EventManager();
+//        $eventManager = new EventManager();
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if ($_FILES['image']['error'] !== 4) {
@@ -54,10 +54,10 @@ class EventController extends AbstractController
                 $date = new VerifyDate($dates);
                 $errorsDate = $date->dateControl();
 
-                if (empty($errors) && empty($errorsDate)) {
+                if (empty($errors) && empty($errorsDate) && array_key_exists('image', $upload)) {
                     $data['image'] = $upload['image']['name'];
                     $files->uploadFile($upload['image']['tmp_name'], $destination, $upload['image']['name']);
-                    $eventManager->add($data);
+//                    $eventManager->add($data);
                     header('Location: /admin/event/?success=Évènement ajouté');
                 }
             } else {
