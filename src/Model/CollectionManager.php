@@ -162,7 +162,6 @@ class CollectionManager extends AbstractManager
         }
 
         if (!empty($data['era'])) {
-            $eraString = '';
             $eraList = array_values($data['era']);
             if (in_array('antiquity', $eraList)) {
                 $eraString .= 'c.year <= 476 OR ';
