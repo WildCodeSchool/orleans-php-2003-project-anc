@@ -106,25 +106,29 @@ class AdminController extends AbstractController
 
     public function option(): string
     {
-        $optionManager = new OptionManager();
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            if (!$optionManager->controlColumnExist($_POST['table'], $_POST['column'])) {
-                header('Location: /admin/option/?danger=ERREUR: opération non effectuée, merci de rééssayer');
-            } else {
-                $arr = $this->addOption($_POST);
-                if (empty($arr)) {
-                    $optionManager->addingOption($_POST['table'], $_POST['column'], $_POST['new']);
-                    header('Location: /admin/option/?success=Enregistré avec succès !');
-                } else {
-                    header('Location: /admin/option/?danger=' . $arr[0]);
-                }
-            }
-        }
         $collectionManager = new CollectionManager();
         $origin = $collectionManager->selectOrigin();
+        $subject = $collectionManager->selectSubject();
         return $this->twig->render('Admin/option.html.twig', [
-            'origins' => $origin
+            'origins' => $origin,
+            'subjects' => $subject
         ]);
+    }
+
+    public function insertOptionData()
+    {
+        $optionManager = new OptionManager();
+        if (!$optionManager->controlColumnExist($_POST['table'], $_POST['column'])) {
+            header('Location: /admin/option/?danger=ERREUR: opération non effectuée, merci de rééssayer');
+        } else {
+            $arr = $this->addOption($_POST);
+            if (empty($arr)) {
+                $optionManager->addingOption($_POST['table'], $_POST['column'], $_POST['new']);
+                header('Location: /admin/option/?success=Enregistré avec succès !');
+            } else {
+                header('Location: /admin/option/?danger=' . $arr[0]);
+            }
+        }
     }
 
     private function addOption(array $data): array

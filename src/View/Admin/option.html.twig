@@ -1,8 +1,9 @@
 {% extends "layout.html.twig" %}
+{% block title %}
+    Gestion des options
+{% endblock %}
 
 {% block content %}
-
-
     <section class="section option container">
         <h2 class="title-section my-5 text-center">Gérer mes options</h2>
 
@@ -16,6 +17,7 @@
                 {{ _get['danger'] }}
             </div>
         {% endif %}
+
         <fieldset class="p-md-5 my-5">
             <legend><h3>Origines des pièces</h3></legend>
             <div class="row">
@@ -37,7 +39,7 @@
                     </form>
                 </div>
                 <div class="col m-2">
-                    <form action="#" method="post" class="col p-4 form-adding">
+                    <form action="/admin/insertOptionData/" method="post" class="col p-4 form-adding">
                         <div class="form-group col">
                             <label for="country">Entrez une nouvelle origine</label>
                             <input type="hidden" name="column" value="country">
@@ -50,12 +52,42 @@
                     </form>
                 </div>
             </div>
-
         </fieldset>
 
         <fieldset class="p-5 my-5">
             <legend><h3>Sujets des emails</h3></legend>
-
+            <div class="row">
+                <div class="col-12 col-md-6">
+                    <form action="/admin/updateOptionData/" method="post" class="form-row col">
+                        <input type="hidden" name="column" value="subject">
+                        <input type="hidden" name="table" value="subject">
+                        <div class="origin-wrapper col-12">
+                            {% for i in 0..subjects | length - 1 %}
+                                <div class="form-group origin w-100">
+                                    <input type="text" class="form-control" name="{{ subjects[i].id }}"
+                                           value="{{ subjects[i].subject }}">
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <div class="form-group col mt-3">
+                            <button class="btn btn-primary">Enregistrer</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="col m-2">
+                    <form action="/admin/insertOptionData/" method="post" class="col p-4 form-adding">
+                        <div class="form-group col">
+                            <label for="subject">Entrez un nouveau sujet</label>
+                            <input type="hidden" name="column" value="subject">
+                            <input type="hidden" name="table" value="subject">
+                            <input class="form-control" type="text" name="new" id="subject">
+                        </div>
+                        <div class="form-group text-right btn-add">
+                            <button class="btn btn-primary">Ajouter</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </fieldset>
 
         <fieldset class="p-5 my-5">

@@ -21,6 +21,7 @@ class CollectionManager extends AbstractManager
     const C_TABLE = 'coin';
     const M_TABLE = 'metal';
     const O_TABLE = 'origin';
+    const S_TABLE = 'subject';
 
     /**
      *  Initializes this class.
@@ -76,6 +77,10 @@ class CollectionManager extends AbstractManager
     public function selectMetal(): array
     {
         return $this->pdo->query('SELECT * FROM ' . self::M_TABLE)->fetchAll();
+    }
+    public function selectSubject(): array
+    {
+        return $this->pdo->query('SELECT * FROM ' . self::S_TABLE)->fetchAll();
     }
 
     public function update(int $id, array $data): void
