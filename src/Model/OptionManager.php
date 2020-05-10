@@ -27,6 +27,12 @@ class OptionManager extends AbstractManager
         $req->execute();
     }
 
+    /**
+     * @param string $table
+     * @param string $column
+     * @param string $entity
+     * @return mixed
+     */
     public function controlIfDataExist(string $table, string $column, string $entity)
     {
         $req = $this->pdo->prepare('SELECT * FROM ' . $table . ' WHERE ' . $column . '=:entity');

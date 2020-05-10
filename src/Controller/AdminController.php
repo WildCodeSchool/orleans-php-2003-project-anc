@@ -106,7 +106,6 @@ class AdminController extends AbstractController
 
     public function option(): string
     {
-        $arr = [];
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $arr = $this->addOption($_POST);
             if (empty($arr)) {
