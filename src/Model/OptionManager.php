@@ -40,4 +40,19 @@ class OptionManager extends AbstractManager
         $req->execute();
         return $req->fetch();
     }
+
+    /**
+     * @param string $table
+     * @param string $column
+     * @param array  $data
+     */
+    public function updateOption(string $table, string $column, array $data): void
+    {
+        foreach ($data as $key => $value) {
+            $req = $this->pdo->prepare('UPDATE ' . $table . ' SET ' . $column . '=:data WHERE id=:id');
+            $req->bindValue(':data', $value, \PDO::PARAM_STR);
+            $req->bindValue(':id', $key, \PDO::PARAM_INT);
+            $req->execute();
+        }
+    }
 }
