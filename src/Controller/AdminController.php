@@ -107,13 +107,18 @@ class AdminController extends AbstractController
     public function option(): string
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $arr = $this->addOption($_POST);
-            if (empty($arr)) {
-                $optionManager = new OptionManager();
-                $optionManager->addingOption($_POST['table'], $_POST['column'], $_POST['new']);
-                header('Location: /admin/option/?success=Enregistré avec succès !');
+            $optionManager = new OptionManager();
+            if (!$optionManager->controlColumnExist($_POST['table'], $_POST['column'])) {
+                header('Location: /admin/option/?danger=ERREUR: opération non effectuée, merci de rééssayer');
             } else {
-                header('Location: /admin/option/?danger=' . $arr[0]);
+                $arr = $this->addOption($_POST);
+                if (empty($arr)) {
+                    $optionManager = new OptionManager();
+                    $optionManager->addingOption($_POST['table'], $_POST['column'], $_POST['new']);
+                    header('Location: /admin/option/?success=Enregistré avec succès !');
+                } else {
+                    header('Location: /admin/option/?danger=' . $arr[0]);
+                }
             }
         }
         $collectionManager = new CollectionManager();
