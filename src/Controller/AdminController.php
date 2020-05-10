@@ -83,9 +83,33 @@ class AdminController extends AbstractController
     public function collection(): string
     {
         $collectionManager = new CollectionManager();
-        $collections = $collectionManager->selectAllCoins();
+        $data = [];
 
-        return $this->twig->render('Admin/collection.html.twig', ['collections' => $collections]);
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST)) {
+            $data['metal'] = $this->postFilter('/^metal/', $_POST);
+            $data['origin'] = $this->postFilter('/^origin/', $_POST);
+            $data['era'] = $this->postFilter('/^era/', $_POST);
+
+            $collections = $collectionManager->selectSort($data);
+        } else {
+            $collections = $collectionManager->selectAllCoins();
+        }
+
+        $origins = $collectionManager->selectOrigin();
+        $metals = $collectionManager->selectMetal();
+
+        return $this->twig->render('Admin/collection.html.twig', [
+            'collections' => $collections,
+            'origins' => $origins,
+            'metals' => $metals,
+        ]);
+    }
+
+    public function postFilter($pattern, $input, $flags = 0)
+    {
+        return array_filter($input, function ($key) use ($pattern, $flags) {
+            return preg_match($pattern, $key, $flags);
+        }, ARRAY_FILTER_USE_KEY);
     }
 
     /**
