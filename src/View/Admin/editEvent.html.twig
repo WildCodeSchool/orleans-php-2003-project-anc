@@ -1,14 +1,14 @@
-{% extends "layout.html.twig" %}
+{% extends 'layout.html.twig' %}
 
 {% block title %}
-    Edition pièce
+    Éditer Évènement
 {% endblock %}
 
 {% block content %}
 
-    <section class="section edit-coin-admin container">
+    <section class="section add-event-admin container">
 
-        <h1 class="title-section text-center mb-5">Editer</h1>
+        <h1 class="title-section text-center mb-5">Ajouter</h1>
         <a href="/admin/event" class="btn btn-primary mb-5">Retour</a>
         {% for i in 0..errors_files | length - 1 %}
             {% for key, value in errors_files[i] %}
@@ -17,49 +17,53 @@
                 </div>
             {% endfor %}
         {% endfor %}
-
-        {% for i in 0..errors_form | length - 1 if errors_form is not empty %}
-            <div class="alert alert-danger">
-                {{ errors_form[i] }}:
-            </div>
-        {% endfor %}
-
-        <form action="#" method="post" enctype="multipart/form-data" class="p-4">
+        {% if _get is defined  %}
+            {% for key, value in _get %}
+                <div class="alert alert-{{ key }}">{{ value }}</div>
+            {% endfor %}
+        {% endif %}
+        {% if errors is defined  %}
+            {% for error in errors %}
+                <div class="alert alert-danger">{{ error }}</div>
+            {% endfor %}
+        {% endif %}
+        {% if errorsDate is defined  %}
+            {% for error in errorsDate %}
+                <div class="alert alert-danger">{{ error }}</div>
+            {% endfor %}
+        {% endif %}
+        <form action="" method="post" enctype="multipart/form-data" class="p-4">
             <div class="row">
                 <div class="col text-center">
-                    <img src="/assets/images/collection/{{ event.img }}" alt="{{ event.name }}">
+                    <img src="/assets/images/events/{{ events.img }}" alt="{{ events.name }}" width="50%">
                     <div class="custom-file my-4">
-                        <input type="file" class="form-control-file" id="image-verso" name="image-verso">
-                        <label for="image-verso" class="mt-2">Choisir une image</label>
+                        <input type="file" class="custom-file-input" id="img" name="img">
+                        <label class="custom-file-label" for="img">Choisir une image</label>
                     </div>
                 </div>
             </div>
             <div class="form-row my-4">
                 <div class="form-group col-md-6">
                     <label for="name">Nom de l'évènement</label>
-                    <input class="form-control" type="text" name="name" id="name" value="{{ event.name }}">
+                    <input class="form-control" type="text" name="name" id="name" value="{{ events.name }}">
                 </div>
+            </div>
+            <div class="form-row my-3">
                 <div class="form-group col-md-3">
-                    <label for="name">Date de début</label>
-                    <input class="form-control" type="text" name="name" id="name" value="{{ event.start_at | date("d/m/Y") }}">
+                    <label for="start_at">Date de début de l'évènement</label>
+                    <input class="form-control" type="date" name="start_at" id="start_at" value="{{ events.start_at }}" required>
                 </div>
+            </div>
+            <div class="form-row my-3">
                 <div class="form-group col-md-3">
-                    <label for="name">Date de fin</label>
-                    <input class="form-control" type="text" name="name" id="name" value="{{ event.end_at | date("d/m/Y") }}">
+                    <label for="end_at">Date de fin de l'évènement</label>
+                    <input class="form-control" type="date" name="end_at" id="end_at" value="{{ events.end_at }}" >
                 </div>
             </div>
             <div class="form-row my-4">
-                <div class="form-group form-summernote">
-                    <label for="summernote">Description</label>
-                    <textarea class="form-control" name="description" id="summernote" cols="150"
-                              rows="10">{{ event.description }}</textarea>
-                </div>
-            </div>
-            <div class="form-row my-4">
-                <button class="btn btn-primary ml-auto">Enregistrer</button>
+                <button class="btn btn-primary ml-auto">Ajouter</button>
             </div>
         </form>
-
     </section>
 
 {% endblock %}

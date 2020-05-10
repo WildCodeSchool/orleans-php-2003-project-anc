@@ -73,6 +73,61 @@ class EventController extends AbstractController
         ]);
     }
 
+    public function edit($id)
+    {
+        $eventManager = new EventManager();
+        $events = $eventManager->selectOneEventById($id);
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if ($_FILES['img']['error'] !== 4) {
+                $dates = [];
+                $files = new VerifyFileUpload($_FILES);
+                $destination = 'assets/images/events/';
+                $upload = $files->fileControl(true);
+                $data = array_map('trim', $_POST);
+                $data['id'] = $events['id'];
+                $dates['start'] = $data['start_at'];
+                $dates['end'] = $data['end_at'];
+                $data = array_filter($data);
+                $errors = $this->formControl($data);
+                $date = new VerifyDate($dates);
+                $errorsDate = $date->dateControl();
+
+                if (empty($errors) && empty($errorsDate) && array_key_exists('img', $upload)) {
+                    $data['img'] = $upload['img']['name'];
+                    $files->uploadFile($upload['img']['tmp_name'], $destination, $upload['img']['name']);
+                    $eventManager->edit($data);
+                    header("Location: /event/edit/$id/?success=Évènement modifié");
+                } else {
+                    header("Location: /event/edit/$id/?danger=Une erreur est survenue");
+                }
+            } else {
+                $dates = [];
+                $data = array_map('trim', $_POST);
+                $data['id'] = $events['id'];
+                $dates['start'] = $data['start_at'];
+                $dates['end'] = $data['end_at'];
+                $data['img'] = $events['img'];
+                $data = array_filter($data);
+                $errors = $this->formControl($data);
+                $date = new VerifyDate($dates);
+                $errorsDate = $date->dateControl();
+
+                if (empty($errors) && empty($errorsDate)) {
+                    $eventManager->edit($data);
+                    header("Location: /event/edit/$id/?success=Évènement modifié");
+                }
+            }
+        }
+
+        return $this->twig->render('Admin/editEvent.html.twig', [
+            'events' => $events,
+            'errors' => $errors ?? [],
+            'errorsDate' => $errorsDate ?? [],
+            'errors_files' => $upload ?? [],
+        ]);
+    }
+
     private function formControl($data): array
     {
         $errors = [];
@@ -85,8 +140,8 @@ class EventController extends AbstractController
             $errors['empty_name'] = "Le nom de l'évènement est requis";
         }
 
-        if (!isset($data['start_date'])) {
-            $errors['empty_start_date'] = "La date de début de l'évènement est requis";
+        if (!isset($data['start_at'])) {
+            $errors['empty_start_at'] = "La date de début de l'évènement est requis";
         }
         return $errors;
     }
