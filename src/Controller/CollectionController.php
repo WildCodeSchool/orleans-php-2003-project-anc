@@ -11,6 +11,7 @@ namespace App\Controller;
 
 use App\Model\CollectionManager;
 use App\Verify\VerifyFileUpload;
+use App\Services\Filter;
 use mysql_xdevapi\Result;
 
 /**
@@ -33,9 +34,9 @@ class CollectionController extends AbstractController
         $data = [];
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST)) {
-            $data['metal'] = $this->postFilter('/^metal/', $_POST);
-            $data['origin'] = $this->postFilter('/^origin/', $_POST);
-            $data['era'] = $this->postFilter('/^era/', $_POST);
+            $data['metal'] = Filter::post('/^metal/', $_POST);
+            $data['origin'] = Filter::post('/^origin/', $_POST);
+            $data['era'] = Filter::post('/^era/', $_POST);
 
             $coins = $collectionManager->selectSort($data);
         } else {
@@ -50,13 +51,6 @@ class CollectionController extends AbstractController
             'origins' => $origins,
             'metals' => $metals,
         ]);
-    }
-
-    public function postFilter($pattern, $input, $flags = 0)
-    {
-        return array_filter($input, function ($key) use ($pattern, $flags) {
-            return preg_match($pattern, $key, $flags);
-        }, ARRAY_FILTER_USE_KEY);
     }
 
     /**
