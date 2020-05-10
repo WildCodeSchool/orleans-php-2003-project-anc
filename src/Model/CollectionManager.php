@@ -152,7 +152,7 @@ class CollectionManager extends AbstractManager
     public function selectSort(array $data)
     {
         $metalString = '';
-        $eraString = "c.year BETWEEN '-4000' AND '2100' ";
+        $eraString = '';
         $originString = '';
 
         if (!empty($data['metal'])) {
@@ -187,6 +187,7 @@ class CollectionManager extends AbstractManager
 
         $filter = $metalString . ' AND ' . $eraString . ' AND ' . $originString;
         $filter = trim($filter, ' AND\AND ');
+        $filter = str_replace('AND  AND', 'AND', $filter);
 
         $select = $this->selectJoin();
 
