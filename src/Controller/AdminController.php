@@ -171,4 +171,27 @@ class AdminController extends AbstractController
             header('Location: /admin/option/?danger=' . $arr[0]);
         }
     }
+
+    public function changeOptionData()
+    {
+        $optionManager = new OptionManager();
+        if (!$optionManager->controlColumnExist($_POST['table'], $_POST['column'])) {
+            header('Location: /admin/option/?danger=ERREUR: opération non effectuée, merci de rééssayer');
+        }
+        $post = array_map('trim', $_POST);
+        $arr = $this->addOption($post);
+        if (empty($arr)) {
+            if ($_POST['action'] === 'update') {
+                $optionManager->updateEmailOption($post);
+                header('Location: /admin/option/?success=Enregistré avec succès !');
+            } elseif ($_POST['action'] === 'delete') {
+                $optionManager->deleteEmailOption($post);
+                header('Location: /admin/option/?success=Supprimé avec succès !');
+            } else {
+                header('Location: /admin/option/?danger=ERREUR: opération non effectuée, merci de rééssayer');
+            }
+        } else {
+            header('Location: /admin/option/?danger=' . $arr[0]);
+        }
+    }
 }
