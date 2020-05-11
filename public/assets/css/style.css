@@ -102,3 +102,50 @@ form .note-toolbar, form .note-btn {
 .edit-coin-admin .form-row .form-summernote {
     width: 100%;
 }
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --main-bg-color: #11191f;
+        --second-bg-color: #1e2931;
+        --button-bg-color: #454f57;
+        --button-hover-bg-color: #606b74;
+        --box-shadow: 10px 10px 5px var(--dark);
+    }
+
+    body {
+        background-color: var(--main-bg-color);
+        color: var(--light);
+    }
+
+    .navbar, .collapse {
+        background-color: var(--second-bg-color);
+    }
+
+    header {
+        color: var(--main-bg-color);
+    }
+
+    .card {
+        background-color: var(--second-bg-color);
+    }
+
+    .btn {
+        background-color: var(--button-bg-color);
+    }
+
+    .btn:hover {
+        background-color: var(--button-hover-bg-color);
+    }
+
+    .admin-dashboard .card {
+        background-color: var(--second-bg-color);
+    }
+
+    h1, h2, h3, h4 {
+        color: #B5926F;
+    }
+
+    li {
+        color: white;
+    }
+}

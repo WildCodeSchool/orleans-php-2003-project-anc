@@ -33,9 +33,26 @@ body {
     .contact .btn {
         width: 100%;
     }
+
     .contact .button .btn:last-child {
         width: 50%;
         max-width: 150px;
         margin: 30px auto auto;
     }
 }
+
+@media (prefers-color-scheme: dark) {
+
+    .contact .btn:enabled  {
+        background-color: var(--button-bg-color);
+        color: white;
+        box-shadow: none;
+        border: none;
+    }
+
+    .contact .btn:hover {
+        background-color: var(--button-hover-bg-color);
+    }
+
+}
+

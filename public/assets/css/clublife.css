@@ -15,7 +15,24 @@
     object-fit: contain;
 }
 
-@media (max-width: 800px){
+
+.custom-file-label {
+    cursor: pointer;
+    color: var(--light);
+    background-color: var(--button-bg-color);
+    font-weight: bold;
+}
+
+.custom-file-label:hover {
+    background-color: var(--button-hover-bg-color);
+}
+
+
+.custom-file-input {
+    display: none;
+}
+
+@media (max-width: 800px) {
 
     .clublife img {
         height: 100%;

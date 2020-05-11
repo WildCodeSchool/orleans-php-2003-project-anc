@@ -17,3 +17,20 @@
 .messages .accordion .card {
     border-radius: var(--light-radius);
 }
+
+@media (prefers-color-scheme: dark) {
+
+    .messages .btn {
+        color: var(--light);
+    }
+    .messages .card-header {
+        background: var(--button-bg-color);
+    }
+    .messages .btn:hover {
+        background: var(--button-bg-color);
+    }
+
+    .messages td {
+        color: var(--light);
+    }
+}

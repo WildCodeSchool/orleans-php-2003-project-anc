@@ -21,3 +21,17 @@
     font-family: var(--title-font);
     font-size: var(--medium-size);
 }
+
+@media (prefers-color-scheme: dark) {
+
+    .btn-danger{
+        border: none;
+        background-color: red;
+    }
+
+    .btn-primary{
+        border: none;
+        background-color: green;
+    }
+
+}
