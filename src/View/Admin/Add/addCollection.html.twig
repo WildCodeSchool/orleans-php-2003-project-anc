@@ -10,6 +10,11 @@
 
         <h1 class="title-section text-center mb-5">Ajouter une pièce</h1>
         <a href="/admin/collection" class="btn btn-primary mb-5">Retour</a>
+        {% if errors is defined  %}
+            {% for error in errors %}
+                <div class="alert alert-danger">{{ error }}</div>
+            {% endfor %}
+        {% endif %}
 
         <form action="#" method="post" enctype="multipart/form-data" class="p-4">
             <div class="row">
