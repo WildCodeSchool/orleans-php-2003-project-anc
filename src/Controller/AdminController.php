@@ -8,6 +8,7 @@ use App\Model\CollectionManager;
 use App\Model\EventManager;
 use App\Model\ExhibitionManager;
 use App\Model\MessageManager;
+use App\Services\Filter;
 use App\Model\OptionManager;
 use App\Verify\VerifyFileUpload;
 
@@ -84,9 +85,26 @@ class AdminController extends AbstractController
     public function collection(): string
     {
         $collectionManager = new CollectionManager();
-        $collections = $collectionManager->selectAllCoins();
+        $data = [];
 
-        return $this->twig->render('Admin/collection.html.twig', ['collections' => $collections]);
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST)) {
+            $data['metal']= Filter::post('/^metal/', $_POST);
+            $data['origin'] = Filter::post('/^origin/', $_POST);
+            $data['era']= Filter::post('/^era/', $_POST);
+
+            $collections = $collectionManager->selectSort($data);
+        } else {
+            $collections = $collectionManager->selectAllCoins();
+        }
+
+        $origins = $collectionManager->selectOrigin();
+        $metals = $collectionManager->selectMetal();
+
+        return $this->twig->render('Admin/collection.html.twig', [
+            'collections' => $collections,
+            'origins' => $origins,
+            'metals' => $metals,
+        ]);
     }
 
     /**
@@ -106,6 +124,20 @@ class AdminController extends AbstractController
 
     public function option(): string
     {
+        $optionManager = new OptionManager();
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (!$optionManager->controlColumnExist($_POST['table'], $_POST['column'])) {
+                header('Location: /admin/option/?danger=ERREUR: opération non effectuée, merci de rééssayer');
+            } else {
+                $arr = $this->addOption($_POST);
+                if (empty($arr)) {
+                    $optionManager->addingOption($_POST['table'], $_POST['column'], $_POST['new']);
+                    header('Location: /admin/option/?success=Enregistré avec succès !');
+                } else {
+                    header('Location: /admin/option/?danger=' . $arr[0]);
+                }
+            }
+        }
         $collectionManager = new CollectionManager();
         $origin = $collectionManager->selectOrigin();
         $subject = $collectionManager->selectSubject();
@@ -132,7 +164,7 @@ class AdminController extends AbstractController
             }
         }
     }
-
+  
     private function addOption(array $data): array
     {
         $errNew = [];
