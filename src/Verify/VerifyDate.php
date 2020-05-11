@@ -28,7 +28,7 @@ class VerifyDate
 
         if ($dates['start'] < date("Y-m-d")) {
             $this->errorsDate['early_start_date'] =
-                "La date de début de l'évènement doit être égale au minimum à la date du jour.";
+                "la date de début de l'évènement ne peut être antérieure à la date du jour.";
         }
 
         if (!empty($dates['end'])) {

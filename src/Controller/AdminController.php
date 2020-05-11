@@ -8,6 +8,8 @@ use App\Model\CollectionManager;
 use App\Model\EventManager;
 use App\Model\ExhibitionManager;
 use App\Model\MessageManager;
+use App\Services\Filter;
+use App\Model\OptionManager;
 use App\Verify\VerifyFileUpload;
 
 class AdminController extends AbstractController
@@ -83,9 +85,26 @@ class AdminController extends AbstractController
     public function collection(): string
     {
         $collectionManager = new CollectionManager();
-        $collections = $collectionManager->selectAllCoins();
+        $data = [];
 
-        return $this->twig->render('Admin/collection.html.twig', ['collections' => $collections]);
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST)) {
+            $data['metal']= Filter::post('/^metal/', $_POST);
+            $data['origin'] = Filter::post('/^origin/', $_POST);
+            $data['era']= Filter::post('/^era/', $_POST);
+
+            $collections = $collectionManager->selectSort($data);
+        } else {
+            $collections = $collectionManager->selectAllCoins();
+        }
+
+        $origins = $collectionManager->selectOrigin();
+        $metals = $collectionManager->selectMetal();
+
+        return $this->twig->render('Admin/collection.html.twig', [
+            'collections' => $collections,
+            'origins' => $origins,
+            'metals' => $metals,
+        ]);
     }
 
     /**
@@ -101,5 +120,69 @@ class AdminController extends AbstractController
         $messageManager = new MessageManager();
         $messageManager->removeOneMessage($id);
         return true;
+    }
+
+    public function option(): string
+    {
+        $optionManager = new OptionManager();
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (!$optionManager->controlColumnExist($_POST['table'], $_POST['column'])) {
+                header('Location: /admin/option/?danger=ERREUR: opération non effectuée, merci de rééssayer');
+            } else {
+                $arr = $this->addOption($_POST);
+                if (empty($arr)) {
+                    $optionManager->addingOption($_POST['table'], $_POST['column'], $_POST['new']);
+                    header('Location: /admin/option/?success=Enregistré avec succès !');
+                } else {
+                    header('Location: /admin/option/?danger=' . $arr[0]);
+                }
+            }
+        }
+        $collectionManager = new CollectionManager();
+        $origin = $collectionManager->selectOrigin();
+        return $this->twig->render('Admin/option.html.twig', [
+            'origins' => $origin
+        ]);
+    }
+
+    private function addOption(array $data): array
+    {
+        $errNew = [];
+        $adding = array_map('trim', $data);
+        foreach ($adding as $key) {
+            if (empty($key)) {
+                $errNew[] = 'Le champs est requis !';
+            }
+            if (strlen($key) > 80) {
+                $errNew[] = 'Le champs doit-être inférieur à 80 caractères !';
+            }
+        }
+        $optionManager = new OptionManager();
+        if (isset($_POST['new'])) {
+            $exist = $optionManager->controlIfDataExist($_POST['table'], $_POST['column'], $_POST['new']);
+            if (!empty($exist)) {
+                $errNew[] = 'La valeur existe déjà dans la liste !';
+            }
+        }
+        return $errNew;
+    }
+
+    public function updateOptionData(): void
+    {
+        $table = $_POST['table'];
+        $column = $_POST['column'];
+        $arr = $this->addOption($_POST);
+
+        $optionManager = new OptionManager();
+        if (!$optionManager->controlColumnExist($table, $column)) {
+            header('Location: /admin/option/?danger=ERREUR: opération non effectuée, merci de rééssayer');
+        } elseif (empty($arr)) {
+            unset($_POST['table'], $_POST['column']);
+            $post = array_map('trim', $_POST);
+            $optionManager->updateOption($table, $column, $post);
+            header('Location: /admin/option/?success=Enregistré avec succès !');
+        } else {
+            header('Location: /admin/option/?danger=' . $arr[0]);
+        }
     }
 }
