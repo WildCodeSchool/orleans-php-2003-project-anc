@@ -40,7 +40,7 @@ class OptionManager extends AbstractManager
         $req->execute();
         return $req->fetch();
     }
-
+  
     /**
      * @param string $table
      * @param string $column
