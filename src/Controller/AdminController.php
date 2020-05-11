@@ -102,4 +102,13 @@ class AdminController extends AbstractController
         $messageManager->removeOneMessage($id);
         return true;
     }
+
+    public function option(): string
+    {
+        $collectionManager = new CollectionManager();
+        $origin = $collectionManager->selectOrigin();
+        return $this->twig->render('Admin/option.html.twig', [
+            'origins' => $origin
+        ]);
+    }
 }
