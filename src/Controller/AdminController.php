@@ -151,7 +151,7 @@ class AdminController extends AbstractController
     {
         $optionManager = new OptionManager();
         if (!$optionManager->controlColumnExist($_POST['table'], $_POST['column'])) {
-            header('Location: /admin/option/?danger=ERREUR: opération non effectuée, merci de rééssayer');
+            header('Location: /admin/option/?danger=ERREUR: opération non effectuée, merci de réessayer');
         } else {
             $arr = $this->addOption($_POST);
             if (empty($arr)) {
