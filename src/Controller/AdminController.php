@@ -109,9 +109,11 @@ class AdminController extends AbstractController
         $collectionManager = new CollectionManager();
         $origin = $collectionManager->selectOrigin();
         $subject = $collectionManager->selectSubject();
+        $metal = $collectionManager->selectMetal();
         return $this->twig->render('Admin/option.html.twig', [
             'origins' => $origin,
-            'subjects' => $subject
+            'subjects' => $subject,
+            'metals' => $metal
         ]);
     }
 
