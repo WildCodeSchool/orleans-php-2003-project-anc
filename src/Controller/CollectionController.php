@@ -63,7 +63,7 @@ class CollectionController extends AbstractController
                     }
                 }
                 $collectionManager->add($data);
-                header('Location: /admin/collection/?success=Données mises à jour avec succès !!');
+                header('Location: /admin/collection/?success=Pièce ajoutée');
             }
         }
         $origins = $collectionManager->selectOrigin();
@@ -72,6 +72,7 @@ class CollectionController extends AbstractController
         return $this->twig->render('Admin/Add/addCollection.html.twig', [
             'origins' => $origins,
             'metals' => $metals,
+            'errors' => $errors ?? []
         ]);
     }
 
