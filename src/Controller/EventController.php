@@ -141,7 +141,7 @@ class EventController extends AbstractController
         }
 
         if (!isset($data['start_at'])) {
-            $errors['empty_start_at'] = "La date de début de l'évènement est requis";
+            $errors['empty_start_at'] = "La date de début de l'évènement est requise";
         }
         return $errors;
     }
