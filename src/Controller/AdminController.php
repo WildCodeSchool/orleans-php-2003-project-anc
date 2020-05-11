@@ -9,6 +9,7 @@ use App\Model\EventManager;
 use App\Model\ExhibitionManager;
 use App\Model\MessageManager;
 use App\Services\Filter;
+use App\Model\OptionManager;
 use App\Verify\VerifyFileUpload;
 
 class AdminController extends AbstractController
@@ -119,5 +120,45 @@ class AdminController extends AbstractController
         $messageManager = new MessageManager();
         $messageManager->removeOneMessage($id);
         return true;
+    }
+
+    public function option(): string
+    {
+        $arr = [];
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $arr = $this->addOption($_POST);
+            if (empty($arr)) {
+                $optionManager = new OptionManager();
+                $optionManager->addingOption($_POST['table'], $_POST['column'], $_POST['new']);
+                header('Location: /admin/option/?success=Enregistré avec succès !');
+            } else {
+                header('Location: /admin/option/?danger=' . $arr[0]);
+            }
+        }
+        $collectionManager = new CollectionManager();
+        $origin = $collectionManager->selectOrigin();
+        return $this->twig->render('Admin/option.html.twig', [
+            'origins' => $origin
+        ]);
+    }
+
+    private function addOption(array $data): array
+    {
+        $errNew = [];
+        $adding = array_map('trim', $data);
+        foreach ($adding as $key) {
+            if (empty($key)) {
+                $errNew[] = 'Le champs est requis !';
+            }
+            if (strlen($key) > 80) {
+                $errNew[] = 'Le champs doit-être inférieur à 80 caractères !';
+            }
+        }
+        $optionManager = new OptionManager();
+        $exist = $optionManager->controlIfDataExist($_POST['table'], $_POST['column'], $_POST['new']);
+        if (!empty($exist)) {
+            $errNew[] = 'La valeur existe déjà dans la liste !';
+        }
+        return $errNew;
     }
 }

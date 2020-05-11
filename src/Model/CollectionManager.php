@@ -70,7 +70,7 @@ class CollectionManager extends AbstractManager
 
     public function selectOrigin(): array
     {
-        return $this->pdo->query('SELECT * FROM ' . self::O_TABLE)->fetchAll();
+        return $this->pdo->query('SELECT * FROM ' . self::O_TABLE . ' ORDER BY country ASC')->fetchAll();
     }
 
     public function selectMetal(): array

@@ -10,6 +10,12 @@
     <section class="section events-admin container-fluid">
         <h2 class="title-section my-5 text-center">Administration évènements</h2>
         <a href="/admin/index" class="btn btn-primary my-5">Retour</a>
+        <a href="/Event/add" class="btn btn-primary ml-4">Ajouter</a>
+        {% if _get is defined  %}
+            {% for key, value in _get %}
+                <div class="alert alert-{{ key }}">{{ value }}</div>
+            {% endfor %}
+        {% endif %}
         <div class="row d-flex justify-content-center">
             {% for event in events %}
 
@@ -35,7 +41,6 @@
                     </div>
                 </div>
             </div>
-
             {% endfor %}
         </div>
     </section>

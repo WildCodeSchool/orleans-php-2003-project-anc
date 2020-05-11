@@ -1,0 +1,70 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}
+    Ajout Évènement
+{% endblock %}
+
+{% block content %}
+
+    <section class="section add-event-admin container">
+
+        <h1 class="title-section text-center mb-5">Ajouter</h1>
+        <a href="/admin/event" class="btn btn-primary mb-5">Retour</a>
+        {% for i in 0..errors_files | length - 1 %}
+            {% for key, value in errors_files[i] %}
+                <div class="alert alert-danger">
+                    <span class="mr-5">{{ key ~ ': ' }}</span> {{ value | upper }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+        {% if _get is defined  %}
+            {% for key, value in _get %}
+                <div class="alert alert-{{ key }}">{{ value }}</div>
+            {% endfor %}
+        {% endif %}
+        {% if errors is defined  %}
+            {% for error in errors %}
+                <div class="alert alert-danger">{{ error }}</div>
+            {% endfor %}
+        {% endif %}
+        {% if errorsDate is defined  %}
+            {% for error in errorsDate %}
+                <div class="alert alert-danger">{{ error }}</div>
+            {% endfor %}
+        {% endif %}
+
+        <form action="" method="post" enctype="multipart/form-data" class="p-4">
+            <div class="row">
+                <div class="col text-center">
+                    <div class="custom-file my-4">
+                        <input type="file" class="custom-file-input" id="image" name="image" required>
+                        <label class="custom-file-label" for="image">Choisir une image</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row my-4">
+                <div class="form-group col-md-6">
+                    <label for="name">Nom de l'évènement</label>
+                    <input class="form-control" type="text" name="name" id="name" required>
+                </div>
+            </div>
+            <div class="form-row my-4">
+                <div class="form-group col-md-3">
+                    <label for="start_date">Date de début de l'évènement</label>
+                    <input class="form-control" type="date" name="start_date" id="start_date" required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}">
+                </div>
+            </div>
+            <div class="form-row my-4">
+                <div class="form-group col-md-3">
+                    <label for="end_date">Date de fin de l'évènement</label>
+                    <input class="form-control" type="date" name="end_date" id="end_date" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}">
+                </div>
+            </div>
+            <div class="form-row my-4">
+                <button class="btn btn-primary ml-auto">Ajouter</button>
+            </div>
+        </form>
+
+    </section>
+
+{% endblock %}
