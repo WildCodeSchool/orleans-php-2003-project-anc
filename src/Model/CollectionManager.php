@@ -153,4 +153,51 @@ class CollectionManager extends AbstractManager
         }
         $statement->execute();
     }
+
+    public function selectSort(array $data)
+    {
+        $metalString = '';
+        $eraString = '';
+        $originString = '';
+
+        if (!empty($data['metal'])) {
+            $metalList = array_values($data['metal']);
+            $metalParsed = "'" . implode("', '", $metalList) . "'";
+            $metalString .= 'm.material IN (' . $metalParsed . ')';
+        }
+
+        if (!empty($data['era'])) {
+            $eraList = array_values($data['era']);
+            if (in_array('antiquity', $eraList)) {
+                $eraString .= 'c.year <= 476 OR ';
+            }
+            if (in_array('middle-age', $eraList)) {
+                $eraString .= 'c.year BETWEEN 477 AND 1492 OR ';
+            }
+            if (in_array('modern-times', $eraList)) {
+                $eraString .= 'c.year BETWEEN 1492 AND 1789 OR ';
+            }
+            if (in_array('contemporary-era', $eraList)) {
+                $eraString .= 'c.year > 1789 OR ';
+            }
+            $eraString = rtrim($eraString, 'OR ');
+        }
+
+        if (!empty($data['origin'])) {
+            $originList = array_values($data['origin']);
+            $originParsed = "'" . implode("', '", $originList) . "'";
+            $originString .= 'o.country IN (' . $originParsed . ')';
+        }
+
+        $filter = $metalString . ' AND ' . $eraString . ' AND ' . $originString;
+        $filter = trim($filter, ' AND\AND ');
+        $filter = str_replace('AND  AND', 'AND', $filter);
+
+        $select = $this->selectJoin();
+
+        $coinQuery = $this->pdo->prepare($select . ' WHERE ' . $filter . ';');
+        $coinQuery->execute();
+
+        return $coinQuery->fetchAll();
+    }
 }

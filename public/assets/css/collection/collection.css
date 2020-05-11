@@ -14,19 +14,21 @@
     font-size: var(--medium-size);
     background-color: var(--main-bg-color);
 
-}.card-footer,
- .collection .modal-footer {
+}
+
+.card-footer,
+.collection .modal-footer {
     font-family: var(--title-font);
     font-size: var(--medium-size);
     border-top: 1px solid var(--second-bg-color);
-    background-color: rgba(0,0,0,.03);
+    background-color: rgba(0, 0, 0, .03);
 }
 
 .collection .modal-header {
-     background-color: var(--main-bg-color);
-     color: var(--light);
-     font-size: var(--large-size);
- }
+    background-color: var(--main-bg-color);
+    color: var(--light);
+    font-size: var(--large-size);
+}
 
 .collection .card-title p,
 .collection .card-footer p {
@@ -53,18 +55,116 @@
     font-size: var(--medium-size);
 }
 
+/* Formulaire de tri pièces */
+.container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: var(--medium-size);
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.container-inner input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+}
+
+.container-inner:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+.container input:checked ~ .checkmark {
+    background-color: var(--main-bg-color);
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+.container .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+}
+
+input[type='checkbox'] {
+    display: none;
+}
+
+.lbl-toggle {
+    font-size: var(--medium-size);
+    text-align: center;
+    padding: var(--spacing);
+    color: var(--light);
+    background: var(--main-bg-color);
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.25s ease-out;
+}
+
+.collapsible-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .25s ease-in-out;
+}
+
+.toggle:checked + .lbl-toggle + .collapsible-content {
+    max-height: 150vh;
+}
+
+/*Fin formulaire de tri pièces*/
+
 @media screen and (max-width: 576px) {
     .collection .card-title,
     .collection .card-footer {
         flex-direction: column;
         align-items: center;
     }
+
     .collection .card-body img {
         margin: 0 var(--spacing);
     }
 }
-    @media screen and (max-width: 528px) {
-        .collection .card-body img {
+
+@media screen and (max-width: 528px) {
+    .collection .card-body img {
         margin: var(--spacing) 0;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .wrap-collabsible {
+        padding-right: 35px;
+    }
+
+    .content-inner {
+        margin-left: -5px;
     }
 }
