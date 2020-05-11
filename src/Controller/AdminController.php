@@ -140,11 +140,28 @@ class AdminController extends AbstractController
         }
         $collectionManager = new CollectionManager();
         $origin = $collectionManager->selectOrigin();
+        $subject = $collectionManager->selectSubject();
         return $this->twig->render('Admin/option.html.twig', [
-            'origins' => $origin
+            'origins' => $origin,
+            'subjects' => $subject
         ]);
     }
 
+    public function insertOptionData()
+    {
+        $optionManager = new OptionManager();
+        if (!$optionManager->controlColumnExist($_POST['table'], $_POST['column'])) {
+            header('Location: /admin/option/?danger=ERREUR: opération non effectuée, merci de réessayer');
+        } else {
+            $arr = $this->addOption($_POST);
+            if (empty($arr)) {
+                $optionManager->addingOption($_POST['table'], $_POST['column'], $_POST['new']);
+                header('Location: /admin/option/?success=Enregistré avec succès !');
+            } else {
+                header('Location: /admin/option/?danger=' . $arr[0]);
+            }
+        }
+    }
     private function addOption(array $data): array
     {
         $errNew = [];
@@ -181,6 +198,29 @@ class AdminController extends AbstractController
             $post = array_map('trim', $_POST);
             $optionManager->updateOption($table, $column, $post);
             header('Location: /admin/option/?success=Enregistré avec succès !');
+        } else {
+            header('Location: /admin/option/?danger=' . $arr[0]);
+        }
+    }
+  
+    public function changeOptionData()
+    {
+        $optionManager = new OptionManager();
+        if (!$optionManager->controlColumnExist($_POST['table'], $_POST['column'])) {
+            header('Location: /admin/option/?danger=ERREUR: opération non effectuée, merci de rééssayer');
+        }
+        $post = array_map('trim', $_POST);
+        $arr = $this->addOption($post);
+        if (empty($arr)) {
+            if ($_POST['action'] === 'update') {
+                $optionManager->updateEmailOption($post);
+                header('Location: /admin/option/?success=Enregistré avec succès !');
+            } elseif ($_POST['action'] === 'delete') {
+                $optionManager->deleteEmailOption($post);
+                header('Location: /admin/option/?success=Supprimé avec succès !');
+            } else {
+                header('Location: /admin/option/?danger=ERREUR: opération non effectuée, merci de rééssayer');
+            }
         } else {
             header('Location: /admin/option/?danger=' . $arr[0]);
         }
