@@ -15,7 +15,53 @@
                 <div class="alert alert-{{ key }}">{{ value }}</div>
             {% endfor %}
         {% endif %}
-       
+
+        <div class="wrap-collabsible container mx-auto">
+            <input id="collapsible" class="toggle" type="checkbox">
+            <label for="collapsible" class="lbl-toggle d-block d-md-inline-block"><i class=" mr-3 fas fa-filter"></i>Trier</label>
+            <div class="collapsible-content">
+                <form action="" method="post" class="row container-fluid content-inner">
+                    <div class="col-md-4">
+                        <h3 class="my-3">Métal</h3>
+                        {% for metal in metals %}
+                            <label for="metal_{{ metal.id }}" class="container container-inner">{{ metal.material }}
+                                <input type="checkbox" id="metal_{{ metal.id }}" name="metal{{ metal.id }}" value="{{ metal.material }}">
+                                <span class="checkmark"></span>
+                            </label>
+                        {% endfor %}
+                    </div>
+                    <div class="col-md-4">
+                        <h3 class="my-3">Origine</h3>
+                        {% for origin in origins %}
+                            <label for="origin_{{ origin.id }}" class="container container-inner">{{ origin.country }}
+                                <input type="checkbox" id="origin_{{ origin.id }}" name="origin{{ origin.id }}" value="{{ origin.country }}">
+                                <span class="checkmark"></span>
+                            </label>
+                        {% endfor %}
+                    </div>
+                    <div class="col-md-4">
+                        <h3 class="my-3">Époque</h3>
+                        <label for="antiquity" class="container container-inner">Antiquité
+                            <input type="checkbox" id="antiquity" name="era1" value="antiquity">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label for="middle-age" class="container container-inner">Moyen-âge
+                            <input type="checkbox" id="middle-age" name="era2" value="middle-age">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label for="modern-times" class="container container-inner">Temps moderne
+                            <input type="checkbox" id="modern-times" name="era3" value="modern-times">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label for="contemporary-era" class="container container-inner">Époque contemporaine
+                            <input type="checkbox" id="contemporary-era" name="era4" value="contemporary-era">
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                    <button class="btn btn-primary mx-auto mt-3 mb-5" type="submit">Valider</button>
+                </form>
+            </div>
+        </div>
         
 
 
