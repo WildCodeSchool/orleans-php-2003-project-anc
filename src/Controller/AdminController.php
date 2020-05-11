@@ -124,15 +124,18 @@ class AdminController extends AbstractController
 
     public function option(): string
     {
-        $arr = [];
+        $optionManager = new OptionManager();
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $arr = $this->addOption($_POST);
-            if (empty($arr)) {
-                $optionManager = new OptionManager();
-                $optionManager->addingOption($_POST['table'], $_POST['column'], $_POST['new']);
-                header('Location: /admin/option/?success=Enregistré avec succès !');
+            if (!$optionManager->controlColumnExist($_POST['table'], $_POST['column'])) {
+                header('Location: /admin/option/?danger=ERREUR: opération non effectuée, merci de rééssayer');
             } else {
-                header('Location: /admin/option/?danger=' . $arr[0]);
+                $arr = $this->addOption($_POST);
+                if (empty($arr)) {
+                    $optionManager->addingOption($_POST['table'], $_POST['column'], $_POST['new']);
+                    header('Location: /admin/option/?success=Enregistré avec succès !');
+                } else {
+                    header('Location: /admin/option/?danger=' . $arr[0]);
+                }
             }
         }
         $collectionManager = new CollectionManager();
@@ -155,10 +158,31 @@ class AdminController extends AbstractController
             }
         }
         $optionManager = new OptionManager();
-        $exist = $optionManager->controlIfDataExist($_POST['table'], $_POST['column'], $_POST['new']);
-        if (!empty($exist)) {
-            $errNew[] = 'La valeur existe déjà dans la liste !';
+        if (isset($_POST['new'])) {
+            $exist = $optionManager->controlIfDataExist($_POST['table'], $_POST['column'], $_POST['new']);
+            if (!empty($exist)) {
+                $errNew[] = 'La valeur existe déjà dans la liste !';
+            }
         }
         return $errNew;
+    }
+
+    public function updateOptionData(): void
+    {
+        $table = $_POST['table'];
+        $column = $_POST['column'];
+        $arr = $this->addOption($_POST);
+
+        $optionManager = new OptionManager();
+        if (!$optionManager->controlColumnExist($table, $column)) {
+            header('Location: /admin/option/?danger=ERREUR: opération non effectuée, merci de rééssayer');
+        } elseif (empty($arr)) {
+            unset($_POST['table'], $_POST['column']);
+            $post = array_map('trim', $_POST);
+            $optionManager->updateOption($table, $column, $post);
+            header('Location: /admin/option/?success=Enregistré avec succès !');
+        } else {
+            header('Location: /admin/option/?danger=' . $arr[0]);
+        }
     }
 }
