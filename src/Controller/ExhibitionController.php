@@ -61,17 +61,17 @@ class ExhibitionController extends AbstractController
             $errors = $this->formControl($data);
             $upload = $files->fileControl(true);
 
-            if (empty($errors)) {
-                if (!empty($upload['image'])) {
-                    $data['image'] = $upload['image']['name'];
-                    $files->uploadFile($upload['image']['tmp_name'], $destination, $upload['image']['name']);
-                }
+            if (empty($errors) && array_key_exists('image', $upload)) {
+                $data['image'] = $upload['image']['name'];
+                $files->uploadFile($upload['image']['tmp_name'], $destination, $upload['image']['name']);
                 $exhibitionManager->add($data);
                 header('Location: /admin/exhibition/?success=Exposition ajoutée');
             }
         }
 
-        return $this->twig->render('Admin/Add/exhibition.html.twig', ['errors' => $errors ?? []
+        return $this->twig->render('Admin/Add/exhibition.html.twig', [
+            'errors' => $errors ?? [],
+            'errors_files' => $upload ?? [],
         ]);
     }
 
@@ -84,7 +84,7 @@ class ExhibitionController extends AbstractController
         }
 
         if (empty($data['title'])) {
-            $errors['empty_title']  = 'Le titre de l\'article est requis';
+            $errors['empty_title'] = 'Le titre de l\'article est requis';
         }
 
         if (empty($data['detail'])) {
