@@ -15,7 +15,8 @@
                         <h3 class="my-3">Métal</h3>
                         {% for metal in metals %}
                             <label for="metal_{{ metal.id }}" class="container container-inner">{{ metal.material }}
-                                <input type="checkbox" id="metal_{{ metal.id }}" name="metal{{ metal.id }}" value="{{ metal.material }}">
+                                <input type="checkbox" id="metal_{{ metal.id }}" name="metal{{ metal.id }}"
+                                       value="{{ metal.material }}">
                                 <span class="checkmark"></span>
                             </label>
                         {% endfor %}
@@ -24,7 +25,8 @@
                         <h3 class="my-3">Origine</h3>
                         {% for origin in origins %}
                             <label for="origin_{{ origin.id }}" class="container container-inner">{{ origin.country }}
-                                <input type="checkbox" id="origin_{{ origin.id }}" name="origin{{ origin.id }}" value="{{ origin.country }}">
+                                <input type="checkbox" id="origin_{{ origin.id }}" name="origin{{ origin.id }}"
+                                       value="{{ origin.country }}">
                                 <span class="checkmark"></span>
                             </label>
                         {% endfor %}
@@ -101,40 +103,42 @@
                         </div>
                     </div>
                 </div>
-                <div class="modal fade" id="coinModal{{ coin.coin_id }}" tabindex="-1" role="dialog"
-                     aria-labelledby="coinModalTitle" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header d-flex justify-content-between p-3">
-                                <p class="modal-coin-title mb-0" id="coinModalTitle">{{ coin.name }}</p>
-                                <p class="modal-coin-year mb-0" id="coinModalTitle">{{ coin.year }}</p>
-                            </div>
-                            <div class="modal-body d-flex justify-content-between p-sm-5">
-                                <img class="modal-img mx-auto"
-                                     src="/assets/images/collection/{{ coin.image_recto }}"
+            {% endfor %}
+        </div>
+        {% for coin in coins %}
+            <div class="modal fade" id="coinModal{{ coin.coin_id }}" tabindex="-1" role="dialog"
+                 aria-labelledby="coinModalTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header d-flex justify-content-between p-3">
+                            <p class="modal-coin-title mb-0" id="coinModalTitle">{{ coin.name }}</p>
+                            <p class="modal-coin-year mb-0" id="coinModalTitle">{{ coin.year }}</p>
+                        </div>
+                        <div class="modal-body d-flex justify-content-between p-sm-5">
+                            <img class="modal-img mx-auto"
+                                 src="/assets/images/collection/{{ coin.image_recto }}"
+                                 alt="{{ coin.name }}">
+                            {% if coin.image_verso != NULL %}
+                                <img class="modal-img ml-5"
+                                     src="/assets/images/collection/{{ coin.image_verso }}"
                                      alt="{{ coin.name }}">
-                                {% if coin.image_verso != NULL %}
-                                    <img class="modal-img ml-5"
-                                         src="/assets/images/collection/{{ coin.image_verso }}"
-                                         alt="{{ coin.name }}">
-                                {% endif %}
-                            </div>
-                            <div class="modal-body m-4">
-                                <i class="fas fa-quote-right d-block mb-2"></i>
-                                {{ coin.description }}
-                            </div>
-                            <div class="modal-body m-4 h5 d-flex justify-content-center">
-                                <button type="button" class="btn btn-primary" data-dismiss="modal">Retour
-                                </button>
-                            </div>
-                            <div class="modal-footer d-flex justify-content-between align-items-center py-2">
-                                <p class="card-text mx-2">{{ coin.material }}</p>
-                                <p class="card-text mx-2">{{ coin.country }}</p>
-                            </div>
+                            {% endif %}
+                        </div>
+                        <div class="modal-body m-4">
+                            <i class="fas fa-quote-right d-block mb-2"></i>
+                            {{ coin.description }}
+                        </div>
+                        <div class="modal-body m-4 h5 d-flex justify-content-center">
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">Retour
+                            </button>
+                        </div>
+                        <div class="modal-footer d-flex justify-content-between align-items-center py-2">
+                            <p class="card-text mx-2">{{ coin.material }}</p>
+                            <p class="card-text mx-2">{{ coin.country }}</p>
                         </div>
                     </div>
                 </div>
-            {% endfor %}
-        </div>
+            </div>
+        {% endfor %}
     </section>
 {% endblock %}
