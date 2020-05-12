@@ -18,15 +18,8 @@
 
 .custom-file-label {
     cursor: pointer;
-    color: var(--light);
-    background-color: var(--button-bg-color);
     font-weight: bold;
 }
-
-.custom-file-label:hover {
-    background-color: var(--button-hover-bg-color);
-}
-
 
 .custom-file-input {
     display: none;
@@ -51,3 +44,4 @@
     }
 
 }
+

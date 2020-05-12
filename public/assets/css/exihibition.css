@@ -12,7 +12,7 @@
     min-height: 450px;
 }
 
-.exhibition .btn-customv{
+.exhibition .btn-custom{
     bottom: 0;
     right: 0;
 }
@@ -20,18 +20,4 @@
 .exhibition-modal-title {
     font-family: var(--title-font);
     font-size: var(--medium-size);
-}
-
-@media (prefers-color-scheme: dark) {
-
-    .btn-danger{
-        border: none;
-        background-color: red;
-    }
-
-    .btn-primary{
-        border: none;
-        background-color: green;
-    }
-
 }

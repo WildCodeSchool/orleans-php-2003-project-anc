@@ -42,5 +42,7 @@
     .edit-coin-admin textarea:focus,
     .edit-coin-admin .custom-file-label{
         background: var(--button-bg-color);
+        color: var(--light);
     }
+
 }

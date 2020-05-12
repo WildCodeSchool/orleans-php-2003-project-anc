@@ -23,11 +23,11 @@
     .messages .btn {
         color: var(--light);
     }
-    .messages .card-header {
-        background: var(--button-bg-color);
+    .messages .btn:enabled {
+        background-color: var(--button-hover-bg-color);
     }
-    .messages .btn:hover {
-        background: var(--button-bg-color);
+    .messages .card-header {
+        background-color: var(--button-hover-bg-color);
     }
 
     .messages td {

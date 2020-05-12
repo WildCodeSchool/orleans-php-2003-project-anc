@@ -32,6 +32,10 @@
 @media (prefers-color-scheme: dark) {
     .option .form-adding {
         background: var(--second-bg-color);
-        border: 1px solid rgba(119, 219, 102, 0.29);
+        border: 1px solid var(--light);
+    }
+
+    .option fieldset {
+        border: 1px solid var(--light);
     }
 }

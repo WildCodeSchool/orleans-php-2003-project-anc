@@ -92,11 +92,7 @@ section {
 .btn-primary:focus {
     background-color: var(--main-bg-color);
     box-shadow: none;
-}
 
-form .note-toolbar, form .note-btn {
-    background-color: var(--main-bg-color);
-    color: var(--light);
 }
 
 .edit-coin-admin .form-row .form-summernote {
@@ -107,8 +103,8 @@ form .note-toolbar, form .note-btn {
     :root {
         --main-bg-color: #11191f;
         --second-bg-color: #1e2931;
-        --button-bg-color: #454f57;
-        --button-hover-bg-color: #606b74;
+        --button-bg-color: rgba(60, 81, 94, 0.43);
+        --button-hover-bg-color: rgb(52, 69, 80);
         --box-shadow: 10px 10px 5px var(--dark);
     }
 
@@ -126,6 +122,7 @@ form .note-toolbar, form .note-btn {
     }
 
     .card {
+        border: none;
         background-color: var(--second-bg-color);
     }
 
@@ -133,8 +130,32 @@ form .note-toolbar, form .note-btn {
         background-color: var(--button-bg-color);
     }
 
-    .btn:hover {
+    .btn:hover, .btn:focus {
         background-color: var(--button-hover-bg-color);
+    }
+
+    .btn-primary:hover, .btn-primary:focus {
+        background-color: var(--button-hover-bg-color);
+    }
+
+    .btn-primary:not(:disabled):not(.disabled).active,
+    .btn-primary:not(:disabled):not(.disabled):active,
+    .show > .btn-primary.dropdown-toggle {
+        background-color: var(--button-hover-bg-color);
+        box-shadow: none;
+        border: none;
+    }
+
+    .btn-primary:not(:disabled):not(.disabled).active:focus,
+    .btn-primary:not(:disabled):not(.disabled):active:focus,
+    .show > .btn-primary.dropdown-toggle:focus {
+        box-shadow: none;
+        border: none;
+    }
+
+    .btn:focus, .btn:active {
+        background-color: var(--button-hover-bg-color);
+        box-shadow: none;
     }
 
     .admin-dashboard .card {
@@ -147,5 +168,37 @@ form .note-toolbar, form .note-btn {
 
     li {
         color: white;
+    }
+
+    form .note-toolbar, form .note-btn {
+        background-color: var(--main-bg-color);
+        color: var(--light);
+    }
+
+    .custom-file-label:hover {
+        background-color: var(--button-hover-bg-color);
+    }
+
+    .form-control {
+        background-color: var(--button-bg-color);
+        color: var(--light);
+    }
+
+    .form-control:hover, .form-control:focus {
+        background-color: var(--button-hover-bg-color);
+    }
+
+    .form-control:focus {
+        color: var(--light);
+    }
+
+    .custom-file-label {
+        color: var(--light);
+        background-color: var(--button-bg-color);
+    }
+
+    .form-summernote .note-editable {
+        background-color: var(--button-hover-bg-color) !important;
+        color: var(--light) !important;
     }
 }

@@ -43,7 +43,7 @@ body {
 
 @media (prefers-color-scheme: dark) {
 
-    .contact .btn:enabled  {
+    .contact .btn:enabled {
         background-color: var(--button-bg-color);
         color: white;
         box-shadow: none;
@@ -54,5 +54,14 @@ body {
         background-color: var(--button-hover-bg-color);
     }
 
+    .form-control:enabled {
+        background-color: var(--second-bg-color);
+        color: var(--light);
+        border: 1px solid var(--light);
+        box-shadow: none;
+    }
+    .form-control:hover, .form-control:focus {
+        background-color: var(--button-bg-color);
+    }
 }
 
