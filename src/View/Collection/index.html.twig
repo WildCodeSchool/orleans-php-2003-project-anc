@@ -61,8 +61,11 @@
                         <div class="images d-flex align-items-center justify-content-center flex-column flex-md-row p-2">
                             <img src="/assets/images/collection/{{ coin.image_recto }}" class="card-img-top m-3"
                                  alt="{{ coin.image_recto }}">
-                            <img src="/assets/images/collection/{{ coin.image_verso }}" class="card-img-top m-3"
-                                 alt="{{ coin.image_verso }}">
+                            {% if coin.image_verso != NULL %}
+                                <img src="/assets/images/collection/{{ coin.image_verso }}"
+                                     class="card-img-top m-3"
+                                     alt="{{ coin.name }}">
+                            {% endif %}
                         </div>
                         <div class="card-body">
                             <h5 class="card-title title-section text-center mb-4">{{ coin.name }}</h5>
@@ -88,10 +91,6 @@
                                     {% endif %}
                                 </p>
                             </div>
-                            <p class="card-text mt-4">
-                                <i class="fas fa-quote-right d-block mb-2"></i>
-                                {{ coin.description }}
-                            </p>
                         </div>
                         <div class="coin-stock d-flex justify-content-center">
                             <button class="btn btn-primary btn mb-4" type="button" data-toggle="modal"
