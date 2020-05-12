@@ -3,6 +3,7 @@
 
 namespace App\Controller;
 
+use App\Model\AdminManager;
 use App\Model\ClublifeManager;
 use App\Model\CollectionManager;
 use App\Model\EventManager;
@@ -16,7 +17,23 @@ class AdminController extends AbstractController
 {
     public function index(): string
     {
-        return $this->twig->render('Admin/index.html.twig');
+        $adminManager = new AdminManager();
+        $coin = $adminManager->countData('coin');
+        $message = $adminManager->countData('contact');
+        $eventAll = $adminManager->countData('event');
+        $exhibition = $adminManager->countData('exhibition');
+
+        $where = ' WHERE start_at >= now()';
+        $event = $adminManager->countData('event', $where);
+
+
+        return $this->twig->render('Admin/index.html.twig', [
+            'collection' => $coin,
+            'contact' => $message,
+            'event' => $event,
+            'eventAll' => $eventAll,
+            'exhibition' => $exhibition
+        ]);
     }
 
     public function clublife(): string
