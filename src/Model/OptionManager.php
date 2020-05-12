@@ -55,4 +55,25 @@ class OptionManager extends AbstractManager
             $req->execute();
         }
     }
+
+    /**
+     * @param array $data
+     */
+    public function updateEmailOption(array $data): void
+    {
+        $req = $this->pdo->prepare('UPDATE ' . $data['table'] . ' SET ' . $data['column'] . '=:data WHERE id=:id');
+        $req->bindValue(':data', $data['subject'], \PDO::PARAM_STR);
+        $req->bindValue(':id', $data['id'], \PDO::PARAM_INT);
+        $req->execute();
+    }
+
+    /**
+     * @param array $data
+     */
+    public function deleteEmailOption(array $data): void
+    {
+        $req = $this->pdo->prepare('DELETE FROM ' . $data['table'] . ' WHERE id=:id');
+        $req->bindValue(':id', $data['id'], \PDO::PARAM_INT);
+        $req->execute();
+    }
 }
