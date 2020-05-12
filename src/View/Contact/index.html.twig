@@ -24,17 +24,19 @@
                 <div class="form-group col-md-6">
                     <label for="firstname">Prénom:</label>
                     <input type="text" class="form-control" name="firstname" id="firstname" placeholder="Votre prénom"
-                    value="{{ _post.firstname }}">
+                           value="{{ _post.firstname }}">
                 </div>
                 <div class="form-group col-md-6">
                     <label for="lastname">Nom:</label>
-                    <input type="text" class="form-control" name="lastname" id="lastname" placeholder="Votre nom" value="{{ _post.lastname }}">
+                    <input type="text" class="form-control" name="lastname" id="lastname" placeholder="Votre nom"
+                           value="{{ _post.lastname }}">
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="email">Email:</label>
-                    <input type="email" class="form-control" name="email" id="email" placeholder="Votre email" value="{{ _post.email }}">
+                    <input type="email" class="form-control" name="email" id="email" placeholder="Votre email"
+                           value="{{ _post.email }}">
                 </div>
                 <div class="form-group col-md-6">
                     <label for="phone">Téléphone:</label>
@@ -46,9 +48,10 @@
                 <label for="topic">Sujet:</label>
                 <select class="form-control" name="topic" id="topic" name="topic">
                     <option value="">< sélectionnez un sujet ></option>
-                    <option {% if _post.topic == 'sujet1' %}selected{% endif%} value="sujet1">Sujet 1</option>
-                    <option {% if _post.topic == 'sujet2' %}selected{% endif%} value="sujet2">Sujet 2</option>
-                    <option {% if _post.topic == 'sujet3' %}selected{% endif%} value="sujet3">Sujet 3</option>
+                    {% for i in 0..subjects | length - 1 %}
+                        <option {% if _post.topic == subjects[i].id %}selected{% endif %}
+                                value="{{ subjects[i].id }}">{{ subjects[i].subject }}</option>
+                    {% endfor %}
                 </select>
             </div>
             <div class="form-group">
@@ -56,7 +59,8 @@
                 <textarea class="form-control" rows="5" name="comment" id="comment">{{ _post.comment }}</textarea>
             </div>
             <div class="form-check mt-5">
-                <input type="checkbox" class="form-check-input" name="policy" id="check" {% if _post.policy == true %}checked{% endif%}>
+                <input type="checkbox" class="form-check-input" name="policy" id="check"
+                       {% if _post.policy == true %}checked{% endif %}>
                 <label class="form-check-label" for="check">J'ai lu et accepte la Politique de confidentialité.</label>
             </div>
             <br>

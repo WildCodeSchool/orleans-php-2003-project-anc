@@ -29,19 +29,24 @@ class ContactController extends AbstractController
     */
     public function index()
     {
+        $contactManager = new contactManager();
         $errors = [];
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $data = array_map('trim', $_POST);
             $errors = $this->controlData($data);
 
             if (empty($errors)) {
-                $contactManager = new contactManager();
                 $contactManager->insert($data);
 
                 header('Location: /Contact/index/?success=Votre message a été envoyé !');
             }
         }
-        return $this->twig->render('Contact/index.html.twig', ['error' => $errors]);
+        $subject = $contactManager->selectSubject();
+
+        return $this->twig->render('Contact/index.html.twig', [
+            'error' => $errors,
+            'subjects' => $subject
+        ]);
     }
 
     public function send()
