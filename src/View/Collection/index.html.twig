@@ -52,35 +52,52 @@
                 </form>
             </div>
         </div>
-        <div class="row container-fluid mx-auto">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 mt-5">
             {% for coin in coins %}
-                <div class="col-lg-6 col-xl-4 my-5">
+                <div class="col mb-4">
                     <div class="card shadow-sm">
-                        <div class="card-title d-flex justify-content-between p-3 mb-0">
-                            <p class="mx-2 text-center">{{ coin.name }}</p>
-                            <p class="mx-2">{{ coin.year }}</p>
+                        <div class="images d-flex align-items-center justify-content-center flex-column flex-md-row p-2">
+                            <img src="/assets/images/collection/{{ coin.image_recto }}" class="card-img-top m-3"
+                                 alt="{{ coin.image_recto }}">
+                            <img src="/assets/images/collection/{{ coin.image_verso }}" class="card-img-top m-3"
+                                 alt="{{ coin.image_verso }}">
                         </div>
-                        <div class="card-body d-sm-flex align-items-center text-center">
-                            <img src="/assets/images/collection/{{ coin.image_recto }}"
-                                 class="card-img mx-sm-auto"
-                                 alt="{{ coin.name }}">
-                            {% if coin.image_verso != NULL %}
-                                <img src="/assets/images/collection/{{ coin.image_verso }}"
-                                     class="card-img mx-sm-auto mt-sm-0"
-                                     alt="{{ coin.name }}">
-                            {% endif %}
+                        <div class="card-body">
+                            <h5 class="card-title title-section text-center mb-4">{{ coin.name }}</h5>
+                            <div class="d-flex justify-content-between">
+                                <p class="card-text ml-5">
+                                    <i class="far fa-calendar-alt mr-2"></i>{{ coin.year }}
+                                </p>
+                                <p class="card-text mr-5">
+                                    {{ coin.country }}<i class="fas fa-flag ml-2"></i>
+                                </p>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <p class="card-text ml-5">
+                                    <i class="fas fa-gavel mr-2"></i>{{ coin.material }}
+                                </p>
+                                <p class="card-text mr-5">
+                                    {% if coin.stock <= 0 %}
+                                        <span class="text-danger font-weight-bold">En rupture</span><i
+                                            class="fas fa-archive ml-2 text-danger"></i>
+                                    {% else %}
+                                        <span class="text-success font-weight-bold">{{ coin.stock }}</span><i
+                                            class="fas fa-archive ml-2  text-success"></i>
+                                    {% endif %}
+                                </p>
+                            </div>
+                            <p class="card-text mt-4">
+                                <i class="fas fa-quote-right d-block mb-2"></i>
+                                {{ coin.description }}
+                            </p>
                         </div>
                         <div class="coin-stock d-flex justify-content-center">
-                            <button class="btn btn-primary btn-sm mb-4" type="button" data-toggle="modal"
+                            <button class="btn btn-primary btn mb-4" type="button" data-toggle="modal"
                                     data-target="#coinModal{{ coin.coin_id }}">En savoir plus
                             </button>
                             {% if coin.stock == 1 %}
-                                <a class="btn btn-primary btn-sm ml-5 mb-4" href="/contact/index">Commander</a>
+                                <a class="btn btn-primary btn ml-5 mb-4" href="/contact/index">Commander</a>
                             {% endif %}
-                        </div>
-                        <div class="card-footer d-flex justify-content-between align-items-center py-2">
-                            <p class="card-text mx-2">{{ coin.material }}</p>
-                            <p class="card-text mx-2">{{ coin.country }}</p>
                         </div>
                     </div>
                 </div>
@@ -102,8 +119,12 @@
                                          alt="{{ coin.name }}">
                                 {% endif %}
                             </div>
-                            <div class="modal-body m-4 h5">
-                                <button type="button" class="btn btn-primary my-4" data-dismiss="modal">Retour
+                            <div class="modal-body m-4">
+                                <i class="fas fa-quote-right d-block mb-2"></i>
+                                {{ coin.description }}
+                            </div>
+                            <div class="modal-body m-4 h5 d-flex justify-content-center">
+                                <button type="button" class="btn btn-primary" data-dismiss="modal">Retour
                                 </button>
                             </div>
                             <div class="modal-footer d-flex justify-content-between align-items-center py-2">
