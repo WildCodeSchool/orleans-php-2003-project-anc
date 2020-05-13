@@ -7,3 +7,11 @@
 .admin-collection .card img {
     width: 40%;
 }
+
+@media (prefers-color-scheme: dark) {
+
+    .form {
+        background-color: #1e2931;
+    }
+
+}

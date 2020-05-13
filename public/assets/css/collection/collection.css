@@ -156,3 +156,23 @@ input[type='checkbox'] {
         margin-left: -5px;
     }
 }
+
+@media (prefers-color-scheme: dark) {
+
+    .lbl-toggle {
+        background: var(--button-bg-color);
+    }
+
+    .lbl-toggle:hover {
+        background: var(--button-hover-bg-color);
+    }
+
+    .coin-stock .btn {
+        background: var(--button-bg-color);
+    }
+
+    .modal-content {
+        background: var(--second-bg-color);
+    }
+
+}
