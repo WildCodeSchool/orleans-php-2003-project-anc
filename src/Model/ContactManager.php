@@ -47,4 +47,9 @@ class ContactManager extends AbstractManager
         $statement->bindValue('comment', $contact['comment'], \PDO::PARAM_STR);
         $statement->execute();
     }
+
+    public function selectSubject()
+    {
+        return $this->pdo->query('SELECT * FROM subject')->fetchAll();
+    }
 }

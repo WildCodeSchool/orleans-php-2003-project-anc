@@ -92,11 +92,23 @@ section {
 .btn-primary:focus {
     background-color: var(--main-bg-color);
     box-shadow: none;
-
 }
 
 .edit-coin-admin .form-row .form-summernote {
     width: 100%;
+}
+
+form .note-toolbar, form .note-btn {
+    background-color: var(--main-bg-color);
+    color: var(--light);
+}
+
+.edit-coin-admin .form-row .form-summernote {
+    width: 100%;
+}
+
+.section .note-editor.note-frame .note-editing-area, .note-editable {
+    background-color: red;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -169,6 +181,7 @@ section {
     li {
         color: white;
     }
+
 
     form .note-toolbar, form .note-btn {
         background-color: var(--main-bg-color);
