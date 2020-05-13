@@ -14,12 +14,8 @@
                     <div class="card-body position-relative">
                         <h2 class="card-title mb-4">Messages</h2>
                         <p class="card-text">
-                            <span class="circle bg-danger"></span>
-                            3 message(s) non lu(s)
-                        </p>
-                        <p class="card-text">
                             <span class="circle bg-success"></span>
-                            32 messages total
+                            {{ contact.coin }} messages reçus
                         </p>
                         <div class="text-right position-absolute fixed-bottom m-3">
                             <a href="/admin/message" class="btn btn-primary">Lire</a>
@@ -33,7 +29,7 @@
                         <h2 class="card-title mb-4">Collections</h2>
                         <p class="card-text">
                             <span class="circle bg-success"></span>
-                            53 pièces répertoriées
+                            {{ collection.coin }} pièces répertoriées
                         </p>
                         <div class="text-right position-absolute fixed-bottom m-3">
                             <a href="/admin/collection" class="btn btn-primary">Administrer</a>
@@ -46,12 +42,12 @@
                     <div class="card-body position-relative">
                         <h2 class="card-title mb-4">Evénements</h2>
                         <p class="card-text">
-                            <span class="circle bg-danger"></span>
-                            3 événements à venir
+                            <span class="circle bg-success"></span>
+                            {{ event.coin }} évènement(s) à venir
                         </p>
                         <p class="card-text">
-                            <span class="circle bg-success"></span>
-                            26 événements total
+                            <span class="circle bg-danger"></span>
+                            {{ eventAll.coin }} événements au total
                         </p>
                         <div class="text-right position-absolute fixed-bottom m-3">
                             <a href="/admin/event" class="btn btn-primary">Administrer</a>
@@ -72,9 +68,26 @@
             <div class="mx-auto col-sm-8 col-lg-4 mb-3 mb-sm-5">
                 <div class="card shadow-sm">
                     <div class="card-body position-relative">
-                        <h2 class="card-title mb-4">Exposition</h2>
+                        <h2 class="card-title mb-4">Expositions</h2>
+                        <p class="card-text">
+                            <span class="circle bg-danger"></span>
+                            {{ exhibition.coin }} exposition(s) au total
+                        </p>
                         <div class="text-right position-absolute fixed-bottom m-3">
                             <a href="/admin/exhibition" class="btn btn-primary">Administrer</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mx-auto col-sm-8 col-lg-4 mb-3 mb-sm-5">
+                <div class="card shadow-sm">
+                    <div class="card-body position-relative">
+                        <h2 class="card-title mb-4">Options</h2>
+                        <p>
+                            Gérer vos catégories, sujets de vos mails...
+                        </p>
+                        <div class="text-right position-absolute fixed-bottom m-3">
+                            <a href="/admin/option" class="btn btn-primary">Administrer</a>
                         </div>
                     </div>
                 </div>

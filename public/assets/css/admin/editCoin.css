@@ -25,3 +25,24 @@
     color: var(--light);
     box-shadow: none;
 }
+
+@media (prefers-color-scheme: dark) {
+
+    .edit-coin-admin form {
+        background-color: var(--second-bg-color);
+    }
+
+    .edit-coin-admin input,
+    .edit-coin-admin textarea,
+    .edit-coin-admin select,
+    .edit-coin-admin input:focus,
+    .edit-coin-admin textarea:focus,
+    .edit-coin-admin select:focus,
+    .edit-coin-admin input[type=text]:focus,
+    .edit-coin-admin textarea:focus,
+    .edit-coin-admin .custom-file-label{
+        background: var(--button-bg-color);
+        color: var(--light);
+    }
+
+}

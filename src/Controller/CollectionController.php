@@ -11,6 +11,7 @@ namespace App\Controller;
 
 use App\Model\CollectionManager;
 use App\Verify\VerifyFileUpload;
+use App\Services\Filter;
 use mysql_xdevapi\Result;
 
 /**
@@ -30,9 +31,26 @@ class CollectionController extends AbstractController
     public function index(): string
     {
         $collectionManager = new CollectionManager();
-        $coins = $collectionManager->selectAllCoins();
+        $data = [];
 
-        return $this->twig->render('Collection/index.html.twig', ['coins' => $coins]);
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST)) {
+            $data['metal'] = Filter::post('/^metal/', $_POST);
+            $data['origin'] = Filter::post('/^origin/', $_POST);
+            $data['era'] = Filter::post('/^era/', $_POST);
+
+            $coins = $collectionManager->selectSort($data);
+        } else {
+            $coins = $collectionManager->selectAllCoins();
+        }
+
+        $origins = $collectionManager->selectOrigin();
+        $metals = $collectionManager->selectMetal();
+
+        return $this->twig->render('Collection/index.html.twig', [
+            'coins' => $coins,
+            'origins' => $origins,
+            'metals' => $metals,
+        ]);
     }
 
     /**
@@ -63,7 +81,7 @@ class CollectionController extends AbstractController
                     }
                 }
                 $collectionManager->add($data);
-                header('Location: /admin/collection/?success=Données mises à jour avec succès !!');
+                header('Location: /admin/collection/?success=Pièce ajoutée');
             }
         }
         $origins = $collectionManager->selectOrigin();
@@ -72,6 +90,7 @@ class CollectionController extends AbstractController
         return $this->twig->render('Admin/Add/addCollection.html.twig', [
             'origins' => $origins,
             'metals' => $metals,
+            'errors' => $errors ?? []
         ]);
     }
 

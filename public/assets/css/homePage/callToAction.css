@@ -15,3 +15,11 @@
         flex-direction: column;
     }
 }
+
+@media (prefers-color-scheme: dark) {
+
+    .action p{
+        color: var(--light);
+    }
+
+}
