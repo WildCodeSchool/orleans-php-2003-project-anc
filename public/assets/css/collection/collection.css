@@ -3,20 +3,6 @@
     padding-bottom: 80px;
 }
 
-.collection .card-body img {
-    width: 180px;
-    height: 180px;
-}
-
-.collection .card-title {
-    color: var(--light);
-    font-family: var(--title-font);
-    font-size: var(--medium-size);
-    background-color: var(--main-bg-color);
-
-}
-
-.card-footer,
 .collection .modal-footer {
     font-family: var(--title-font);
     font-size: var(--medium-size);
@@ -30,18 +16,16 @@
     font-size: var(--large-size);
 }
 
-.collection .card-title p,
-.collection .card-footer p {
-    margin-bottom: 0;
-}
-
 .coin-stock .btn {
     background-color: var(--main-bg-color);
 }
 
-.collection .card {
-    border-radius: 8px;
-    overflow: hidden;
+.collection {
+    margin-top: 120px;
+}
+
+.collection .card img {
+    width: 40%;
 }
 
 .modal-img {
@@ -52,6 +36,10 @@
 .modal-coin-title,
 .modal-coin-year {
     font-family: var(--title-font);
+    font-size: var(--medium-size);
+}
+
+.description-text {
     font-size: var(--medium-size);
 }
 
@@ -167,4 +155,24 @@ input[type='checkbox'] {
     .content-inner {
         margin-left: -5px;
     }
+}
+
+@media (prefers-color-scheme: dark) {
+
+    .lbl-toggle {
+        background: var(--button-bg-color);
+    }
+
+    .lbl-toggle:hover {
+        background: var(--button-hover-bg-color);
+    }
+
+    .coin-stock .btn {
+        background: var(--button-bg-color);
+    }
+
+    .modal-content {
+        background: var(--second-bg-color);
+    }
+
 }

@@ -15,7 +15,17 @@
     object-fit: contain;
 }
 
-@media (max-width: 800px){
+
+.custom-file-label {
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.custom-file-input {
+    display: none;
+}
+
+@media (max-width: 800px) {
 
     .clublife img {
         height: 100%;
@@ -34,3 +44,4 @@
     }
 
 }
+
