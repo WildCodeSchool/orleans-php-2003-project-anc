@@ -80,8 +80,8 @@ class ContactController extends AbstractController
         if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
             $errors[] = 'Votre email est invalide';
         }
-        if (!is_numeric($data['phone'])) {
-            $errors[] = 'Votre numéro de téléphone est invalide';
+        if (!is_numeric($data['phone']) || strlen($data['phone']) !== 12) {
+            $errors[] = 'Votre numéro de téléphone doit-être un nombre entier à 12 chiffres';
         }
         if (!isset($data['policy'])) {
             $errors[] = 'Veuillez acceptez la police de confidentialité';

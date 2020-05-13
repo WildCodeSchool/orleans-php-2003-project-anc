@@ -38,4 +38,10 @@ body {
         max-width: 150px;
         margin: 30px auto auto;
     }
+    .contact {
+        padding-left: 12px;
+    }
+    .contact ul {
+        padding-left: 0;
+    }
 }
