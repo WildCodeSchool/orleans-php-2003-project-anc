@@ -11,3 +11,41 @@
     width: 310px;
     height: 310px;
 }
+
+@media (max-width: 1000px) {
+
+    .col-md-8 {
+        text-align: center;
+        display: block;
+    }
+
+    .events-page img {
+        width: 250px;
+    }
+
+    .card-title  {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 767px) {
+
+    .events-page {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card  {
+        width: min-content;
+    }
+    .row {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .card-title {
+        font-size: 1rem;
+    }
+}
