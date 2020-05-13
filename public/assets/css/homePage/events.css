@@ -9,7 +9,6 @@
     object-fit: cover;
     width: 100%;
 }
-
 @media screen and (min-width: 1200px) {
     .events .card {
         max-width: 420px;
