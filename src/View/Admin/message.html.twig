@@ -7,6 +7,7 @@
 {% block content %}
     <section class="section messages container">
         <h1 class="title-section text-center my-5">Boîte de réception</h1>
+        <a href="/admin/index" class="btn btn-primary my-5">Retour</a>
         {% if _get is defined %}
             {% for key , value in _get %}
                 <div class="alert alert-{{ key }}">
@@ -15,7 +16,7 @@
             {% endfor %}
         {% endif %}
         <div class="number-messages text-right mr-3 font-italic">
-            <small>Nombre de messages: <b>{{ messages | length - 1 }}</b></small>
+            <small>Nombre de messages: <b>{{ messages | length }}</b></small>
         </div>
         <div class="accordion" id="accordionMessage">
             {% for i in 0..messages|length - 1 %}
