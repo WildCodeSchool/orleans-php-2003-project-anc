@@ -44,7 +44,7 @@
 }
 
 /* Formulaire de tri pièces */
-.container {
+.collection .container {
     display: block;
     position: relative;
     padding-left: 35px;
@@ -57,7 +57,7 @@
     user-select: none;
 }
 
-.container-inner input {
+.collection .container-inner input {
     position: absolute;
     opacity: 0;
     cursor: pointer;
@@ -65,7 +65,7 @@
     width: 0;
 }
 
-.checkmark {
+.collection .checkmark {
     position: absolute;
     top: 0;
     left: 0;
@@ -74,25 +74,25 @@
     background-color: #eee;
 }
 
-.container-inner:hover input ~ .checkmark {
+.collection .container-inner:hover input ~ .checkmark {
     background-color: #ccc;
 }
 
-.container input:checked ~ .checkmark {
+.collection .container input:checked ~ .checkmark {
     background-color: var(--main-bg-color);
 }
 
-.checkmark:after {
+.collection .checkmark:after {
     content: "";
     position: absolute;
     display: none;
 }
 
-.container input:checked ~ .checkmark:after {
+.collection .container input:checked ~ .checkmark:after {
     display: block;
 }
 
-.container .checkmark:after {
+.collection .container .checkmark:after {
     left: 9px;
     top: 5px;
     width: 5px;
@@ -102,11 +102,11 @@
     transform: rotate(45deg);
 }
 
-input[type='checkbox'] {
+.collection input[type='checkbox'] {
     display: none;
 }
 
-.lbl-toggle {
+.collection .lbl-toggle {
     font-size: var(--medium-size);
     text-align: center;
     padding: var(--spacing);
@@ -117,13 +117,13 @@ input[type='checkbox'] {
     transition: all 0.25s ease-out;
 }
 
-.collapsible-content {
+.collection .collapsible-content {
     max-height: 0;
     overflow: hidden;
     transition: max-height .25s ease-in-out;
 }
 
-.toggle:checked + .lbl-toggle + .collapsible-content {
+.collection .toggle:checked + .lbl-toggle + .collapsible-content {
     max-height: 150vh;
 }
 
@@ -148,30 +148,30 @@ input[type='checkbox'] {
 }
 
 @media screen and (max-width: 768px) {
-    .wrap-collabsible {
+    .collection .wrap-collabsible {
         padding-right: 35px;
     }
 
-    .content-inner {
+    .collection .content-inner {
         margin-left: -5px;
     }
 }
 
 @media (prefers-color-scheme: dark) {
 
-    .lbl-toggle {
+    .collection .lbl-toggle {
         background: var(--button-bg-color);
     }
 
-    .lbl-toggle:hover {
+    .collection .lbl-toggle:hover {
         background: var(--button-hover-bg-color);
     }
 
-    .coin-stock .btn {
+    .collection .coin-stock .btn {
         background: var(--button-bg-color);
     }
 
-    .modal-content {
+    .collection .modal-content {
         background: var(--second-bg-color);
     }
 
