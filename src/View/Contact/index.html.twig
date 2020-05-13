@@ -10,7 +10,7 @@
         {% if error is defined and error is not empty %}
             <ul>
                 {% for i in 0..error|length -1 %}
-                    <li class="alert alert-danger mx-5">{{ error[i] }}</li>
+                    <li class="alert alert-danger mx-md-5">{{ error[i] }}</li>
                 {% endfor %}
             </ul>
         {% endif %}
