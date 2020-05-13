@@ -10,7 +10,7 @@
         <h1 class="title-section text-center mb-5">Administration collection</h1>
         <a href="/admin/index" class="btn btn-primary mb-5">Retour</a>
         <a href="/collection/Add" class="btn btn-primary mb-5 ml-4">Ajouter</a>
-        {% if _get is defined  %}
+        {% if _get is defined %}
             {% for key, value in _get %}
                 <div class="alert alert-{{ key }}">{{ value }}</div>
             {% endfor %}
@@ -25,7 +25,12 @@
                         <h3 class="my-3">Métal</h3>
                         {% for metal in metals %}
                             <label for="metal_{{ metal.id }}" class="container container-inner">{{ metal.material }}
-                                <input type="checkbox" id="metal_{{ metal.id }}" name="metal{{ metal.id }}" value="{{ metal.material }}">
+                                <input type="checkbox" id="metal_{{ metal.id }}" name="metal{{ metal.id }}"
+                                       value="{{ metal.material }}"
+                                        {% for value in _post if value == metal.material %}
+                                            checked
+                                        {% endfor %}
+                                >
                                 <span class="checkmark"></span>
                             </label>
                         {% endfor %}
@@ -34,7 +39,12 @@
                         <h3 class="my-3">Origine</h3>
                         {% for origin in origins %}
                             <label for="origin_{{ origin.id }}" class="container container-inner">{{ origin.country }}
-                                <input type="checkbox" id="origin_{{ origin.id }}" name="origin{{ origin.id }}" value="{{ origin.country }}">
+                                <input type="checkbox" id="origin_{{ origin.id }}" name="origin{{ origin.id }}"
+                                       value="{{ origin.country }}"
+                                        {% for value in _post if value == origin.country %}
+                                            checked
+                                        {% endfor %}
+                                >
                                 <span class="checkmark"></span>
                             </label>
                         {% endfor %}
@@ -42,19 +52,35 @@
                     <div class="col-md-4">
                         <h3 class="my-3">Époque</h3>
                         <label for="antiquity" class="container container-inner">Antiquité
-                            <input type="checkbox" id="antiquity" name="era1" value="antiquity">
+                            <input type="checkbox" id="antiquity" name="era1" value="antiquity"
+                                    {% for value in _post if value == 'antiquity' %}
+                                        checked
+                                    {% endfor %}
+                            >
                             <span class="checkmark"></span>
                         </label>
                         <label for="middle-age" class="container container-inner">Moyen-âge
-                            <input type="checkbox" id="middle-age" name="era2" value="middle-age">
+                            <input type="checkbox" id="middle-age" name="era2" value="middle-age"
+                                    {% for value in _post if value == 'middle-age' %}
+                                        checked
+                                    {% endfor %}
+                            >
                             <span class="checkmark"></span>
                         </label>
                         <label for="modern-times" class="container container-inner">Temps moderne
-                            <input type="checkbox" id="modern-times" name="era3" value="modern-times">
+                            <input type="checkbox" id="modern-times" name="era3" value="modern-times"
+                                    {% for value in _post if value == 'modern-times' %}
+                                        checked
+                                    {% endfor %}
+                            >
                             <span class="checkmark"></span>
                         </label>
                         <label for="contemporary-era" class="container container-inner">Époque contemporaine
-                            <input type="checkbox" id="contemporary-era" name="era4" value="contemporary-era">
+                            <input type="checkbox" id="contemporary-era" name="era4" value="contemporary-era"
+                                    {% for value in _post if value == 'contemporary-era' %}
+                                        checked
+                                    {% endfor %}
+                            >
                             <span class="checkmark"></span>
                         </label>
                     </div>
@@ -62,7 +88,6 @@
                 </form>
             </div>
         </div>
-        
 
 
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
@@ -112,7 +137,8 @@
                                 <input type="hidden" name="id" value="{{ collection.coin_id }}">
                                 <button class="btn btn-danger btn-sm">Supprimer</button>
                             </form>
-                            <a href="/collection/edit/{{ collection.coin_id }}" class="btn btn-primary btn-sm">Modifier</a>
+                            <a href="/collection/edit/{{ collection.coin_id }}"
+                               class="btn btn-primary btn-sm">Modifier</a>
                         </div>
                     </div>
                 </div>
