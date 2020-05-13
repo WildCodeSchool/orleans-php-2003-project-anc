@@ -107,8 +107,8 @@ form .note-toolbar, form .note-btn {
     width: 100%;
 }
 
-.section .note-editor.note-frame .note-editing-area, .note-editable {
-    background-color: red;
+.section .form-summernote .note-editable {
+    font-size: 16px;
 }
 
 @media (prefers-color-scheme: dark) {
