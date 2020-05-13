@@ -74,8 +74,11 @@
                         <div class="images d-flex align-items-center justify-content-center flex-column flex-md-row p-2">
                             <img src="/assets/images/collection/{{ collection.image_recto }}" class="card-img-top m-3"
                                  alt="{{ collection.image_recto }}">
-                            <img src="/assets/images/collection/{{ collection.image_verso }}" class="card-img-top m-3"
-                                 alt="{{ collection.image_verso }}">
+                            {% if coin.image_verso != NULL %}
+                                <img src="/assets/images/collection/{{ coin.image_verso }}"
+                                     class="card-img-top m-3"
+                                     alt="{{ coin.name }}">
+                            {% endif %}
                         </div>
                         <div class="card-body">
                             <h5 class="card-title title-section text-center mb-4">{{ collection.name }}</h5>
