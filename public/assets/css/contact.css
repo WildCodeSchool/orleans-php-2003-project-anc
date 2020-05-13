@@ -19,6 +19,10 @@ body {
     justify-content: space-around;
 }
 
+.contact ul {
+    padding-left: 0;
+}
+
 .contact li {
     list-style: none;
 }
@@ -33,15 +37,14 @@ body {
     .contact .btn {
         width: 100%;
     }
+
     .contact .button .btn:last-child {
         width: 50%;
         max-width: 150px;
         margin: 30px auto auto;
     }
+
     .contact {
         padding-left: 12px;
-    }
-    .contact ul {
-        padding-left: 0;
     }
 }
