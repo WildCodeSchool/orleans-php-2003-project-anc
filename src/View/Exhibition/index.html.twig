@@ -7,9 +7,8 @@
 {% endblock %}
 
 {% block content %}
-    <section class='section container-fluid exhibition'>
+    <section class="section container-fluid exhibition">
         <h2 class="title-section my-5 text-center">Exposition</h2>
-
         <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3">
             {% for exhibition in exhibitions %}
                 <div class="col mb-4">
@@ -20,13 +19,16 @@
                             <h5 class="card-title title-section text-center">{{ exhibition.title }}</h5>
                             <p class="card-text">{{ exhibition.detail | slice(0, 80)}}...</p>
                             <div class="position-absolute btn-custom m-3">
-                            <button data-toggle="modal" data-target="#exhibitionModal{{ exhibition.id }}"
-                                    type="button"  class="btn btn-primary">Lire l'article
-                            </button>
+                                <button data-toggle="modal" data-target="#exhibitionModal{{ exhibition.id }}"
+                                        type="button" class="btn btn-primary">Lire l'article
+                                </button>
                             </div>
                         </div>
                     </div>
                 </div>
+            {% endfor %}
+        </div>
+        {% for exhibition in exhibitions %}
                 <div class="modal fade" id="exhibitionModal{{ exhibition.id }}" tabindex="-1" role="dialog"
                      aria-labelledby="exhibitionModalTitle" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
@@ -48,9 +50,7 @@
                         </div>
                     </div>
                 </div>
-
-            {% endfor %}
-        </div>
+            </div>
+        {% endfor %}
     </section>
-
 {% endblock %}
