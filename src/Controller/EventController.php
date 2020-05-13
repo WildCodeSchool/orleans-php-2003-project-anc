@@ -32,7 +32,7 @@ class EventController extends AbstractController
     public function index()
     {
         $eventManager = new EventManager();
-        $events = $eventManager->selectEvent();
+        $events = $eventManager->selectFuturEvent();
 
         return $this->twig->render('Event/index.html.twig', ['events' => $events]);
     }
