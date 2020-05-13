@@ -16,7 +16,11 @@
                         {% for metal in metals %}
                             <label for="metal_{{ metal.id }}" class="container container-inner">{{ metal.material }}
                                 <input type="checkbox" id="metal_{{ metal.id }}" name="metal{{ metal.id }}"
-                                       value="{{ metal.material }}">
+                                       value="{{ metal.material }}"
+                                        {% for value in _post if value == metal.material %}
+                                            checked
+                                        {% endfor %}
+                                >
                                 <span class="checkmark"></span>
                             </label>
                         {% endfor %}
