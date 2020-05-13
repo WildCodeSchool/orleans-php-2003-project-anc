@@ -9,3 +9,11 @@
 .exhibition-admin .card {
     min-height: 450px;
 }
+
+@media (prefers-color-scheme: dark) {
+
+    .btn-danger {
+        border: none;
+    }
+
+}
