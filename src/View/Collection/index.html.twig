@@ -7,7 +7,11 @@
     <section class="collection">
         <h2 class="title-section my-5 text-center">Collection</h2>
         <div class="wrap-collabsible container mx-auto">
-            <input id="collapsible" class="toggle" type="checkbox">
+            <input id="collapsible" class="toggle" type="checkbox"
+                    {% if _post is not empty %}
+                        checked
+                    {% endif %}
+            >
             <label for="collapsible" class="lbl-toggle d-block d-md-inline-block"><i class=" mr-3 fas fa-filter"></i>Trier</label>
             <div class="collapsible-content">
                 <form action="" method="post" class="row container-fluid content-inner">
