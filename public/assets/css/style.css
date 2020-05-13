@@ -102,3 +102,6 @@ form .note-toolbar, form .note-btn {
 .edit-coin-admin .form-row .form-summernote {
     width: 100%;
 }
+.section .note-editor.note-frame .note-editing-area, .note-editable {
+    background-color: red;
+}
