@@ -10,6 +10,12 @@
     min-height: 450px;
 }
 
+.edit-exhibition-admin .form-group,
+.add-exhibition-admin .form-group
+{
+    width: 100%;
+}
+
 @media (prefers-color-scheme: dark) {
 
     .btn-danger {

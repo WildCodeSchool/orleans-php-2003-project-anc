@@ -2,20 +2,22 @@
 {% block title %}
     ANC - Exposition
 {% endblock %}
+{% block stylesheet %}
+    <link rel="stylesheet" href="../assets/css/exhibition.css">
+{% endblock %}
+
 {% block content %}
     <section class="section container-fluid exhibition">
-
         <h2 class="title-section my-5 text-center">Exposition</h2>
-
         <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3">
             {% for exhibition in exhibitions %}
                 <div class="col mb-4">
                     <div class="card p-1 shadow-sm">
                         <img src="/assets/images/exhibition/{{ exhibition.image }}" class="card-img-top"
-                             alt="{{ exhibition.subject }}">
+                             alt="{{ exhibition.title }}">
                         <div class="card-body position-relative">
-                            <h5 class="card-title title-section text-center">{{ exhibition.subject }}</h5>
-                            <p class="card-text">{{ exhibition.detail | slice(0, 80) }}...</p>
+                            <h5 class="card-title title-section text-center">{{ exhibition.title }}</h5>
+                            <p class="card-text">{{ exhibition.detail | slice(0, 80)}}...</p>
                             <div class="position-absolute btn-custom m-3">
                                 <button data-toggle="modal" data-target="#exhibitionModal{{ exhibition.id }}"
                                         type="button" class="btn btn-primary">Lire l'article
@@ -27,30 +29,28 @@
             {% endfor %}
         </div>
         {% for exhibition in exhibitions %}
-            <div class="modal fade" id="exhibitionModal{{ exhibition.id }}" tabindex="-1" role="dialog"
-                 aria-labelledby="exhibitionModalTitle" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header d-flex justify-content-between p-3">
-                            <p class="exhibition-modal-title mb-0"
-                               id="exhibitionModalTitle">{{ exhibition.subject }}</p>
-                        </div>
-                        <div class="modal-body d-flex justify-content-between p-sm-5">
-                            <img class="modal-img mx-auto" src="/assets/images/exhibition/{{ exhibition.image }}"
-                                 alt="{{ exhibition.subject }}">
-                        </div>
-                        <div class="modal-body d-flex justify-content-between p-sm-5">
-                            <p class="mb-0">{{ exhibition.detail }}</p>
-                        </div>
-                        <div class="modal-body m-4 h5">
-                            <button type="button" class="btn btn-primary btn my-4" data-dismiss="modal">Retour
-                            </button>
+                <div class="modal fade" id="exhibitionModal{{ exhibition.id }}" tabindex="-1" role="dialog"
+                     aria-labelledby="exhibitionModalTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header d-flex justify-content-between p-3">
+                                <p class="exhibition-modal-title mb-0" id="exhibitionModalTitle">{{ exhibition.title }}</p>
+                            </div>
+                            <div class="modal-body d-flex justify-content-between p-sm-5">
+                                <img class="modal-img mx-auto" src="/assets/images/exhibition/{{ exhibition.image }}"
+                                     alt="{{ exhibition.title }}">
+                            </div>
+                            <div class="modal-body d-flex justify-content-between p-sm-5">
+                                <p class="mb-0">{{ exhibition.detail }}</p>
+                            </div>
+                            <div class="modal-body m-4 h5">
+                                <button type="button" class="btn btn-primary btn my-4" data-dismiss="modal">Retour
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         {% endfor %}
-
     </section>
-
 {% endblock %}
