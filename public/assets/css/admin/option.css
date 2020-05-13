@@ -38,4 +38,15 @@
     .option fieldset {
         border: 1px solid var(--light);
     }
+
+    .fa-trash {
+        color: var(--light);
+    }
+    .fa-pen {
+        color: var(--light);
+    }
+
+    .option form {
+        background: none;
+    }
 }
