@@ -129,7 +129,7 @@ form .note-toolbar, form .note-btn {
         background-color: var(--second-bg-color);
     }
 
-    header {
+    header, .header {
         color: var(--main-bg-color);
     }
 
