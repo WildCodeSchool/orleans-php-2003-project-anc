@@ -28,7 +28,7 @@
     width: 40%;
 }
 
-.modal-img {
+.modal-img.collection {
     width: auto;
     height: auto;
     max-width: 230px;
