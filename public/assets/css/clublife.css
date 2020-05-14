@@ -4,7 +4,6 @@
 }
 
 .activity_images {
-    margin: 0.75rem;
     display: flex;
     justify-content: space-between;
 }
@@ -13,6 +12,10 @@
     width: 70%;
     height: 70%;
     object-fit: contain;
+}
+
+.clublife img {
+    border-radius: 3px;
 }
 
 

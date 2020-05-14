@@ -230,3 +230,10 @@ form .note-toolbar, form .note-btn {
         color: var(--light) !important;
     }
 }
+
+@media all and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
+    .modal-img {
+        width: 20vw;
+        height: auto;
+    }
+}
