@@ -12,9 +12,9 @@
                 <div class="ml-2">
                     <h4 class="font-weight-bold mb-2">{{ clublife.description_title }}</h4>
                 </div>
-                <div class="px-2 d-md-flex">
-                    <div class="mx-2 my-3">
-                        {{ clublife.description }}
+                <div class="px-5 d-md-flex">
+                    <div class="mx-5 my-3">
+                        {{ clublife.description |raw}}
                     </div>
                     <div class="mx-2 my-3">
                         <a href="/assets/images/clublife/bureau_ANC.jpg" target="_blank">
@@ -28,9 +28,9 @@
                 <div class="ml-2">
                     <h4 class="font-weight-bold mb-2">{{ clublife.activity_title}}</h4>
                 </div>
-                <div class="px-2">
-                    <div class="px-2 d-md-flex">
-                        {{ clublife.activity}}
+                <div class="px-5">
+                    <div class="px-5 d-md-flex">
+                        {{ clublife.activity |raw}}
                     </div>
                     <div class="activity_images">
                         <a href="/assets/images/clublife/visites.jpg" target="_blank">
