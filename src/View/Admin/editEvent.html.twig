@@ -8,7 +8,7 @@
 
     <section class="section add-event-admin container">
 
-        <h1 class="title-section text-center mb-5">Ajouter</h1>
+        <h1 class="title-section text-center mb-5">Modifier évènement</h1>
         <a href="/admin/event" class="btn btn-primary mb-5">Retour</a>
         {% for i in 0..errors_files | length - 1 %}
             {% for key, value in errors_files[i] %}
@@ -43,25 +43,23 @@
                 </div>
             </div>
             <div class="form-row my-4">
-                <div class="form-group col-md-6">
+                <div class="form-group col-12">
                     <label for="name">Nom de l'évènement</label>
                     <input class="form-control" type="text" name="name" id="name" value="{{ events.name }}">
                 </div>
             </div>
             <div class="form-row my-3">
-                <div class="form-group col-md-3">
-                    <label for="start_at">Date de début de l'évènement</label>
+                <div class="form-group col-md-6 col-12">
+                    <label for="start_at">Date de début</label>
                     <input class="form-control" type="date" name="start_at" id="start_at" value="{{ events.start_at }}" required>
                 </div>
-            </div>
-            <div class="form-row my-3">
-                <div class="form-group col-md-3">
-                    <label for="end_at">Date de fin de l'évènement</label>
+                <div class="form-group col-md-6 col-12">
+                    <label for="end_at">Date de fin</label>
                     <input class="form-control" type="date" name="end_at" id="end_at" value="{{ events.end_at }}" >
                 </div>
             </div>
             <div class="form-row my-4">
-                <button class="btn btn-primary ml-auto">Ajouter</button>
+                <button class="btn btn-primary ml-auto">Enregistrer</button>
             </div>
         </form>
     </section>

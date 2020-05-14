@@ -107,8 +107,23 @@ form .note-toolbar, form .note-btn {
     width: 100%;
 }
 
-.section .note-editor.note-frame .note-editing-area, .note-editable {
-    background-color: red;
+.btn-primary:not(:disabled):not(.disabled).active,
+.btn-primary:not(:disabled):not(.disabled):active,
+.show > .btn-primary.dropdown-toggle {
+    background-color: var(--main-bg-color);
+    box-shadow: none;
+    border: none;
+}
+
+.btn-primary:not(:disabled):not(.disabled).active:focus,
+.btn-primary:not(:disabled):not(.disabled):active:focus,
+.show > .btn-primary.dropdown-toggle:focus {
+    box-shadow: none;
+    border: none;
+}
+
+.section .form-summernote .note-editable {
+    font-size: 16px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -129,7 +144,7 @@ form .note-toolbar, form .note-btn {
         background-color: var(--second-bg-color);
     }
 
-    header {
+    header, .header {
         color: var(--main-bg-color);
     }
 

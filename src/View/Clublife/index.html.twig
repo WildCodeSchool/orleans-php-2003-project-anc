@@ -7,30 +7,30 @@
     <link rel="stylesheet" href="/assets/css/clublife.css">
     <section class="clublife">
         {% for clublife in clublifes %}
-            <h2 class="title-section my-5 text-center">Présentation du Club</h2>
-            <div class="row container-fluid mx-auto mb-5">
-                <div class="ml-5">
-                    <h4 class="font-weight-bold mb-5">{{ clublife.description_title }}</h4>
+            <h2 class="title-section my-2 text-center">Présentation du Club</h2>
+            <div class="row container-fluid mx-auto mb-2">
+                <div class="ml-2">
+                    <h4 class="font-weight-bold mb-2">{{ clublife.description_title }}</h4>
                 </div>
                 <div class="px-5 d-md-flex">
                     <div class="mx-5 my-3">
-                        {{ clublife.description }}
+                        {{ clublife.description |raw}}
                     </div>
-                    <div class="mx-5 my-3">
+                    <div class="mx-2 my-3">
                         <a href="/assets/images/clublife/bureau_ANC.jpg" target="_blank">
                             <img class="" src="/assets/images/clublife/{{ clublife.description_image}}" alt="photo du bureau">
                         </a>
                     </div>
                 </div>
             </div>
-            <div class="row container-fluid mx-auto mb-5">
+            <div class="row container-fluid mx-auto mb-2">
 
-                <div class="ml-5">
-                    <h4 class="font-weight-bold mb-5">{{ clublife.activity_title}}</h4>
+                <div class="ml-2">
+                    <h4 class="font-weight-bold mb-2">{{ clublife.activity_title}}</h4>
                 </div>
                 <div class="px-5">
                     <div class="px-5 d-md-flex">
-                        {{ clublife.activity}}
+                        {{ clublife.activity |raw}}
                     </div>
                     <div class="activity_images">
                         <a href="/assets/images/clublife/visites.jpg" target="_blank">

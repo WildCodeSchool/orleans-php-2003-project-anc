@@ -10,7 +10,7 @@
         {% if error is defined and error is not empty %}
             <ul>
                 {% for i in 0..error|length -1 %}
-                    <li class="alert alert-danger mx-5">{{ error[i] }}</li>
+                    <li class="alert alert-danger mx-md-5">{{ error[i] }}</li>
                 {% endfor %}
             </ul>
         {% endif %}
@@ -23,25 +23,25 @@
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="firstname">Prénom:</label>
-                    <input type="text" class="form-control" name="firstname" id="firstname" placeholder="Votre prénom"
+                    <input type="text" class="form-control" name="firstname" id="firstname" placeholder="Matt"
                            value="{{ _post.firstname }}">
                 </div>
                 <div class="form-group col-md-6">
                     <label for="lastname">Nom:</label>
-                    <input type="text" class="form-control" name="lastname" id="lastname" placeholder="Votre nom"
+                    <input type="text" class="form-control" name="lastname" id="lastname" placeholder="Numis"
                            value="{{ _post.lastname }}">
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="email">Email:</label>
-                    <input type="email" class="form-control" name="email" id="email" placeholder="Votre email"
+                    <input type="email" class="form-control" name="email" id="email" placeholder="numis.matt@lapiece.coin"
                            value="{{ _post.email }}">
                 </div>
                 <div class="form-group col-md-6">
                     <label for="phone">Téléphone:</label>
                     <input type="tel" class="form-control" name="phone" id="phone"
-                           placeholder="Votre numéro de téléphone" value="{{ _post.phone }}">
+                           placeholder="0201502010" value="{{ _post.phone }}">
                 </div>
             </div>
             <div class="form-group">
@@ -61,7 +61,7 @@
             <div class="form-check mt-5">
                 <input type="checkbox" class="form-check-input" name="policy" id="check"
                        {% if _post.policy == true %}checked{% endif %}>
-                <label class="form-check-label" for="check">J'ai lu et accepte la Politique de confidentialité.</label>
+                <label class="form-check-label" for="check">J'ai lu et accepte la politique de confidentialité.</label>
             </div>
             <br>
             <div class="button mt-4 d-flex flex-column flex-sm-row">

@@ -3,13 +3,16 @@
 }
 .events .card {
     min-width: 300px;
+    transition: all .5s ease;
 }
 .events .card img {
     height: 250px;
     object-fit: cover;
     width: 100%;
 }
-
+.events .card:hover {
+    box-shadow: 0 0 15px #bfbfbf;
+}
 @media screen and (min-width: 1200px) {
     .events .card {
         max-width: 420px;

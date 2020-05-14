@@ -60,7 +60,7 @@
                                     <td colspan="2">
                                         <form action="/admin/message" method="POST" class="text-right mt-2">
                                             <input type="hidden" name="id" value="{{ messages[i].id }}">
-                                            <button class="btn btn-sm btn-danger">Supprimer</button>
+                                            <button onclick="return confirmDelete()" class="btn btn-sm btn-danger">Supprimer</button>
                                         </form>
                                     </td>
                                 </tr>

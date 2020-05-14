@@ -19,6 +19,10 @@ body {
     justify-content: space-around;
 }
 
+.contact ul {
+    padding-left: 0;
+}
+
 .contact li {
     list-style: none;
 }
@@ -38,6 +42,9 @@ body {
         width: 50%;
         max-width: 150px;
         margin: 30px auto auto;
+    }
+    .contact {
+        padding-left: 12px;
     }
 }
 
@@ -64,4 +71,3 @@ body {
         background-color: var(--button-bg-color);
     }
 }
-

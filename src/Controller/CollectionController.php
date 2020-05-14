@@ -67,18 +67,16 @@ class CollectionController extends AbstractController
             $data = array_map('trim', $_POST);
             $errors = $this->controlDataForm($data);
             $upload = $images->fileControl(true);
-            if (empty($errors)) {
-                if (!empty($upload)) {
-                    if (array_key_exists('image-recto', $upload)) {
-                        $data['image_recto'] = $upload['image-recto']['name'];
-                        $uploadPath = $upload['image-recto']['tmp_name'];
-                        $images->uploadFile($uploadPath, $destination, $upload['image-recto']['name']);
-                    }
-                    if (array_key_exists('image-verso', $upload)) {
-                        $data['image_verso'] = $upload['image-verso']['name'];
-                        $uploadPath = $upload['image-verso']['tmp_name'];
-                        $images->uploadFile($uploadPath, $destination, $upload['image-verso']['name']);
-                    }
+            
+            if (empty($errors) && array_key_exists('image-recto', $upload)) {
+                $data['image_recto'] = $upload['image-recto']['name'];
+                $uploadPath = $upload['image-recto']['tmp_name'];
+                $images->uploadFile($uploadPath, $destination, $upload['image-recto']['name']);
+
+                if (array_key_exists('image-verso', $upload)) {
+                    $data['image_verso'] = $upload['image-verso']['name'];
+                    $uploadPath = $upload['image-verso']['tmp_name'];
+                    $images->uploadFile($uploadPath, $destination, $upload['image-verso']['name']);
                 }
                 $collectionManager->add($data);
                 header('Location: /admin/collection/?success=Pièce ajoutée');
@@ -90,7 +88,8 @@ class CollectionController extends AbstractController
         return $this->twig->render('Admin/Add/addCollection.html.twig', [
             'origins' => $origins,
             'metals' => $metals,
-            'errors' => $errors ?? []
+            'errors' => $errors ?? [],
+            'errors_files' => $upload ?? [],
         ]);
     }
 
@@ -181,7 +180,7 @@ class CollectionController extends AbstractController
             !empty(trim($_POST['id'])) && is_numeric($_POST['id'])) {
             $id = trim($_POST['id']);
             $collectionManager = new CollectionManager();
-            $collectionManager->deleteOneCoin((int) $id);
+            $collectionManager->deleteOneCoin((int)$id);
         }
         header('Location: /admin/collection/?danger=Elément supprimé avec succès !!');
     }
