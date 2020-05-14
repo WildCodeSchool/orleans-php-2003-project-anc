@@ -21,3 +21,10 @@
     font-family: var(--title-font);
     font-size: var(--medium-size);
 }
+
+@media (prefers-color-scheme: dark) {
+
+    .modal-content {
+        background-color: var(--second-bg-color);
+    }
+}
