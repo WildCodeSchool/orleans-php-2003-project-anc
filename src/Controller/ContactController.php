@@ -37,8 +37,8 @@ class ContactController extends AbstractController
 
             if (empty($errors)) {
                 $topic = $contactManager->selectSubject();
-                for ($i = 0; $i < count($topic); $i++) {
-                    if ($topic[$i]['id'] === $data['topic']) {
+                foreach ($topic as $i => $iValue) {
+                    if ($iValue['id'] === $data['topic']) {
                         $data['topic'] = $topic[$i]['subject'];
                     }
                 }
