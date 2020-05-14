@@ -36,6 +36,12 @@ class ContactController extends AbstractController
             $errors = $this->controlData($data);
 
             if (empty($errors)) {
+                $topic = $contactManager->selectSubject();
+                for ($i = 0; $i < count($topic); $i++) {
+                    if ($topic[$i]['id'] === $data['topic']) {
+                        $data['topic'] = $topic[$i]['subject'];
+                    }
+                }
                 $contactManager->insert($data);
 
                 header('Location: /Contact/index/?success=Votre message a été envoyé !');
@@ -59,16 +65,16 @@ class ContactController extends AbstractController
     {
         $errors = [];
 
-        foreach ($data as $name => $value) {
-            $convert = [
-              'lastname' => 'nom',
-              'firstname' => 'prénom',
-              'comment' => 'commentaire',
-              'phone' => 'téléphone',
-              'email' => 'email',
-              'topic' => 'sujet',
-            ];
+        $convert = [
+            'lastname' => 'nom',
+            'firstname' => 'prénom',
+            'comment' => 'commentaire',
+            'phone' => 'téléphone',
+            'email' => 'email',
+            'topic' => 'sujet',
+        ];
 
+        foreach ($data as $name => $value) {
             if (empty($value)) {
                 $errors[] = 'Le champ ' . $convert[$name] . ' est requis';
             }
