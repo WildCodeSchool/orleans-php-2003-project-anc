@@ -67,7 +67,7 @@ class CollectionController extends AbstractController
             $data = array_map('trim', $_POST);
             $errors = $this->controlDataForm($data);
             $upload = $images->fileControl(true);
-            if (empty($errors) && array_key_exists('image', $upload)) {
+            if (empty($errors) && array_key_exists('image-recto', $upload)) {
                 if (array_key_exists('image-recto', $upload)) {
                     $data['image_recto'] = $upload['image-recto']['name'];
                     $uploadPath = $upload['image-recto']['tmp_name'];
