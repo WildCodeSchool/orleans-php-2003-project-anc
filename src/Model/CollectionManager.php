@@ -124,12 +124,11 @@ class CollectionManager extends AbstractManager
      */
     public function add(array $data): void
     {
-        if (array_key_exists('image_recto', $data) && (!array_key_exists('image_verso', $data))) {
+        if (array_key_exists('image_recto', $data)&& (!array_key_exists('image_verso', $data))) {
             $query = 'INSERT INTO ' . self::C_TABLE .
                 ' (name, year, image_recto, stock, metal_id, origin_id, description) 
                 VALUES (:name, :year, :image_recto, :stock, :metal_id, :origin_id, :description)';
-        }
-        if (array_key_exists('image_recto', $data) && (array_key_exists('image_verso', $data))) {
+        } elseif (array_key_exists('image_recto', $data) && (array_key_exists('image_verso', $data))) {
             $query = 'INSERT INTO ' . self::C_TABLE .
                 ' (name, year, image_recto, image_verso, stock, metal_id, origin_id, description) 
                 VALUES (:name, :year, :image_recto, :image_verso, :stock, :metal_id, :origin_id, :description)';
