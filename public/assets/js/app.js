@@ -1,4 +1,4 @@
 function confirmDelete()
 {
-    return confirm("Confirmez-vous la suppression de cette élèment ?");
+    return confirm("Confirmez-vous la suppression de cet élèment ?");
 }
