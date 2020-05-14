@@ -17,7 +17,7 @@
                              alt="{{ exhibition.title }}">
                         <div class="card-body position-relative">
                             <h5 class="card-title title-section text-center">{{ exhibition.title }}</h5>
-                            <p class="card-text">{{ exhibition.detail | slice(0, 80)}}...</p>
+                            <p class="card-text">{{ exhibition.detail | slice(0, 80) }}...</p>
                             <div class="position-absolute btn-custom m-3">
                                 <button data-toggle="modal" data-target="#exhibitionModal{{ exhibition.id }}"
                                         type="button" class="btn btn-primary">Lire l'article
@@ -40,8 +40,9 @@
                                 <img class="modal-img mx-auto" src="/assets/images/exhibition/{{ exhibition.image }}"
                                      alt="{{ exhibition.title }}">
                             </div>
-                            <div class="modal-body d-flex justify-content-between p-sm-5">
-                                <p class="mb-0">{{ exhibition.detail }}</p>
+                            <div class="modal-body p-sm-5">
+                                <i class="fas fa-quote-right d-block mb-2"></i>
+                                <p class="mb-0">{{ exhibition.detail |raw}}</p>
                             </div>
                             <div class="modal-body m-4 h5">
                                 <button type="button" class="btn btn-primary btn my-4" data-dismiss="modal">Retour
