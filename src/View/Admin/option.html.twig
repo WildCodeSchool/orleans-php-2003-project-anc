@@ -67,7 +67,7 @@
                             <div class="form-group d-flex align-items-center justify-content-around">
                                 <input type="text" class="form-control" name="subject"
                                        value="{{ subjects[i].subject }}">
-                                <button class="ml-2 btn btn-light" type="submit" name="action" value="delete"><i
+                                <button onclick="return confirmDelete()" class="ml-2 btn btn-light" type="submit" name="action" value="delete"><i
                                             class="fas fa-trash"></i></button>
                                 <button class="ml-2 btn btn-light" type="submit" name="action" value="update"><i
                                             class="fas fa-pen"></i></button>
